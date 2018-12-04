@@ -38,7 +38,7 @@ const age_range = [
 // Déclaration de la fonction stateless PasswordField
 class AgeRange extends Component {
     state = {
-        age_range: ' ',
+        age_range: '',
       };
 
       handleChangeAgeRange = prop => event => {
