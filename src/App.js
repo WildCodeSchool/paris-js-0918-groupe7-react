@@ -8,8 +8,8 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Form />
-        <BarProgress />
+        {/* <BarProgress />
+        <Form /> */}
       </div>
     );
   }

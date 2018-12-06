@@ -96,7 +96,7 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
     const steps = getSteps();
     const { activeStep } = this.state;
     const connector = (
-      <StepConnector
+      <StepConnector 
         classes={{
           active: classes.connectorActive,
           completed: classes.connectorCompleted,
