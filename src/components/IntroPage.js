@@ -11,7 +11,7 @@ class IntroPage extends Component {
         return (
             <div>
                 <Grid container className='gridintro' style={{
-                    backgroundColor: 'rgb(125,146, 177)',
+                    backgroundColor: 'rgb(125, 146, 177)',
                     position: 'absolute',
                     minHeight: '100%'
                 }}>
@@ -24,14 +24,16 @@ class IntroPage extends Component {
                         verticalAlign: 'middle',
                         color: 'white',
                         margin: '5% auto',
-                        }} variant="subtitle1" gutterBottom> Thank you for creating you account !
+                        fontFamily: 'Raleway',
+                        fontSize: '2em',
+                        }} gutterBottom> Thank you for creating your account !
                         </Typography>
 
                         <CardIntro />
                         
                     </Grid>
                     
-                    <Grid className='grid2' style={{
+                    <Grid className='grid2' id='postit' style={{
                         backgroundImage: `url(${ImgIntro})`,
                         backgroundSize: 'auto',
                         backgroundRepeat: 'no-repeat',
