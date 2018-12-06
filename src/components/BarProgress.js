@@ -24,12 +24,14 @@ const styles = theme => ({
   },
   connectorActive: {
     "& $connectorLine": {
-      borderColor: theme.palette.secondary.main
+      borderColor: theme.palette.secondary.main,
+      border: "solid 2px"
     }
   },
   connectorCompleted: {
     "& $connectorLine": {
-      borderColor: theme.palette.primary.main
+      borderColor: theme.palette.secondary.main,
+      border: "solid 2px"
     }
   },
   connectorDisabled: {
@@ -96,7 +98,7 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
     const steps = getSteps();
     const { activeStep } = this.state;
     const connector = (
-      <StepConnector 
+      <StepConnector
         classes={{
           active: classes.connectorActive,
           completed: classes.connectorCompleted,
@@ -141,7 +143,7 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
             ) : (
               <div>
                 <Typography className={classes.instructions} />
-                <div className="DivButton">
+                <div>
                   <Button
                     disabled={activeStep === 0}
                     onClick={this.handleBack}
