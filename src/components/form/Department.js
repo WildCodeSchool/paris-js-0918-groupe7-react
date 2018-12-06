@@ -7,6 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
+    departmentContainer: {
+        width: 300,
+    }
 });
 
 const department = [
@@ -81,16 +84,11 @@ class Department extends Component {
     render(){
       const { classes } = this.props;
         return(
-          <TextField
+          <TextField className={classes.departmentContainer}
           select
           label="Department"
           value={this.state.department}
           onChange={this.handleChangeDepartment('department')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
           helperText="Please select your department"
           margin="normal"
           variant="outlined"

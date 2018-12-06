@@ -7,6 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
+    businessFocusContainer:{
+        width: 300,
+    }
 });
 
 const business_focus = [
@@ -49,7 +52,7 @@ class BusinessFocus extends Component {
     render(){
       const { classes } = this.props;
         return(
-          <TextField
+          <TextField className={classes.businessFocusContainer}
           select
           label="Business Focus"
           value={this.state.business_focus}

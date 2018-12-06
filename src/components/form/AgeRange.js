@@ -7,8 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  menu: {
-    width: 200,
+  ageRangeContainer: {
+    width: 300,
   },
 });
 
@@ -38,7 +38,7 @@ const age_range = [
 // Déclaration de la fonction stateless PasswordField
 class AgeRange extends Component {
     state = {
-        age_range: ' ',
+        age_range: '',
       };
 
       handleChangeAgeRange = prop => event => {
@@ -48,7 +48,7 @@ class AgeRange extends Component {
     render(){
       const { classes } = this.props;
         return(
-          <TextField
+          <TextField className={classes.ageRangeContainer}
           select
           label="Age range"
           value={this.state.age_range}

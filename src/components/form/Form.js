@@ -1,14 +1,18 @@
 // Import de base
 import React, { Component } from 'react';
 
-// Import des composants
+// Import des composants du formulaire
 import EmailField from './EmailField';
 import PasswordField from './PasswordField';
 import AgeRange from './AgeRange';
 import Department from './Department';
 import BusinessFocus from './BusinessFocus';
 import Seniority from './Seniority';
+import Gender from './Gender';
+import Company from './Company';
 
+// Import Material UI
+import { Grid } from '@material-ui/core';
 
 
 
@@ -17,36 +21,32 @@ class Form extends Component {
     render(){
     return (
     // Déclaration du formulaire
-    <form>
-        <div>
-            <label>Mrs</label>
-            <input className="select_gender_male"
-            name="Mrs"
-            type="radio"
-            />
-            <label>Mr</label>
-            <input className="select_gender_female"
-            name="Mr"
-            type="radio"
-            />
-        </div>
-
-        <EmailField/>
-        <PasswordField />
+    <Grid>
+        <Grid item xs={12}>
+            <Gender />
+        </Grid>
+        <Grid item xs={12}>
+            <EmailField/>
+        </Grid>
+        <Grid item xs={12}>
+            <PasswordField />
+        </Grid>
+            <Grid item xs={12}>
         <AgeRange/>
-        <Department />
-        <BusinessFocus />
-        <Seniority />
-
-        <div>
-            <label>Company</label>
-            <input className="select_company"
-            name="company"
-            type="text"
-            placeholder="Company"
-            />
-        </div>
-    </form>
+            </Grid>
+        <Grid item xs={12}>
+            <Company />
+            </Grid>
+        <Grid item xs={12}>
+            <Department />
+            </Grid>
+        <Grid item xs={12}>
+            <BusinessFocus />
+            </Grid>
+        <Grid item xs={12}>
+            <Seniority />
+        </Grid>
+    </Grid>
   );
  };
 };

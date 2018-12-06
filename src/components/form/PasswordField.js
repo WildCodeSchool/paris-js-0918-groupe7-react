@@ -7,6 +7,14 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { withStyles } from '@material-ui/core';
+
+
+const styles = theme => ({
+  passwordContainer: {
+    width: 300,
+  },
+});
 
 // Déclaration de la fonction stateless PasswordField
 class PasswordField extends Component {
@@ -23,8 +31,9 @@ class PasswordField extends Component {
       };
 
     render(){
+      const { classes } = this.props
         return(
-            <TextField
+            <TextField className={classes.passwordContainer}
             variant="outlined"
             type={this.state.showPassword ? 'text' : 'password'}
             label="Password"
@@ -47,4 +56,4 @@ class PasswordField extends Component {
     }
 }
 
-export default PasswordField;
+export default withStyles(styles)(PasswordField);

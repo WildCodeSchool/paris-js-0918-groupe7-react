@@ -7,6 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
+    seniorityContainer: {
+      width: 300,
+    },
 });
 
 const seniority = [
@@ -46,17 +49,11 @@ class Seniority extends Component {
     render(){
       const { classes } = this.props;
         return(
-          <TextField
+          <TextField className={classes.seniorityContainer}
           select
-          label="Select"
-          className={classes.textField}
+          label="Seniority"
           value={this.state.seniority}
           onChange={this.handleChangeSeniority('seniority')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
           helperText="Please select your seniority"
           margin="normal"
           variant="outlined"
