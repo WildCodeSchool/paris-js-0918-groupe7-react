@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import Header from "./components/Header";
+import React, { Component } from 'react';
+import Header from './components/Header';
+import Form from './components/form/Form';
 import BarProgress from "./components/BarProgress";
 
 class App extends Component {
@@ -7,6 +8,7 @@ class App extends Component {
     return (
       <div>
         <Header />
+        <Form />
         <BarProgress />
       </div>
     );

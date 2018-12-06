@@ -4,9 +4,17 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.6.1",
+    "@material-ui/icons": "^3.0.1",
+    "autosuggest-highlight": "^3.1.1",
+    "lodash": "^4.17.11",
     "react": "^16.6.3",
+    "react-autocomplete-input": "^1.0.8",
+    "react-autosuggest": "^9.4.2",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-redux": "^5.1.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-form": "^7.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
