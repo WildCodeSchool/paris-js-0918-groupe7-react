@@ -1,5 +1,6 @@
 // Import de base
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 
 // Import css
 import './Header.css';
@@ -20,7 +21,6 @@ const Header = (props) => {
                 <Grid  item xs={3} md={4} justify="flex-start" className="Header">
                     <img className="logo" src={logo_Exton_consulting} alt='logo Exton'/>
                 </Grid>
-
                 <Grid  item xs={3} md={4} justify="flex-end">
                     <img className="logo" src={logo_Exton_AAA} alt='logo Exton AAA'/>
                 </Grid>
