@@ -1,11 +1,5 @@
 .logo{
-    max-width: 25%;
-    padding: 1%;
-    margin-left: auto;
-    margin-top: auto;
+    max-width: 90%;
+    max-height: 100%;
+    padding: 5%;
 }
-
-.Header{
-    background-color: rgb(255, 255, 255);
-}
-
