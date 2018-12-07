@@ -1,6 +1,5 @@
 // Import de base
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 
 // Import css
 import './Header.css';
