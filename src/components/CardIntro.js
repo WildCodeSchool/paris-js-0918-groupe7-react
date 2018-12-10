@@ -18,72 +18,73 @@ function CardIntro(props) {
   return (
       <Card className='card' style={{ 
         
-        width: '80%',
+        width: '70%',
         height: 'auto',
         alignContent: 'center',
         alignItems: 'center',
         marginLeft: 'auto',
         marginRight: 'auto',
-        verticalAlign: 'middle',
         marginTop: 'auto',
         marginBottom: 'auto',
         
        }}>
+        
         <CardContent className='cardContent'>
 
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em'
+            fontSize: '18px'
             }}>This survey, conducted by Exton Consulting, aims at assessing the level of maturity of your company / entity on Agile.</Typography>
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em'
+            fontSize: '18px'
             }}>Please note that the survey is a picture of your Agile adoption and capabilities level at a given moment and that the results are likely to change overtime. </Typography>
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em' }}>
+            fontSize: '18px' }}>
             While completing the survey, please answer with as much transparency as possible ! </Typography>
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em' }}>
+            fontSize: '18px' }}>
             *** </Typography>
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em' }}>
+            fontSize: '18px' }}>
             Some information before you begin </Typography>
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em' }}>
+            fontSize: '18px' }}>
             The survey should last around 20 minutes. </Typography>
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em' }}>
+            fontSize: '18px' }}>
             You can quit the survey and resume at your convenience. </Typography>
           <Typography gutterBottom style={{ 
             textAlign: 'center',
             fontFamily: 'Raleway',
-            fontSize: '1em' }}>
+            fontSize: '18px' }}>
             Your answers will be automatically saved. </Typography>
           
           <div className='button'>
             <Button 
-            variant="contained" 
-            color="primary" 
+            variant="contained"  
             className='but'
             size='large'
             style={{
+              backgroundColor: 'rgb(38, 56, 87)',
+              color: 'white',
               marginLeft: 'auto',
               marginRight: 'auto',
               display: 'block',
               marginTop: '5%',
-              blockSize: '1em',
+              blockSize: '18px',
               fontSize: '1.3em',
               fontFamily: 'Raleway'
             }}

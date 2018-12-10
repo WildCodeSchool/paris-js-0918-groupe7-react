@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+
+// IMPORT COMPONENTS
 import Header from './components/Header';
-import IntroPage from './components/IntroPage';
-import './App.css';
-import Form from './components/form/Form';
 import BarProgress from "./components/BarProgress";
+import Form from './components/form/Form';
+
+import './App.css';
+
+// IMPORT OTHER PAGES COMPONENTS
+// import IntroPage from './components/IntroPage';
+// import ValidationPage from './components/ValidationPage';
+// import ThanksPage from './components/ThanksPage';
+
+
+
 
 class App extends Component {
   render() {
@@ -12,7 +22,9 @@ class App extends Component {
         <Header />
         <BarProgress />
         <Form />
-        <IntroPage />
+        {/* <IntroPage />
+        <ThanksPage />
+        <ValidationPage /> */}
       </div>
     );
   }
