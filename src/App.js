@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
-//import IntroPage from './components/IntroPage';
+import IntroPage from './components/IntroPage';
 import ThanksPage from './components/ThanksPage';
 import './App.css';
-
+import Form from './components/form/Form';
+import BarProgress from "./components/BarProgress";
 
 class App extends Component {
   render() {
@@ -12,6 +13,9 @@ class App extends Component {
         <Header />
         
         <ThanksPage />
+        <IntroPage />
+        <BarProgress />
+        <Form />
       </div>
     );
   }
