@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import CardIntro from "./CardIntro";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import "./IntroPage.css";
-import ThanksImg from "../images/thanks_img.jpg";
-import ThanksCard from "./ThanksCard";
+import IntroImage from "../images/intro_image.png";
+import LoginCard from "./LoginCard";
 
-class ThanksPage extends Component {
+class Login extends Component {
+  state = {};
   render() {
     return (
       <div>
@@ -34,17 +34,16 @@ class ThanksPage extends Component {
               gutterBottom
             >
               {" "}
-              Thank you for asking to Agile Maturity Assessment !
+              Welcome to survey AAA
             </Typography>
-
-            <ThanksCard />
+            <LoginCard />
           </Grid>
 
           <Grid
             className="grid2"
             id="postit"
             style={{
-              backgroundImage: `url(${ThanksImg})`,
+              backgroundImage: `url(${IntroImage})`,
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat"
             }}
@@ -58,4 +57,4 @@ class ThanksPage extends Component {
   }
 }
 
-export default ThanksPage;
+export default Login;
