@@ -7,6 +7,7 @@ import Form from "./components/form/Form";
 import Login from "./components/login/Login";
 import {Switch, Route} from "react-router-dom";
 
+
 import "./App.css";
 
 // IMPORT OTHER PAGES COMPONENTS
