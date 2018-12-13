@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import BarProgress from "./components/BarProgress";
 import Form from "./components/form/Form";
 import Login from "./components/Login";
+import IntroPage from "./components/IntroPage";
 
 import "./App.css";
 
@@ -17,13 +18,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header /> <IntroPage />
         {/*<BarProgress />
-        <Form />
-         <IntroPage />
+       <Form />
+         
         <ThanksPage />
-        <ValidationPage /> */}
-        <Login />
+        <ValidationPage /> 
+        <Login />*/}
       </div>
     );
   }
