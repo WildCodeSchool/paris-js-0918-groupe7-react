@@ -107,7 +107,7 @@ class LoginCard extends Component {
                 id="email"
                 name="email"
                 required
-                placeholder="Adress mail"
+                placeholder="Email"
                 style={{ marginTop: "5%", width: "80%" }}
                 onChange={this.onChange}
                 value={this.state.email}
