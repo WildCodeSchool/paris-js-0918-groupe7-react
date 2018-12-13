@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
 // IMPORT COMPONENTS
-import Header from "./components/Header";
-import BarProgress from "./components/BarProgress";
+import Header from "./components/header/Header";
+//import BarProgress from "./components/barProgress/BarProgress";
 import Form from "./components/form/Form";
-import Login from "./components/Login";
-import {Switch, Link, Route} from "react-router";
+import Login from "./components/login/Login";
+import {Switch, Route} from "react-router-dom";
 
 import "./App.css";
 
