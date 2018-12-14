@@ -8,7 +8,8 @@ import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import axios from "axios";
 import "./LoginCard.css";
-import Forgot from "./Forgot.js";
+// import Forgot from "./Forgot.js";
+import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
   pos: {
@@ -19,7 +20,8 @@ class LoginCard extends Component {
   state = {
     email: "",
     password: "",
-    forgot: false
+    forgot: false,
+    back: false
   };
 
   onChange = e => {
@@ -29,16 +31,15 @@ class LoginCard extends Component {
   };
 
   handleClick = e => {
+    e.preventDefault();
     this.setState({
       forgot: !this.state.forgot
     });
-    console.log(this.state.forgot);
   };
 
   BackFunction = e => {
     this.setState({
-      email: "",
-      password: ""
+      back: !this.state.back
     });
   };
 
@@ -65,7 +66,10 @@ class LoginCard extends Component {
     console.log(this.state);
 
     if (this.state.forgot) {
-      return <Forgot />;
+      return <Redirect to="/forgot_password" />;
+    }
+    if (this.state.back) {
+      return <Redirect to="/" />;
     }
     return (
       <Card
