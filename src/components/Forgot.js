@@ -7,19 +7,24 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import axios from "axios";
-import "./LoginCard.css";
-import Forgot from "./Forgot.js";
+import LoginCard from "./LoginCard.js";
 
 const styles = theme => ({
   pos: {
     margin: 30
   }
 });
-class LoginCard extends Component {
+
+class Forgot extends Component {
   state = {
-    email: "",
-    password: "",
-    forgot: false
+    back: false,
+    email: ""
+  };
+
+  BackFunction = e => {
+    this.setState({
+      back: !this.state.back
+    });
   };
 
   onChange = e => {
@@ -28,44 +33,32 @@ class LoginCard extends Component {
     });
   };
 
-  handleClick = e => {
-    this.setState({
-      forgot: !this.state.forgot
-    });
-    console.log(this.state.forgot);
-  };
-
-  BackFunction = e => {
-    this.setState({
-      email: "",
-      password: ""
-    });
-  };
-
   handleSubmit = e => {
     e.preventDefault();
 
     const config = {
-      email: this.state.email,
-      password: this.state.password
+      email: this.state.email
     };
 
-    let Url = "http://localhost:3002/users/login";
+    let Url = "http://localhost:3002/users/forgot";
     axios
       .post(Url, config)
       .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.headers["x-access-token"]);
-        console.log("token", localStorage.getItem("token"));
+        if (res.status === 200) {
+          alert(`An email has been sent to ${this.state.email}`);
+          /* window.location.assign("http://localhost:3000/")*/
+          // TO DO: REDIRECT TO HOME AFTER ALERT
+        }
       })
-      .then(res => console.log(res));
+      .catch(err => {
+        return alert(err);
+      });
   };
 
   render() {
     console.log(this.state);
-
-    if (this.state.forgot) {
-      return <Forgot />;
+    if (this.state.back) {
+      return <LoginCard />;
     }
     return (
       <Card
@@ -105,7 +98,7 @@ class LoginCard extends Component {
               letterSpacing: "0.4rem"
             }}
           >
-            Login
+            Forgot Password
           </Typography>
           <form onSubmit={this.handleSubmit}>
             <div className="form-data">
@@ -120,40 +113,6 @@ class LoginCard extends Component {
                 value={this.state.email}
               />
             </div>
-
-            <div className="form-data">
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                required
-                placeholder="Password"
-                minLength="8"
-                style={{ marginTop: "5%", width: "80%" }}
-                onChange={this.onChange}
-                value={this.state.password}
-              />
-            </div>
-
-            <Button
-              style={{
-                marginLeft: "64%",
-                marginTop: "5%"
-              }}
-              onClick={this.handleClick}
-            >
-              <Typography
-                gutterBottom
-                style={{
-                  color: "rgb(55,61,98)",
-                  fontSize: "14px",
-                  fontFamily: "Helvetica",
-                  lineHeight: "14px"
-                }}
-              >
-                Forgot password ?
-              </Typography>
-            </Button>
 
             <div className="form-data">
               <Button
@@ -183,7 +142,7 @@ class LoginCard extends Component {
                     padding: "15px 35px"
                   }}
                 >
-                  Login
+                  Send
                 </Typography>
               </Button>
             </div>
@@ -193,8 +152,8 @@ class LoginCard extends Component {
     );
   }
 }
-LoginCard.propTypes = {
+Forgot.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(LoginCard);
+export default withStyles(styles)(Forgot);
