@@ -5,7 +5,7 @@ import Header from "./components/Header";
 // import BarProgress from "./components/BarProgress";
 import Form from "./components/form/Form";
 import Login from "./components/Login";
-import {Switch, Route} from "react-router";
+import {Switch, Route} from "react-router-dom";
 
 import "./App.css";
 
@@ -18,11 +18,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header /> */}
-        {/*<BarProgress />
-        <Form />  
-         <IntroPage />
+
+        <Header /> 
+      {/*<IntroPage />
+        <BarProgress />
+        <Form />
         <ThanksPage />
+        <ValidationPage /> 
+        <Login />
         <ValidationPage /> */}
 
         <Switch>
