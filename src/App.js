@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // IMPORT COMPONENTS
 import Header from "./components/Header";
-// import BarProgress from "./components/BarProgress";
+import BarProgress from "./components/BarProgress";
 import Form from "./components/form/Form";
 import Login from "./components/Login";
 import {Switch, Route} from "react-router-dom";
@@ -10,27 +10,29 @@ import {Switch, Route} from "react-router-dom";
 import "./App.css";
 
 // IMPORT OTHER PAGES COMPONENTS
-// import IntroPage from './components/IntroPage';
-// import ValidationPage from './components/ValidationPage';
-// import ThanksPage from './components/ThanksPage';
+import IntroPage from './components/IntroPage';
+import ValidationPage from './components/ValidationPage';
+import ThanksPage from './components/ThanksPage';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
 
-        <Header /> 
+        <Header />
       {/*<IntroPage />
         <BarProgress />
         <Form />
         <ThanksPage />
-        <ValidationPage /> 
-        <Login />
-        <ValidationPage /> */}
+        <ValidationPage />
+        <Login /> */}
 
         <Switch>
           <Route exact path="/" component={Form}  />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/introPage" component={IntroPage} />
+          <Route exact path="/thanksPage" component={ThanksPage} />
+          <Route exact path="/barProgress" component={BarProgress} />
           {/*
           <Route exact path="/forgot_password" component={ForgotPassword} />
           <Route path="/reset_password/:reset_token" component={ResetPassword} />
