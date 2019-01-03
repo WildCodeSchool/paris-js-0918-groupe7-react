@@ -8,6 +8,8 @@ import Login from "./components/Login";
 import {Switch, Route} from "react-router-dom";
 
 import "./App.css";
+import HomeClient from "./components/HomeClient";
+import HomeAdmin from "./components/HomeAdmin";
 
 // IMPORT OTHER PAGES COMPONENTS
 // import IntroPage from './components/IntroPage';
@@ -31,10 +33,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Form}  />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/client" component={HomeClient} />
+          <Route exact path="/admin" component={HomeAdmin} />
           {/*
           <Route exact path="/forgot_password" component={ForgotPassword} />
           <Route path="/reset_password/:reset_token" component={ResetPassword} />
-          <Route exact path="/client" component={HomeClient} />
           TO IMPLEMENT : survey routing( dynamic ? )
           <Route exact path="/client/survey_validation" component={ValidationPage} />
           <Route exact path="/client/thanks" component={ThanksPage} />

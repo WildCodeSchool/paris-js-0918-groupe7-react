@@ -9,6 +9,10 @@ import Input from "@material-ui/core/Input";
 import axios from "axios";
 import "./LoginCard.css";
 import Forgot from "./Forgot.js";
+import {Redirect} from "react-router-dom";
+
+// Helpers
+import checkRole from '../helpers/checkRole';
 
 const styles = theme => ({
   pos: {
@@ -19,7 +23,9 @@ class LoginCard extends Component {
   state = {
     email: "",
     password: "",
-    forgot: false
+    forgot: false,
+    role: null,
+    isLoading: true
   };
 
   onChange = e => {
@@ -54,19 +60,29 @@ class LoginCard extends Component {
     axios
       .post(Url, config)
       .then(res => {
-        console.log(res);
         localStorage.setItem("token", res.headers["x-access-token"]);
-        console.log("token", localStorage.getItem("token"));
       })
-      .then(res => console.log(res));
+      .then(async () => {
+          const role = await checkRole();
+
+          this.setState({
+            role: role,
+            isLoading: false})
+      });
   };
 
   render() {
-    console.log(this.state);
-
+    console.log("united states of Reactica", this.state); 
     if (this.state.forgot) {
       return <Forgot />;
     }
+    if(!this.state.isLoading) {
+      if(this.state.role === "client") {
+        return <Redirect to="/client"/>
+      } else if(this.state.role === "admin" || this.state.role === "adminIT" )
+        return <Redirect to="/admin"/>
+    }
+    
     return (
       <Card
         className="card"
