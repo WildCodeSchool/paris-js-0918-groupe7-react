@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import CardIntro from "./CardIntro";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import "./IntroPage.css";
 import ThanksImg from "../images/thanks_img.jpg";
 import ThanksCard from "./ThanksCard";
+//import BarProgress from "./BarProgress";
 
 class ThanksPage extends Component {
   render() {
     return (
       <div>
+        {/*<BarProgress />*/}
         <Grid
           container
           className="gridthanks"
