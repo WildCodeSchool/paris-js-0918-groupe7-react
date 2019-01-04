@@ -123,7 +123,7 @@ class LoginCard extends Component {
 
             <div className="form-data">
               <Input
-                type="current-password"
+                type="password"
                 id="password"
                 name="password"
                 required
