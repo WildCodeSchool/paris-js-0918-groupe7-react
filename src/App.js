@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // IMPORT COMPONENTS
 import Header from "./components/Header";
 // import BarProgress from "./components/BarProgress";
-import Form from "./components/form/Form";
+import FormPage from "./components/FormPage";
 import Login from "./components/Login";
 import { Switch, Route } from "react-router-dom";
 import ForgotPassword from "./components/Forgot.js";
@@ -29,7 +29,7 @@ class App extends Component {
         <ValidationPage /> */}
 
         <Switch>
-          <Route exact path="/" component={Form} />
+          <Route exact path="/" component={FormPage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/client/thanks" component={ThanksPage} />
           <Route path="/forgot_password" component={ForgotPassword} />

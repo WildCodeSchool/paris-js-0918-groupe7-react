@@ -55,16 +55,12 @@ class LoginCard extends Component {
     axios
       .post(Url, config)
       .then(res => {
-        console.log(res);
         localStorage.setItem("token", res.headers["x-access-token"]);
-        console.log("token", localStorage.getItem("token"));
       })
-      .then(res => console.log(res));
+      .catch(err => alert("Wrong Email or Password"));
   };
 
   render() {
-    console.log(this.state);
-
     if (this.state.forgot) {
       return <Redirect to="/forgot_password" />;
     }
@@ -127,7 +123,7 @@ class LoginCard extends Component {
 
             <div className="form-data">
               <Input
-                type="password"
+                type="current-password"
                 id="password"
                 name="password"
                 required

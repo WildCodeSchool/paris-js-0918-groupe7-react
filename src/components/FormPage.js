@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import "./IntroPage.css";
+import Form from "./form/Form";
 import IntroImage from "../images/intro_image.png";
-import LoginCard from "./LoginCard";
+//import BarProgress from "./BarProgress";
 
-class Login extends Component {
+class ThanksPage extends Component {
   render() {
     return (
       <div>
+        {/*<BarProgress />*/}
         <Grid
           container
           className="gridthanks"
@@ -35,7 +37,8 @@ class Login extends Component {
               {" "}
               Welcome to survey AAA
             </Typography>
-            <LoginCard />
+
+            <Form />
           </Grid>
 
           <Grid
@@ -56,4 +59,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default ThanksPage;
