@@ -7,6 +7,8 @@ import Form from "./components/form/Form";
 import Login from "./components/Login";
 import {Switch, Route} from "react-router-dom";
 
+import AdminForm from "./components/adminForms/AdminForm";
+
 import "./App.css";
 
 // IMPORT OTHER PAGES COMPONENTS
@@ -31,6 +33,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Form}  />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/admin/Forms" component={AdminForm} />
           {/*
           <Route exact path="/forgot_password" component={ForgotPassword} />
           <Route path="/reset_password/:reset_token" component={ResetPassword} />
