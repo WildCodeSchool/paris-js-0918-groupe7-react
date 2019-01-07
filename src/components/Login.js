@@ -6,7 +6,6 @@ import IntroImage from "../images/intro_image.png";
 import LoginCard from "./LoginCard";
 
 class Login extends Component {
-  state = {};
   render() {
     return (
       <div>
