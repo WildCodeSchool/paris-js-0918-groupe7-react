@@ -1,7 +1,7 @@
-.color {
-    background-color: rgb(125, 146, 177);
-    position: absolute;
-    min-height: 100%
+@media (max-width : 425px) {
+    #imgvalidation {
+        display: none;
+    }
 }
 
 
