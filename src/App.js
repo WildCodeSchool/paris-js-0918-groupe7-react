@@ -15,6 +15,7 @@ import "./App.css";
 import IntroPage from './components/IntroPage';
 import ValidationPage from './components/ValidationPage';
 import ThanksPage from './components/ThanksPage';
+import SurveyPage from "./components/SurveyPage";
 
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
             path="/reset_password/:reset_token"
             component={ResetPassword}
           />
+          <Route path="/client/survey_page" component={SurveyPage} />
           <Route exact path="/client/survey_validation" component={ValidationPage} />
           {/* <Route exact path="/client" component={HomeClient} />
           TO IMPLEMENT : survey routing( dynamic ? )
