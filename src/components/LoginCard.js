@@ -137,8 +137,8 @@ class LoginCard extends Component {
 
             <Button
               style={{
-                marginLeft: "64%",
-                marginTop: "5%"
+                marginLeft: "63%",
+                marginTop: "15%",
               }}
               onClick={this.handleClick}
             >
@@ -166,7 +166,7 @@ class LoginCard extends Component {
                   marginLeft: "auto",
                   marginRight: "20px",
                   marginTop: "10%",
-                  marginBottom: "5%",
+                  marginBottom: "50%",
                   display: "block",
                   fontSize: "1.3em",
                   fontFamily: "Raleway",
