@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Redirect} from "react-router-dom";
 
 import "./SimpleForm.css"
 
-import Button from "@material-ui/core/Button";
 import Axios from 'axios';
+
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
@@ -108,7 +111,8 @@ class SimpleForm extends Component {
 state = {
   agencies: null,
   companies: null,
-  poles: null
+  poles: null,
+  redirect: false
 }
 
 componentDidMount(){
@@ -123,12 +127,21 @@ componentDidMount(){
   .then(res => this.setState({poles: res.data}))
 }
 
+handleClick = e => {
+  this.setState({
+  redirect: true
+  });
+};
+
   render(){
     if(this.state.agencies === null || this.state.companies === null || this.state.poles === null)
       return ("loading.....")
   // console.log("agencies", this.state.agencies)
   // console.log("comp", this.state.companies)
   // console.log("poles", this.state.poles)
+  if (this.state.redirect) {
+    return <Redirect to="/login" />;
+    }
     const { handleSubmit, pristine, submitting } = this.props;
   return (
     <form style={{
@@ -260,24 +273,79 @@ componentDidMount(){
         </div>
       </div>
 
-
-
-
       <div>
-        <Button type="submit" disabled={pristine || submitting}
-                className="BtnSend"
-                style={{
-                  backgroundColor: "rgb(59, 84, 125)",
-                  color: "white",
-                  fontSize: "1em",
-                  fontFamily: "Raleway",
-                  borderRadius: "5%",
-                  padding:"2% 4%",
-                  margin:"30px 0 0 0"
-                }}
-              >Submit
-        </Button>
+      <Button type="submit" disabled={pristine || submitting}
+        className="BtnSend"
+        type="submit"
+        value="Login"
+        style={{
+        backgroundColor: "rgb(45,52,90)",
+        color: "white",
+        marginLeft: "20px",
+        marginRight: "20px",
+        marginTop: "10%",
+        marginBottom: "5%",
+        display: "block",
+        fontSize: "1.3em",
+        fontFamily: "Raleway",
+        borderRadius: "15px"
+        }}
+      >
+        <Typography
+          gutterBottom
+          style={{
+          textAlign: "center",
+          color: "white",
+          fontSize: "20px",
+          lineHeight: "14px",
+          padding: "15px 25px"
+          }}
+          > Sign Up
+        </Typography>
+      </Button>
       </div>
+
+      <Typography
+            gutterBottom
+            style={{
+              textAlign: "center",
+              fontFamily: "Raleway, sans-serif",
+              fontSize: "18px",
+              marginLeft: "20px"
+            }}
+          >
+            Already have an account ?
+          </Typography>
+          <Button
+            className="BtnSend"
+            type="submit"
+            value="Login"
+            onClick={this.handleClick}
+            style={{
+            backgroundColor: "rgb(186, 28, 58)",
+            color: "white",
+            marginLeft: "20px",
+            marginRight: "20px",
+            marginTop: "4%",
+            marginBottom: "5%",
+            display: "block",
+            fontSize: "1.3em",
+            fontFamily: "Raleway",
+            borderRadius: "15px"
+            }}
+          >
+          <Typography
+            gutterBottom
+            style={{
+            textAlign: "center",
+            color: "white",
+            fontSize: "20px",
+            lineHeight: "14px",
+            padding: "15px 35px"
+            }}
+          > Login
+            </Typography>
+          </Button>
     </form>
   );
 }
