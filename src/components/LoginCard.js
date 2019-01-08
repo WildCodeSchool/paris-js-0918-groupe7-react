@@ -9,10 +9,10 @@ import Input from "@material-ui/core/Input";
 import axios from "axios";
 import "./LoginCard.css";
 import Forgot from "./Forgot.js";
-import {Redirect} from "react-router-dom";
 
 // Helpers
 import checkRole from '../helpers/checkRole';
+import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
   pos: {
@@ -26,6 +26,7 @@ class LoginCard extends Component {
     forgot: false,
     role: null,
     isLoading: true
+    back: false
   };
 
   onChange = e => {
@@ -35,16 +36,15 @@ class LoginCard extends Component {
   };
 
   handleClick = e => {
+    e.preventDefault();
     this.setState({
       forgot: !this.state.forgot
     });
-    console.log(this.state.forgot);
   };
 
   BackFunction = e => {
     this.setState({
-      email: "",
-      password: ""
+      back: !this.state.back
     });
   };
 
@@ -68,13 +68,16 @@ class LoginCard extends Component {
           this.setState({
             role: role,
             isLoading: false})
-      });
+      })
+      .catch(err => alert("Wrong Email or Password"));
   };
 
   render() {
-    console.log("united states of Reactica", this.state); 
     if (this.state.forgot) {
-      return <Forgot />;
+      return <Redirect to="/forgot_password" />;
+    }
+    if (this.state.back) {
+      return <Redirect to="/" />;
     }
     if(!this.state.isLoading) {
       if(this.state.role === "client") {

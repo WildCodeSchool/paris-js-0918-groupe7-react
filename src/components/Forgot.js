@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import axios from "axios";
-import LoginCard from "./LoginCard.js";
+import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
   pos: {
@@ -58,7 +58,7 @@ class Forgot extends Component {
   render() {
     console.log(this.state);
     if (this.state.back) {
-      return <LoginCard />;
+      return <Redirect to="/login" />;
     }
     return (
       <Card
