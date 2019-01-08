@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 // IMPORT COMPONENTS
 import Header from "./components/Header";
-import BarProgress from "./components/BarProgress";
-import Form from "./components/form/Form";
+// import BarProgress from "./components/BarProgress";
+// import Form from "./components/form/Form";
 import FormPage from "./components/FormPage";
 import Login from "./components/Login";
 import { Switch, Route } from "react-router-dom";
@@ -12,8 +12,8 @@ import ResetPassword from "./components/ResetPassword";
 import "./App.css";
 
 // IMPORT OTHER PAGES COMPONENTS
-import IntroPage from './components/IntroPage';
-import ValidationPage from './components/ValidationPage';
+// import IntroPage from './components/IntroPage';
+// import ValidationPage from './components/ValidationPage';
 import ThanksPage from './components/ThanksPage';
 
 

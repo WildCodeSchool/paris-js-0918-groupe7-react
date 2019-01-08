@@ -2,11 +2,20 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import "./IntroPage.css";
-import Form from "./form/Form";
+// import Form from "./form/Form";
 import IntroImage from "../images/intro_image.png";
 //import BarProgress from "./BarProgress";
 
+// import showResults from "../showResults";
+import SimpleForm from "./SimpleForm";
+// import axios from "axios";
+
+
 class ThanksPage extends Component {
+  handleSubmit(values){
+    console.log(values)
+  };
+
   render() {
     return (
       <div>
@@ -37,8 +46,10 @@ class ThanksPage extends Component {
               {" "}
               Welcome to survey AAA
             </Typography>
+{/*
+            <Form /> */}
+            <SimpleForm onSubmit={this.handleSubmit}/>
 
-            <Form />
           </Grid>
 
           <Grid
