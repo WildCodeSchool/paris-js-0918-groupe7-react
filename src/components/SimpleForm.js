@@ -1,15 +1,23 @@
-import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { Redirect } from "react-router-dom";
-import "./SimpleForm.css";
-import Axios from "axios";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 
-const email = value =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? "Invalid email address"
-    : undefined;
+import './SimpleForm.css';
+
+import Axios from 'axios';
+
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+const required = value => (value || typeof value === 'number' ? undefined : 'Required')
+
+const email = value => (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+  ? 'Invalid email address'
+  : undefined);
+
+export const minLength = (min) => value =>
+  value && value.length < min ? `Must be ${min} characters or more` : undefined
+export const minLength6 = minLength(6)
 
 const renderField = ({
   input,
@@ -20,15 +28,10 @@ const renderField = ({
   <div>
     <label>{label}</label>
     <div>
-      <input
-        {...input}
-        placeholder={label}
-        type={type}
-        className="widthInput"
-      />
-      {touched &&
-        ((error && <span>{error}</span>) ||
-          (warning && <span>{warning}</span>))}
+      <input {...input} placeholder={label} type={type} className="widthInput" />
+      {touched
+          && ((error && <span className="errorMessage">{error}</span>)
+            || (warning && <span>{warning}</span>))}
     </div>
   </div>
 );
@@ -107,6 +110,7 @@ const seniority = [
 ];
 
 class SimpleForm extends Component {
+
   state = {
     agencies: null,
     companies: null,
@@ -195,7 +199,7 @@ class SimpleForm extends Component {
               placeholder="Email"
               name="email"
               type="email"
-              validate={email}
+              validate={required, email}
               component={renderField}
               required
             />
@@ -211,7 +215,7 @@ class SimpleForm extends Component {
               component="input"
               type="password"
               placeholder="Password"
-              required
+              validate={[required, minLength6]}
             />
           </div>
         </div>
@@ -223,7 +227,7 @@ class SimpleForm extends Component {
               name="age_range"
               component="select"
               className="widthInput"
-              required
+              validate={[required]}>
             >
               <option />
               {age_range.map((e, i) => (
@@ -240,7 +244,7 @@ class SimpleForm extends Component {
               name="company"
               component="select"
               className="widthInput"
-              required
+              validate={[required]}
             >
               <option />
               {this.state.companies.map((e, i) => (
@@ -259,7 +263,7 @@ class SimpleForm extends Component {
               name="agency"
               component="select"
               className="widthInput"
-              required
+              validate={[required]}
             >
               <option />
               {this.state.agencies.map((e, i) => (
@@ -278,7 +282,7 @@ class SimpleForm extends Component {
               name="department"
               component="select"
               className="widthInput"
-              required
+              validate={[required]}
             >
               <option />
               {this.state.poles.map((e, i) => (
@@ -314,7 +318,7 @@ class SimpleForm extends Component {
               name="seniority"
               component="select"
               className="widthInput"
-              required
+              validate={[required]}
             >
               <option />
               {seniority.map((e, i) => (
