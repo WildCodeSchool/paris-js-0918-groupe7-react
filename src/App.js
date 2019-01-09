@@ -5,6 +5,7 @@ import Header from "./components/Header";
 // import BarProgress from "./components/BarProgress";
 // import Form from "./components/form/Form";
 import FormPage from "./components/FormPage";
+import ValidationPage from "./components/ValidationPage";
 import Login from "./components/Login";
 import { Switch, Route } from "react-router-dom";
 import ForgotPassword from "./components/Forgot.js";
