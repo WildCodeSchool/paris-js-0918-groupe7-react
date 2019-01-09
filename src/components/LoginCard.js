@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import axios from "axios";
 import "./LoginCard.css";
-import Forgot from "./Forgot.js";
+// import Forgot from "./Forgot.js";
 
 // Helpers
 import checkRole from '../helpers/checkRole';
@@ -25,7 +25,7 @@ class LoginCard extends Component {
     password: "",
     forgot: false,
     role: null,
-    isLoading: true
+    isLoading: true,
     back: false
   };
 
