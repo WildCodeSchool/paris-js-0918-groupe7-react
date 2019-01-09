@@ -9,7 +9,7 @@ import PillarsForm from "./PillarsForm";
 import PolesForm from "./PolesForm";
 import QuestionsForm from "./QuestionsForm";
 import SubPillarsForm from "./Sub_pillarsForm";
-import Form from "../form/Form";
+// import Form from "../form/Form";
 
 // Import Material UI
 import { Grid } from '@material-ui/core';
@@ -52,10 +52,10 @@ class AdminForm extends Component {
             <SubPillarsForm />
         </Grid>
 		<br />
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
 			<h3>Users</h3>
             <Form />
-        </Grid>
+        </Grid> */}
 		<br />
         <Grid item xs={12}>
 			<h3>Questions</h3>
