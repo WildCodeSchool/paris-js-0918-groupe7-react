@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -61,94 +62,106 @@ class Forgot extends Component {
       return <Redirect to="/login" />;
     }
     return (
-      <Card
-        className="card"
-        style={{
-          width: "70%",
-          height: "60%",
-          alignContent: "center",
-          alignItems: "center",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "auto",
-          marginBottom: "auto",
-          paddingLeft: "10%",
-          borderRadius: "5%"
-        }}
-      >
-        <CardContent className="cardContent">
-          <Button
+      <div>
+        <Grid
+          container
+          className="gridthanks"
+          style={{
+            backgroundColor: "rgb(125, 146, 177)",
+            position: "absolute",
+            minHeight: "100%"
+          }}
+        >
+          <Card
+            className="card"
             style={{
-              border: "solid",
-              marginTop: "2%"
-            }}
-            onClick={this.BackFunction}
-          >
-            {" "}
-            Back{" "}
-          </Button>
-
-          <Typography
-            gutterBottom
-            style={{
-              fontFamily: "Raleway, sans-serif",
-              fontSize: "28px",
-              marginTop: "5%",
-              marginLeft: "1%",
-              letterSpacing: "0.4rem"
+              width: "70%",
+              height: "60%",
+              alignContent: "center",
+              alignItems: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: "auto",
+              marginBottom: "auto",
+              paddingLeft: "10%",
+              borderRadius: "5%"
             }}
           >
-            Forgot Password
-          </Typography>
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-data">
-              <Input
-                type="text"
-                id="email"
-                name="email"
-                required
-                placeholder="Email"
-                style={{ marginTop: "5%", width: "80%" }}
-                onChange={this.onChange}
-                value={this.state.email}
-              />
-            </div>
-
-            <div className="form-data">
+            <CardContent className="cardContent">
               <Button
-                className="BtnSend"
-                type="submit"
-                value="Login"
                 style={{
-                  backgroundColor: "rgb(186, 28, 58)",
-                  color: "white",
-                  marginLeft: "auto",
-                  marginRight: "20px",
-                  marginTop: "10%",
-                  marginBottom: "5%",
-                  display: "block",
-                  fontSize: "1.3em",
-                  fontFamily: "Raleway",
-                  borderRadius: "15px"
+                  border: "solid",
+                  marginTop: "2%"
+                }}
+                onClick={this.BackFunction}
+              >
+                {" "}
+                Back{" "}
+              </Button>
+
+              <Typography
+                gutterBottom
+                style={{
+                  fontFamily: "Raleway, sans-serif",
+                  fontSize: "28px",
+                  marginTop: "5%",
+                  marginLeft: "1%",
+                  letterSpacing: "0.4rem"
                 }}
               >
-                <Typography
-                  gutterBottom
-                  style={{
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: "20px",
-                    lineHeight: "14px",
-                    padding: "15px 35px"
-                  }}
-                >
-                  Send
-                </Typography>
-              </Button>
-            </div>
-          </form>
-        </CardContent>
-      </Card>
+                Forgot Password
+              </Typography>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-data">
+                  <Input
+                    type="text"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Email"
+                    style={{ marginTop: "5%", width: "80%" }}
+                    onChange={this.onChange}
+                    value={this.state.email}
+                  />
+                </div>
+
+                <div className="form-data">
+                  <Button
+                    className="BtnSend"
+                    type="submit"
+                    value="Login"
+                    style={{
+                      backgroundColor: "rgb(186, 28, 58)",
+                      color: "white",
+                      marginLeft: "auto",
+                      marginRight: "20px",
+                      marginTop: "10%",
+                      marginBottom: "5%",
+                      display: "block",
+                      fontSize: "1.3em",
+                      fontFamily: "Raleway",
+                      borderRadius: "15px"
+                    }}
+                  >
+                    <Typography
+                      gutterBottom
+                      style={{
+                        textAlign: "center",
+                        color: "white",
+                        fontSize: "20px",
+                        lineHeight: "14px",
+                        padding: "15px 35px"
+                      }}
+                    >
+                      Send
+                    </Typography>
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </Grid>
+      </div>
     );
   }
 }
