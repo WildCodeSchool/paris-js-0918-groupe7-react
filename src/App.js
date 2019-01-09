@@ -22,22 +22,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        {/*<IntroPage />
-        <BarProgress />
-        <Form />
-        <ThanksPage />
-        <ValidationPage />
-        <Login /> */}
-
         <Switch>
           <Route exact path="/" component={FormPage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/client/thanks" component={ThanksPage} />
           <Route path="/forgot_password" component={ForgotPassword} />
-          <Route
-            path="/reset_password/:reset_token"
-            component={ResetPassword}
-          />
+          <Route path="/reset_password/:reset_token" component={ResetPassword}/>
           {/* <Route exact path="/client" component={HomeClient} />
           TO IMPLEMENT : survey routing( dynamic ? )
           <Route exact path="/client/survey_validation" component={ValidationPage} />

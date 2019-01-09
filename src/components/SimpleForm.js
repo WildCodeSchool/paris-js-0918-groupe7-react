@@ -274,10 +274,10 @@ handleClick = e => {
       </div>
 
       <div>
-      <Button type="submit" disabled={pristine || submitting}
+      <Button
+        type="submit" disabled={pristine || submitting}
         className="BtnSend"
-        type="submit"
-        value="Login"
+        value="SignUp"
         style={{
         backgroundColor: "rgb(45,52,90)",
         color: "white",
