@@ -36,15 +36,11 @@ class App extends Component {
           <Route exact path="/client/thanks" component={ThanksPage} />
           <Route path="/forgot_password" component={ForgotPassword} />
           <Route path="/reset_password/:reset_token" component={ResetPassword}/>
-          {/* <Route exact path="/client" component={HomeClient} />
+          <Route exact path="/client" component={HomeClient} />
           TO IMPLEMENT : survey routing( dynamic ? )
-          <Route
-            exact
-            path="/client/survey_validation"
-            component={ValidationPage}
-          />
+          <Route exact path="/client/survey_validation" component={ValidationPage}/>
           <Route exact path="/admin" component={HomeAdmin} />
-          */}
+         
         </Switch>
       </div>
     );
