@@ -325,7 +325,7 @@ Sign Up
       </Typography>
       <Button
         className="BtnSend"
-        type="submit"
+        // type="submit"
         value="Login"
         onClick={this.handleClick}
         style={{

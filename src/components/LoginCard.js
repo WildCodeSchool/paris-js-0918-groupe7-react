@@ -8,7 +8,10 @@ import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import axios from "axios";
 import "./LoginCard.css";
-// import Forgot from "./Forgot.js";
+import Forgot from "./Forgot.js";
+
+// Helpers
+import checkRole from '../helpers/checkRole';
 import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
@@ -21,6 +24,8 @@ class LoginCard extends Component {
     email: "",
     password: "",
     forgot: false,
+    role: null,
+    isLoading: true
     back: false
   };
 
@@ -57,6 +62,13 @@ class LoginCard extends Component {
       .then(res => {
         localStorage.setItem("token", res.headers["x-access-token"]);
       })
+      .then(async () => {
+          const role = await checkRole();
+
+          this.setState({
+            role: role,
+            isLoading: false})
+      })
       .catch(err => alert("Wrong Email or Password"));
   };
 
@@ -67,6 +79,13 @@ class LoginCard extends Component {
     if (this.state.back) {
       return <Redirect to="/" />;
     }
+    if(!this.state.isLoading) {
+      if(this.state.role === "client") {
+        return <Redirect to="/client"/>
+      } else if(this.state.role === "admin" || this.state.role === "adminIT" )
+        return <Redirect to="/admin"/>
+    }
+    
     return (
       <Card
         className="card"
@@ -137,8 +156,8 @@ class LoginCard extends Component {
 
             <Button
               style={{
-                marginLeft: "64%",
-                marginTop: "5%"
+                marginLeft: "63%",
+                marginTop: "15%",
               }}
               onClick={this.handleClick}
             >
@@ -166,7 +185,7 @@ class LoginCard extends Component {
                   marginLeft: "auto",
                   marginRight: "20px",
                   marginTop: "10%",
-                  marginBottom: "5%",
+                  marginBottom: "50%",
                   display: "block",
                   fontSize: "1.3em",
                   fontFamily: "Raleway",
