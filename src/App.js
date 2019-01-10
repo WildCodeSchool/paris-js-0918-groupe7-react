@@ -10,7 +10,9 @@ import Login from "./components/Login";
 import { Switch, Route } from "react-router-dom";
 import ForgotPassword from "./components/Forgot.js";
 import ResetPassword from "./components/ResetPassword";
-import AdminForm from "./components/adminForms/AdminForm";
+import AdminForm from "./components/admin/AdminForm";
+import AdminHomePage from "./components/admin/AdminHomePage";
+import Download from "./components/admin/Download";
 
 import "./App.css";
 import HomeClient from "./components/HomeClient";
@@ -39,7 +41,9 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/client" component={HomeClient} />
           <Route exact path="/admin" component={HomeAdmin} />
-          <Route exact path="/admin/Forms" component={AdminForm} />          
+          <Route exact path="/admin/Forms" component={AdminForm} /> 
+          <Route exact path="/admin/Home" component={AdminHomePage} /> 
+          <Route exact path="/admin/DownloadData" component={Download} />          
           <Route exact path="/forgot_password" component={ForgotPassword} />
           <Route path="/reset_password/:reset_token" component={ResetPassword} />
           <Route exact path="/client/thanks" component={ThanksPage} />

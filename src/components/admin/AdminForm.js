@@ -52,10 +52,10 @@ class AdminForm extends Component {
             <SubPillarsForm />
         </Grid>
 		<br />
-        {/* <Grid item xs={12}>
+        <Grid item xs={12}>
 			<h3>Users</h3>
-            <Form />
-        </Grid> */}
+            <usersForm />
+        </Grid>
 		<br />
         <Grid item xs={12}>
 			<h3>Questions</h3>
