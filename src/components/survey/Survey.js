@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import axios from 'axios';
 
+import AnswersPossibilities from './AnswersPossibilities'
+
 import "./Survey.css"
 
-import DropMenu from "./DropMenu"
+import Button from "@material-ui/core/Button";
+
 
 class Survey extends Component{
 
     state = {
         data : [],
-        isLoading:false
+        isLoading:false,
+        questionsReponses:[],
+        pillarId: 0,
+        subPillarId: 0 // 2,2 pour drop down
     }
 
     componentDidMount(){
@@ -22,46 +28,81 @@ class Survey extends Component{
             authorization: `Bearer ${token}`
             }
         })
-    .then(res => this.setState({ data: res.data , isLoading:true}));
+        .then(res => this.setState({
+            data: res.data[0] ,
+            isLoading:true,
+            questionsReponses: res.data[0].pole.pillars[this.state.pillarId].sub_pillars[this.state.subPillarId].questions
+        }))
     }
+
+    // componentWillUpdate = ()  => {
+    //   this.setState({questionsReponses: this.state.data.pole.pillars[this.state.pillarId].sub_pillars[this.state.subPillarId].questions})
+    // }
+
+handleBack = () => {
+    if (this.state.subPillarId > 0)
+    this.setState({subPillarId : this.state.subPillarId - 1})
+
+    else {
+        if (this.state.pillarId > 0){
+            this.setState({pillarId : this.state.pillarId - 1 })
+            this.setState({subPillarId: this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1 })
+        }
+    }
+}
+
+handleContinue = () => {
+    if (this.state.subPillarId < this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1)
+    this.setState({subPillarId : this.state.subPillarId +1 })
+    else {
+        if (this.state.pillarId < this.state.data.pole.pillars.length -1){
+            this.setState({pillarId : this.state.pillarId +1 })
+            this.setState({subPillarId: 0})
+        }
+        else {
+            //Submit + redirection sur validationPage
+        }
+    }
+    // Implémenter le submit de la partie du questionnaire
+}
 
 
     render(){
-
         if(!this.state.isLoading)
             return <div>Loading...</div>
+            console.log("id", this.state.questionsReponses)
         return(
             <div>
                 <Grid container>
-                <Grid item xs={12} sm={6} className="background-left">
+                <Grid item xs={12} sm={4} className="background-left">
                     <div>
                         <h1>AGILE MATURITY ASSESSMENT</h1>
                     </div>
 
                     <div>
-                        <h2>{this.state.data[0].pole.pillars[0].name}</h2>
+                        <h2>{this.state.data.pole.pillars[this.state.pillarId].name}</h2>
                     </div>
 
                     <div>
-                        {this.state.data[0].pole.pillars[0].sub_pillars.map((e, i) => (
+                        {this.state.data.pole.pillars[this.state.pillarId].sub_pillars.map((e, i) => (
                         <h3 key={i} value={e.id}>{e.name}</h3>
                         ))}
                     </div>
                 </Grid>
 
 
-                <Grid item sm={6} className="background-right">
-                <div>
-                    {this.state.data[0].pole.pillars[0].sub_pillars[0].questions.map((e, i) => (
-                    <div key={i} value={e.id}>{e.question}<DropMenu/></div>
-                    ))}
-                </div>
-                {/* <div>
-                    {this.state.data[0].pole.pillars[0].sub_pillars[0].questions.map((e, i) => (
-                    <div key={i} value={e.id}>{e.question}{e.answers_possibilities.map((e, i) => (<DropMenu key={i} value={e.answer}>{e.value}</DropMenu>))}</div>
-                    ))}
-                </div> */}
-                </Grid>
+                    <Grid item sm={8} className="background-right">
+                        {this.state.questionsReponses.map((elem, index) =>
+                          <div>
+                            <h2 key={index}>{elem.question}</h2>
+                            <AnswersPossibilities data_answers={elem.answers_possibilities}  />
+                          </div>
+                        )}
+                    <Button
+                    onClick={this.handleBack}>Back</Button>
+                    <Button
+                    onClick={this.handleContinue}>Continue</Button>
+                    </Grid>
                 </Grid>
             </div>
         )
