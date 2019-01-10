@@ -199,7 +199,7 @@ class SimpleForm extends Component {
               placeholder="Email"
               name="email"
               type="email"
-              validate={required, email}
+              validate={[required, email]}
               component={renderField}
               required
             />
@@ -334,7 +334,6 @@ class SimpleForm extends Component {
             type="submit"
             disabled={pristine || submitting}
             className="BtnSend"
-            type="submit"
             value="Login"
             style={{
               backgroundColor: "rgb(45,52,90)",

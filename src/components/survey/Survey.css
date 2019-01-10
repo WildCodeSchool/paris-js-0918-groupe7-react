@@ -1,0 +1,10 @@
+.background-left{
+    background-color: rgb(126,140,177);
+    color: #FFFFFF;
+    height: 100vh;
+}
+
+.background-right{
+    background-color:rgb(75, 73, 73);
+    color: #FFFFFF;
+}
