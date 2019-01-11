@@ -37,8 +37,8 @@ handleClickNo = event => {
 };
 
     render(){
-        console.log(this.props.data_answers)
-        console.log("lol", this.state.type)
+        //console.log(this.props.data_answers)
+        
         if(this.state.type===1){
             return (
                 <div>

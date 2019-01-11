@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 import AnswersPossibilities from './AnswersPossibilities'
 
 import "./Survey.css"
 
 import Button from "@material-ui/core/Button";
-
 
 class Survey extends Component{
 
@@ -16,7 +16,8 @@ class Survey extends Component{
         isLoading:false,
         questionsReponses:[],
         pillarId: 0,
-        subPillarId: 0 // 2,2 pour drop down
+        subPillarId: 0,  // 2,2 pour drop down
+        validationPage : false
     }
 
     componentDidMount(){
@@ -35,32 +36,37 @@ class Survey extends Component{
         }))
     }
 
-    // componentWillUpdate = ()  => {
-    //   this.setState({questionsReponses: this.state.data.pole.pillars[this.state.pillarId].sub_pillars[this.state.subPillarId].questions})
-    // }
 
 handleBack = () => {
     if (this.state.subPillarId > 0)
-    this.setState({subPillarId : this.state.subPillarId - 1})
+    this.setState({subPillarId : this.state.subPillarId - 1},()=>{ 
+        this.setState({questionsReponses: this.state.data.pole.pillars[this.state.pillarId].sub_pillars[this.state.subPillarId].questions})})
 
     else {
         if (this.state.pillarId > 0){
-            this.setState({pillarId : this.state.pillarId - 1 })
-            this.setState({subPillarId: this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1 })
+            this.setState({pillarId : this.state.pillarId - 1,subPillarId: this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1  }, ()=>{
+                this.setState({questionsReponses: this.state.data.pole.pillars[this.state.pillarId].sub_pillars[this.state.subPillarId].questions})
+            })
         }
     }
 }
 
 handleContinue = () => {
-    if (this.state.subPillarId < this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1)
-    this.setState({subPillarId : this.state.subPillarId +1 })
-    else {
+    if (this.state.subPillarId < this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1){ 
+    this.setState({subPillarId : this.state.subPillarId +1 },()=>{ 
+        this.setState({questionsReponses: this.state.data.pole.pillars[this.state.pillarId].sub_pillars[this.state.subPillarId].questions})
+
+    })
+    }else {
         if (this.state.pillarId < this.state.data.pole.pillars.length -1){
-            this.setState({pillarId : this.state.pillarId +1 })
-            this.setState({subPillarId: 0})
+            this.setState({pillarId : this.state.pillarId +1 ,subPillarId: 0},()=>{ 
+                this.setState({questionsReponses: this.state.data.pole.pillars[this.state.pillarId].sub_pillars[this.state.subPillarId].questions})
+            })
+
         }
         else {
-            //Submit + redirection sur validationPage
+            // implémenter submit form
+            this.setState({validationPage : true})
         }
     }
     // Implémenter le submit de la partie du questionnaire
@@ -70,7 +76,9 @@ handleContinue = () => {
     render(){
         if(!this.state.isLoading)
             return <div>Loading...</div>
-            console.log("id", this.state.questionsReponses)
+        if(this.state.validationPage)
+            return <Redirect to='/client/survey_validation' />
+        console.log("id", this.state)
         return(
             <div>
                 <Grid container>
