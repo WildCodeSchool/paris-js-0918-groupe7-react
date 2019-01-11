@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import {Redirect} from 'react-router-dom';
 import './CardValidation.css';
 
 const styles = {
@@ -13,54 +13,72 @@ const styles = {
   },
 };
 
-function CardValidation(props) {
+class CardValidation extends Component {
 
-  return (
-      <Card className='card' style={{ 
-        
-        width: '65%',
-        alignContent: 'center',
-        alignItems: 'center',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
-       }}>
-        <CardContent className='cardContent'>
-          <Button style={{
-              border: 'solid'
-          }}>  Back </Button>
-          <Typography variant="subtitle1" gutterBottom style={{ 
-            textAlign: 'center' }}>
-            Congratulations, you’re finished !
-          </Typography>
-          <Typography variant="subtitle1" gutterBottom style={{ 
-          textAlign: 'center' }}> 
-            Please note that no changes will be possible after the validation
-          </Typography>
-          
-          <div className='button'>
-            <Button 
-            variant="contained" 
-            color="primary" 
-            className='but'
-            style={{
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              display: 'block',
-              marginTop: '5%',
-            }}
-            >
-              DONE
-            </Button>
-          </div>
+  state={
+    redirect: false
+  }
 
-        </CardContent>
+  handleClick = e => {
+    this.setState({redirect: true})
+  }
 
-      </Card>
-  );
-}
-CardValidation.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+  render () {
+    if (this.state.redirect) {
+      return (<Redirect to ='/client/thanks' />)
+    }
+      return (
+          <Card className='card' style={{ 
+            
+            width: '70%',
+            alignContent: 'center',
+            alignItems: 'center',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            marginTop: '20%'
+            
+          }}>
+            <CardContent className='cardContent'>
+            <Button style={{
+                border: 'solid'
+            }}>  Back </Button>
+            <Typography  gutterBottom style={{ 
+              textAlign: 'center',
+              fontFamily: 'Raleway',
+              fontSize: '1.5em',}}>
+              Congratulations, you’ve finished !
+            </Typography>
+            <Typography gutterBottom style={{ 
+            textAlign: 'center',
+            fontFamily: 'Raleway',
+            fontSize: '1.5em', }}> 
+              Please note that no changes will be possible after the validation
+            </Typography>
+              
+              <div className='button'>
+              <Button 
+                onClick = {this.handleClick}
+                variant="contained" 
+                color="primary" 
+                className='but'
+                style={{
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                display: 'block',
+                marginTop: '5%',
+                fontFamily: 'Raleway',
+                fontSize: '1.5em',
+              }}
+                >
+                  DONE
+                </Button>
+              </div>
+
+            </CardContent>
+
+          </Card>
+      );
+          }}
+
   
   export default withStyles(styles)(CardValidation);
