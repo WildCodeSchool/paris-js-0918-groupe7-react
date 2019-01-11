@@ -7,14 +7,14 @@ import ImgValidation from "../images/validationImg.jpg";
 class ValidationPage extends Component {
   render() {
     return (
-      <div className='ValidationContainer'>
+      <div className="ValidationContainer">
         <Grid
           container
           className="gridthanks"
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
-            minHeight: "100%",
+            minHeight: "100%"
           }}
         >
           <Grid className="color" item xs={12} sm={6}>
@@ -24,8 +24,8 @@ class ValidationPage extends Component {
                 textAlign: "center",
                 justifyContent: "center",
                 verticalAlign: "middle",
-                fontFamily: 'Raleway',
-                fontSize: '2em',
+                fontFamily: "Raleway",
+                fontSize: "2em",
                 color: "white",
                 margin: "5% auto"
               }}
@@ -35,11 +35,15 @@ class ValidationPage extends Component {
               Thank you for asking to Agile Maturity Assessment
             </Typography>
 
-            <CardValidation thanksPage={this.props.thanksPage}/>
+            <CardValidation
+              thanksPage={this.props.thanksPage}
+              validPage={this.props.validPage}
+            />
           </Grid>
 
           <Grid
-            className="grid2" id="imgvalidation"
+            className="grid2"
+            id="imgvalidation"
             style={{
               backgroundImage: `url(${ImgValidation})`,
               backgroundSize: "100% 100%",
@@ -49,7 +53,8 @@ class ValidationPage extends Component {
             xs={12}
             sm={6}
           />
-        </Grid></div>
+        </Grid>
+      </div>
     );
   }
 }
