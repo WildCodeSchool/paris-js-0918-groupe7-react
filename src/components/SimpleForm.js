@@ -334,7 +334,6 @@ class SimpleForm extends Component {
             type="submit"
             disabled={pristine || submitting}
             className="BtnSend"
-            type="submit"
             value="Login"
             style={{
               backgroundColor: "rgb(45,52,90)",

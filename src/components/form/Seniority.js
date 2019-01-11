@@ -40,11 +40,11 @@ const seniority = [
 class Seniority extends Component {
   state = {
     seniority: ''
-   };
+};
 
-   handleChangeSeniority = prop => event => {
-     this.setState({ [prop]: event.target.value });
-   };
+handleChangeSeniority = prop => event => {
+  this.setState({ [prop]: event.target.value });
+};
 
     render(){
       const { classes } = this.props;

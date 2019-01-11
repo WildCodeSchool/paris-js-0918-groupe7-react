@@ -6,6 +6,7 @@ import './IntroPage.css';
 import ImgIntro from '../images/intro_image.png';
 
 
+
 class IntroPage extends Component {
     render(){
         return (
