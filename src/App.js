@@ -15,8 +15,6 @@ import HomeAdmin from "./components/HomeAdmin";
 
 // IMPORT OTHER PAGES COMPONENTS
 // import IntroPage from './components/IntroPage';
-import ValidationPage from "./components/ValidationPage";
-import ThanksPage from "./components/ThanksPage";
 import Survey from "./components/survey/Survey";
 
 class App extends Component {

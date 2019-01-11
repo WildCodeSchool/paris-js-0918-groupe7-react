@@ -4,8 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import StepConnector from "@material-ui/core/StepConnector";
 import "./BarProgress.css";
 import Grid from "@material-ui/core/Grid";
@@ -54,9 +52,9 @@ class BarProgress extends React.Component {
 
     data.map((pillar, i) => {
       pillar.sub_pillars.map((subpillar) => {
-        steps.push("");
+        return steps.push("");
       })
-      steps.push(pillar.name.toUpperCase())
+      return steps.push(pillar.name.toUpperCase())
     })
     steps.push("CONFIRM");
     console.log("stepsTable:", steps)

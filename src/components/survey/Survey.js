@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 import AnswersPossibilities from './AnswersPossibilities'
 import BarProgress from '../BarProgress'
