@@ -25,6 +25,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Switch>
+        
           <Route exact path="/" component={FormPage} />
           <Route exact path="/survey" component={Survey} />
           <Route exact path="/login" component={Login} />
