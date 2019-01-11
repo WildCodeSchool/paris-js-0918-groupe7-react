@@ -26,14 +26,14 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={FormPage} />
-          <Route exact path="/survey" component={Survey} />
+          <Route exact path="/user/survey" component={Survey} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/client" component={HomeClient} />
+          <Route exact path="/user" component={HomeClient} />
           <Route exact path="/admin" component={HomeAdmin} />
           <Route exact path="/forgot_password" component={ForgotPassword} />
           <Route path="/reset_password/:reset_token" component={ResetPassword}/>
-          <Route exact path="/client/thanks" component={ThanksPage} />
-          <Route exact path="/client/survey_validation" component={ValidationPage} />
+          {/* <Route exact path="/client/thanks" component={ThanksPage} />
+          <Route exact path="/client/survey_validation" component={ValidationPage} /> */}
         </Switch>
       </div>
     );

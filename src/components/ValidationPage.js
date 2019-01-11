@@ -35,7 +35,7 @@ class ValidationPage extends Component {
               Thank you for asking to Agile Maturity Assessment
             </Typography>
 
-            <CardValidation />
+            <CardValidation thanksPage={this.props.thanksPage}/>
           </Grid>
 
           <Grid
