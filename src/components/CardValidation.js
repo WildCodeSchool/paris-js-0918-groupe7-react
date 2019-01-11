@@ -20,6 +20,7 @@ class CardValidation extends Component {
   }
 
   handleClick = e => {
+    this.props.thanksPage();
     this.setState({redirect: true})
   }
 

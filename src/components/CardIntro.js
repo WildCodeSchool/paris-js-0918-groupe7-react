@@ -29,7 +29,7 @@ handleClick = e =>{
 
 render(){
     if (this.state.redirect)
-        return(<Redirect to ="/survey"/>)
+        return(<Redirect to ="/user/survey"/>)
     return (
         <Card className='card' style={{ 
           
