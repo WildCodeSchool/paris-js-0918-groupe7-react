@@ -1,0 +1,11 @@
+.background-left{
+    background-color: rgb(126,140,177);
+    color: #FFFFFF;
+    height: 100vh;
+}
+
+.background-right{
+    background-color:rgb(255, 255, 255);
+    color: #000000;
+    padding: 5%;
+}
