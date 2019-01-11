@@ -46,57 +46,27 @@ const styles = theme => ({
   }
 });
 
-function getSteps() {
-  return [
-    "",
-    "",
-    "",
-    "CLIENT",
-    "",
-    "",
-    "",
-    "COMPANY",
-    "",
-    "",
-    "",
-    "CULTURE",
-    "",
-    "",
-    "",
-    "CODE",
-    "CONFIRM"
-  ];
-}
+class BarProgress extends React.Component {
+  getSteps = () => {
 
-class HorizontalLabelPositionBelowStepper extends React.Component {
-  state = {
-    activeStep: 0
-  };
+    const data = this.props.data;
+    let steps = [];
 
-  handleNext = () => {
-    const { activeStep } = this.state;
-    this.setState({
-      activeStep: activeStep + 1
-    });
-  };
-
-  handleBack = () => {
-    const { activeStep } = this.state;
-    this.setState({
-      activeStep: activeStep - 1
-    });
-  };
-
-  handleReset = () => {
-    this.setState({
-      activeStep: 0
-    });
-  };
+    data.map((pillar, i) => {
+      pillar.sub_pillars.map((subpillar) => {
+        steps.push("");
+      })
+      steps.push(pillar.name.toUpperCase())
+    })
+    steps.push("CONFIRM");
+    console.log("stepsTable:", steps)
+    return steps;
+  }
 
   render() {
+    console.log("lengthOUT", this.props.step)
     const { classes } = this.props;
-    const steps = getSteps();
-    const { activeStep } = this.state;
+    const steps = this.getSteps();
     const connector = (
       <StepConnector
         classes={{
@@ -111,12 +81,12 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
       <Grid container spacing={8} style={{ marginTop: "1%" }}>
         <div className={classes.root} style={{ margin: "auto" }}>
           <Stepper
-            activeStep={activeStep}
+            activeStep={this.props.step}
             alternativeLabel
             connector={connector}
           >
             {steps.map((label, index) => {
-              if (index === 3 || index === 7 || index === 11 || index >= 15) {
+              if (index === 3 || index === 7 || index === 11 || index >= 15 || index === steps.length-1) {
                 return (
                   <Step key={index}>
                     <StepLabel className="polesCircle">{label}</StepLabel>
@@ -131,45 +101,14 @@ class HorizontalLabelPositionBelowStepper extends React.Component {
               }
             })}
           </Stepper>
-
-          <div>
-            {this.state.activeStep === steps.length ? (
-              <div>
-                <Typography className={classes.instructions}>
-                  All steps completed - you're finished
-                </Typography>
-                <Button onClick={this.handleReset}>Reset</Button>
-              </div>
-            ) : (
-              <div>
-                <Typography className={classes.instructions} />
-                <div>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={this.handleBack}
-                    className={classes.backButton}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={this.handleNext}
-                  >
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
       </Grid>
     );
   }
 }
 
-HorizontalLabelPositionBelowStepper.propTypes = {
+BarProgress.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styles)(HorizontalLabelPositionBelowStepper);
+export default withStyles(styles)(BarProgress);

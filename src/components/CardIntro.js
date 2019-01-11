@@ -26,8 +26,9 @@ class CardIntro extends Component {
     });
   };
 
-  render() {
-    if (this.state.redirect) return <Redirect to="/survey" />;
+render(){
+    if (this.state.redirect)
+        return(<Redirect to ="/user/survey"/>)
     return (
       <Card
         className="card"
