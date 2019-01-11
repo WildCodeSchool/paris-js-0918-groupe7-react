@@ -57,14 +57,13 @@ class ThanksCard extends Component {
         }}
       >
         <CardContent className="cardContent">
-
           <Typography
             gutterBottom
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
               fontSize: "1.5em",
-              marginTop: "5%",
+              marginTop: "5%"
             }}
           >
             You have completed the survey.
@@ -93,7 +92,6 @@ class ThanksCard extends Component {
                 marginRight: "auto",
                 display: "block",
                 marginTop: "5%",
-                blockSize: "18px",
                 fontSize: "1.3em",
                 fontFamily: "Raleway"
               }}
