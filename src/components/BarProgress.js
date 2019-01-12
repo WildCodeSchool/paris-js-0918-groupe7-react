@@ -46,23 +46,20 @@ const styles = theme => ({
 
 class BarProgress extends React.Component {
   getSteps = () => {
-
     const data = this.props.data;
     let steps = [];
 
     data.map((pillar, i) => {
-      pillar.sub_pillars.map((subpillar) => {
+      pillar.sub_pillars.map(subpillar => {
         return steps.push("");
-      })
-      return steps.push(pillar.name.toUpperCase())
-    })
+      });
+      return steps.push(pillar.name.toUpperCase());
+    });
     steps.push("CONFIRM");
-    console.log("stepsTable:", steps)
     return steps;
-  }
+  };
 
   render() {
-    console.log("lengthOUT", this.props.step)
     const { classes } = this.props;
     const steps = this.getSteps();
     const connector = (
@@ -84,7 +81,13 @@ class BarProgress extends React.Component {
             connector={connector}
           >
             {steps.map((label, index) => {
-              if (index === 3 || index === 7 || index === 11 || index >= 15 || index === steps.length-1) {
+              if (
+                index === 3 ||
+                index === 7 ||
+                index === 11 ||
+                index >= 15 ||
+                index === steps.length - 1
+              ) {
                 return (
                   <Step key={index}>
                     <StepLabel className="polesCircle">{label}</StepLabel>
