@@ -20,38 +20,27 @@ import HomeAdmin from "./components/HomeAdmin";
 
 // IMPORT OTHER PAGES COMPONENTS
 // import IntroPage from './components/IntroPage';
-// import ValidationPage from './components/ValidationPage';
-import ThanksPage from './components/ThanksPage';
-
+import Survey from "./components/survey/Survey";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
-        {/*<IntroPage />
-        <BarProgress />
-        <Form />
-        <ThanksPage />
-        <ValidationPage />
-        <Login /> */}
-
         <Switch>
           <Route exact path="/" component={FormPage} />
+          <Route exact path="/user/survey" component={Survey} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/client" component={HomeClient} />
+          <Route exact path="/user" component={HomeClient} />
           <Route exact path="/admin" component={HomeAdmin} />
           <Route exact path="/admin/Forms" component={AdminForm} /> 
           <Route exact path="/admin/Home" component={AdminHomePage} /> 
           <Route exact path="/admin/DownloadData" component={Download} />          
           <Route exact path="/forgot_password" component={ForgotPassword} />
-          <Route path="/reset_password/:reset_token" component={ResetPassword} />
-          <Route exact path="/client/thanks" component={ThanksPage} />
           <Route path="/reset_password/:reset_token" component={ResetPassword}/>
-          TO IMPLEMENT : survey routing( dynamic ? )
-          <Route exact path="/client/survey_validation" component={ValidationPage} />
           <Route exact path="/admin" component={HomeAdmin} />
-         
+          {/* <Route exact path="/client/thanks" component={ThanksPage} />
+          <Route exact path="/client/survey_validation" component={ValidationPage} /> */}
         </Switch>
       </div>
     );

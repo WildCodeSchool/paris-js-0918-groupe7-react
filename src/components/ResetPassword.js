@@ -22,11 +22,12 @@ class ResetPassword extends Component {
       alert("Password doesn't match");
     } else {
       const config = {
-        new_pass: this.state.password,
-        token: this.props.match.params.reset_token
+        new_pass: this.state.password
       };
 
-      let Url = "http://localhost:3002/users/reset";
+      let Url = `http://localhost:3002/users/reset/${
+        this.props.match.params.reset_token
+      }`;
       axios
         .put(Url, config)
         .then(res => {

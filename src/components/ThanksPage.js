@@ -38,7 +38,7 @@ class ThanksPage extends Component {
               Thank you for asking to Agile Maturity Assessment !
             </Typography>
 
-            <ThanksCard />
+            <ThanksCard  />
           </Grid>
 
           <Grid

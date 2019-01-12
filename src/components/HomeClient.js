@@ -22,8 +22,6 @@ class HomeClient extends Component {
     render() {
         if(this.state.isLoading)
             return <h1>LOADING.........</h1>
-
-        console.log("metallica" , this.state)
         if(this.state.role !== "client")
             return <h1>ACCESS DENIED!!!!!!!!!!!</h1>
         return <IntroPage/>
