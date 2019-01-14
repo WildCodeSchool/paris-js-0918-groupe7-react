@@ -1,66 +1,96 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import './CardValidation.css';
+import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import "./CardValidation.css";
 
 const styles = {
   pos: {
-    marginBottom: 0,
-  },
+    marginBottom: 0
+  }
 };
 
-function CardValidation(props) {
+class CardValidation extends Component {
+  state = {
+    redirect: false
+  };
 
-  return (
-      <Card className='card' style={{ 
-        
-        width: '65%',
-        alignContent: 'center',
-        alignItems: 'center',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        
-       }}>
-        <CardContent className='cardContent'>
-          <Button style={{
-              border: 'solid'
-          }}>  Back </Button>
-          <Typography variant="subtitle1" gutterBottom style={{ 
-            textAlign: 'center' }}>
-            Congratulations, you’re finished !
+  handleClick = e => {
+    this.props.thanksPage();
+  };
+
+  handleBack = e => {
+    this.props.validPage();
+  };
+
+  render() {
+    return (
+      <Card
+        className="card"
+        style={{
+          width: "70%",
+          alignContent: "center",
+          alignItems: "center",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "20%"
+        }}
+      >
+        <CardContent className="cardContent">
+          <Button
+            onClick={this.props.validPage}
+            style={{
+              border: "solid"
+            }}
+          >
+            {" "}
+            Back{" "}
+          </Button>
+          <Typography
+            gutterBottom
+            style={{
+              textAlign: "center",
+              fontFamily: "Raleway",
+              fontSize: "1.5em"
+            }}
+          >
+            Congratulations, you’ve finished !
           </Typography>
-          <Typography variant="subtitle1" gutterBottom style={{ 
-          textAlign: 'center' }}> 
+          <Typography
+            gutterBottom
+            style={{
+              textAlign: "center",
+              fontFamily: "Raleway",
+              fontSize: "1.5em"
+            }}
+          >
             Please note that no changes will be possible after the validation
           </Typography>
-          
-          <div className='button'>
-            <Button 
-            variant="contained" 
-            color="primary" 
-            className='but'
-            style={{
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              display: 'block',
-              marginTop: '5%',
-            }}
+
+          <div className="button">
+            <Button
+              onClick={this.handleClick}
+              variant="contained"
+              color="primary"
+              className="but"
+              style={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                display: "block",
+                marginTop: "5%",
+                fontFamily: "Raleway",
+                fontSize: "1.5em"
+              }}
             >
               DONE
             </Button>
           </div>
-
         </CardContent>
-
       </Card>
-  );
+    );
+  }
 }
-CardValidation.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(CardValidation);
+
+export default withStyles(styles)(CardValidation);

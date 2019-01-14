@@ -1,13 +1,13 @@
 import axios from 'axios';
 
- const checkRole = () => {
+const checkRole = () => {
     const token = localStorage.getItem("token");
-    
+
     const role =  axios({
         method: 'POST',
         url: 'http://localhost:3002/users/getrole/',
         headers: {
-          authorization: `Bearer ${token}`
+        authorization: `Bearer ${token}`
         }
     }).then(res => res.data.role);
 

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import CardIntro from './CardIntro'
+// import CardIntro from './CardIntro'
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-import './IntroPage.css';
-import ImgIntro from '../images/intro_image.png';
+// import Button from '@material-ui/core/Button';
+// import './IntroPage.css';
+import ImgIntro from '../../images/intro_image.png';
+import AdminCardCrtl from './AdminCardCrtl';
 
 
-
-class IntroPage extends Component {
+class AdminHomePage extends Component {
     render(){
         return (
             <div>
@@ -27,10 +28,20 @@ class IntroPage extends Component {
                         margin: '5% auto',
                         fontFamily: 'Raleway',
                         fontSize: '2em',
-                        }} gutterBottom> Thank you for creating your account !
+                        }} gutterBottom> Welcome Admin
                         </Typography>
+                        <AdminCardCrtl />
+                        {/* <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button>
+                        <Button variant="contained"> Default </Button> */}
 
-                        <CardIntro />
+                        {/* <CardIntro /> */}
                         
                     </Grid>
                     
@@ -40,7 +51,7 @@ class IntroPage extends Component {
                         backgroundRepeat: 'no-repeat',
                         
                     }} item xs={12} sm={6}>
-                        
+                          
                     </Grid>
                 </Grid>
             </div>
@@ -48,4 +59,4 @@ class IntroPage extends Component {
     }
 }
 
-export default IntroPage
+export default AdminHomePage;

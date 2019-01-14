@@ -52,27 +52,18 @@ class ThanksCard extends Component {
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: "auto",
+          marginTop: "20%",
           marginBottom: "auto"
         }}
       >
         <CardContent className="cardContent">
-          <Button
-            style={{
-              border: "solid"
-            }}
-            onClick={this.BackFunction}
-          >
-            {" "}
-            Back{" "}
-          </Button>
-
           <Typography
             gutterBottom
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "18px"
+              fontSize: "1.5em",
+              marginTop: "5%"
             }}
           >
             You have completed the survey.
@@ -83,7 +74,7 @@ class ThanksCard extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "18px"
+              fontSize: "1.5em"
             }}
           >
             Thank you for your time and your participation !
@@ -101,7 +92,6 @@ class ThanksCard extends Component {
                 marginRight: "auto",
                 display: "block",
                 marginTop: "5%",
-                blockSize: "18px",
                 fontSize: "1.3em",
                 fontFamily: "Raleway"
               }}
