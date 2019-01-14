@@ -118,6 +118,7 @@ class Survey extends Component {
   };
 
   render() {
+    console.log("Survey:", this.state.pillarId, this.state.subPillarId)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
@@ -175,6 +176,7 @@ class Survey extends Component {
                 <h2>{elem.question}</h2>
                 <AnswersPossibilities
                   data_answers={elem.answers_possibilities}
+                  id={elem.id}
                 />
               </div>
             ))}

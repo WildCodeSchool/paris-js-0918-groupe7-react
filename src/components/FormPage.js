@@ -18,7 +18,7 @@ class FormPage extends Component {
 
   handleSubmit = values => {
     let url = "http://localhost:3002/users/register";
-    console.log("values: ", values);
+
 
     const config = {
       email: values.email,
@@ -37,9 +37,14 @@ class FormPage extends Component {
     console.log(config);
     axios
       .post(url, config)
-      .then(res => console.log("status", res.status))
-      .then(this.setState({ redirect: true }))
-      .catch(err => console.log("err: ", err));
+      .then(res => {
+        if (res.status === 201) {
+          this.setState({ redirect: true })
+          alert(`User ${values.email} has been added succesfully !`);
+        }
+      })
+      .catch(err => { alert(err) })
+
   };
 
   render() {
@@ -47,12 +52,12 @@ class FormPage extends Component {
       return <Redirect to="/login" />;
     }
     return (
-      console.log(
-        "ids: ",
-        this.state.agencyId,
-        this.state.companyId,
-        this.state.poleId
-      ),
+      // console.log(
+      //   "ids: ",
+      //   this.state.agencyId,
+      //   this.state.companyId,
+      //   this.state.poleId
+      // ),
       (
         <div>
           {/*<BarProgress />*/}

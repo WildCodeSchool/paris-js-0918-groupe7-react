@@ -6,86 +6,82 @@ import Button from "@material-ui/core/Button";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
+import MenuItem from "@material-ui/core/MenuItem";
 
 class AnswersPossibilities extends Component {
+
   state = {
-    dropDownMenu: "",
-    lickertScale: "",
-    yes: false,
-    no: false,
-    type: 0
+    type: 0,
   };
 
   componentDidMount = () => {
+    console.log('DidMount')
     this.setState({ type: this.props.data_answers[0].answersTypeId });
   };
 
-  componentDidUpdate = prevprops => {
+  componentWillReceiveProps = prevpropsid => {
+    console.log('WillReceiveProps')
+    if (prevpropsid.id !== this.props.id)
+      this.setState({ type: 0 })
+  }
+
+  componentDidUpdate = () => {
+    console.log('DidUpdate')
     if (
-      prevprops.data_answers[0].answersTypeId !==
+      this.state.type !==
       this.props.data_answers[0].answersTypeId
     )
-      this.setState({ type: this.props.data_answers[0].answersTypeId });
+      this.setState({ type: this.props.data_answers[0].answersTypeId })
   };
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
+
+
+  handleChange = prop => e => {
+    e.preventDefault();
+    this.setState({ [prop]: e.target.value });
   };
 
-  handleClickYes = event => {
-    this.setState({ yes: true, no: false });
+  handleClick = e => {
+    e.preventDefault();
+    const index = [(`Id_Question ${this.props.id}`)]
+    this.setState({ [index]: e.currentTarget.value })
   };
 
-  handleClickNo = event => {
-    this.setState({ no: true, yes: false });
-  };
+
 
   render() {
-    console.log("metal", this.props.data_answers);
+    console.log("SATAN", this.state)
+
+    const index = [(`Id_Question ${this.props.id}`)]
 
     if (this.state.type === 1) {
       return (
         <div>
-          <Button onClick={this.handleClickYes} value="yes" variant="outlined">
+          <Button onClick={this.handleClick} value="Yes" variant="outlined">
             Yes
           </Button>
-          <Button onClick={this.handleClickNo} value="no" variant="outlined">
+          <Button onClick={this.handleClick} value="No" variant="outlined">
             No
+          </Button>
+          <Button onClick={this.handleClick} value="I don't know" variant="outlined">
+            I don't know
           </Button>
         </div>
       );
     }
-    if (this.state.type === 3) {
-      return (
-        <div>
-          <TextField
-            select
-            onChange={this.handleChange("dropDownMenu")}
-            value={this.state.dropDownMenu}
-            helperText="Select your answer"
-            margin="normal"
-            variant="outlined"
-          >
-            {/* {this.state.answersPossibilitiesDropDown.map((e, i) => (
-                        <MenuItem key={i} value={e.answer}>
-                            {e.answer}
-                        </MenuItem>
-                    ))} */}
-          </TextField>
-        </div>
-      );
-    }
+
     if (this.state.type === 2) {
       return (
         <div>
           <FormControl>
-            <RadioGroup row onChange={this.handleChange("lickertScale")}>
+            <RadioGroup row onChange={this.handleChange(index)}>
               <FormControlLabel
                 value="Strongly Disagree"
                 control={<Radio />}
                 label="Strongly Disagree"
               />
               <FormControlLabel
+
                 value="Disagree"
                 control={<Radio />}
                 label="Disagree"
@@ -110,6 +106,30 @@ class AnswersPossibilities extends Component {
         </div>
       );
     }
+
+    if (this.state.type === 3) {
+
+      return (
+        <div>
+          <TextField
+            select
+            onChange={this.handleChange(index)}
+            value={this.state[index]}
+            helperText="Select your answer"
+            margin="normal"
+            variant="outlined"
+
+          >
+            {this.props.data_answers.map((e, i) => (
+              <MenuItem key={i} value={e.answer}>
+                {e.answer}
+              </MenuItem>
+            ))}
+          </TextField>
+        </div>
+      );
+    }
+
     return <h1>HELLO WORLD</h1>;
   }
 }
