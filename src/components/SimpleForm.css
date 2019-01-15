@@ -6,9 +6,17 @@
 }
 
 .genderRadio{
-margin : 0 10px 20px 20px;
+    margin : 0 10px 20px 20px;
 }
 
 .errorMessage{
     color:red;
+}
+
+.MuiTypography-gutterBottom-125 {
+    margin-bottom:0px !important;
+}
+
+h1 {
+    font-family: 'Raleway' !important
 }
