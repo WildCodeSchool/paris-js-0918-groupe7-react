@@ -12,6 +12,7 @@ import ValidationPage from "../ValidationPage";
 import ThanksPage from "../ThanksPage";
 
 class Survey extends Component {
+
   state = {
     data: [],
     isLoading: false,
@@ -20,7 +21,8 @@ class Survey extends Component {
     pillarId: 0,
     subPillarId: 0, // 2,2 pour drop down
     validationPage: false,
-    thanksPage: false
+    thanksPage: false,
+    user_answers: []
   };
 
   componentDidMount() {
@@ -44,6 +46,30 @@ class Survey extends Component {
       })
     );
   }
+
+  liftState = (sonState) => {
+    let answers = this.state.user_answers;
+
+    answers.push(sonState);
+    this.setState({ user_answers: answers });
+  };
+
+  updateState = (sonState) => {
+    console.log("Flic0", this.state.user_answers)
+    let answers = this.state.user_answers;
+    console.log("Flic1", answers)
+    answers.map(e => {
+      console.log("Flic2", answers)
+      if (e.questionId === sonState.questionId) {
+        e.userId = sonState.userId;
+        e.answersPossibilityId = sonState.answersPossibilityId;
+      }
+      console.log("Flic3", answers)
+
+    });
+    console.log("Flic4", answers);
+    this.setState({ user_answers: answers });
+  };
 
   goToThanksPage = () => {
     this.setState({ thanksPage: !this.state.thanksPage });
@@ -118,7 +144,6 @@ class Survey extends Component {
   };
 
   render() {
-    console.log("Survey:", this.state.pillarId, this.state.subPillarId)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
@@ -127,7 +152,9 @@ class Survey extends Component {
             data={this.state.data.pole.pillars}
             step={this.state.length + 2}
           />
-          <ThanksPage thanksPage={this.goToThanksPage} />
+          <ThanksPage
+            thanksPage={this.goToThanksPage}
+            answers_users={this.state.user_answers} />
         </div>
       );
     if (this.state.validationPage)
@@ -140,6 +167,7 @@ class Survey extends Component {
           <ValidationPage
             thanksPage={this.goToThanksPage}
             validPage={this.goBacktoSurvey}
+            answers_users={this.state.user_answers}
           />
         </div>
       );
@@ -176,7 +204,12 @@ class Survey extends Component {
                 <h2>{elem.question}</h2>
                 <AnswersPossibilities
                   data_answers={elem.answers_possibilities}
+                  liftState={this.liftState}
+                  updateState={this.updateState}
+                  userAnswers={this.state.user_answers}
                   id={elem.id}
+                  user_id={this.state.data.id}
+
                 />
               </div>
             ))}
