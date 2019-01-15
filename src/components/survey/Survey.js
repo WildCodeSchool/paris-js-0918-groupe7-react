@@ -49,7 +49,6 @@ class Survey extends Component {
 
   liftState = (sonState) => {
     let answers = this.state.user_answers;
-
     answers.push(sonState);
     this.setState({ user_answers: answers });
   };
@@ -57,18 +56,18 @@ class Survey extends Component {
   updateState = (sonState) => {
     console.log("Flic0", this.state.user_answers)
     let answers = this.state.user_answers;
-    console.log("Flic1", answers)
-    answers.map(e => {
-      console.log("Flic2", answers)
+    answers.map((e, i) => {
       if (e.questionId === sonState.questionId) {
+        console.log(i)
         e.userId = sonState.userId;
         e.answersPossibilityId = sonState.answersPossibilityId;
+        answers.splice(i, 1)
       }
-      console.log("Flic3", answers)
 
-    });
+
+    }, () => this.setState({ user_answers: answers }));
     console.log("Flic4", answers);
-    this.setState({ user_answers: answers });
+
   };
 
   goToThanksPage = () => {
