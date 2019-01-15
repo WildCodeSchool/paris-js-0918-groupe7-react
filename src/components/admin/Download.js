@@ -78,10 +78,10 @@ class Download extends Component {
   };
 
   render() {
+    console.log("the patriots", this.state);
     const { classes } = this.props;
 
     if (this.state.companies === null) return <p>loading</p>;
-    console.log("the patriots", this.state);
     return (
       <div>
         <Grid
