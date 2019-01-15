@@ -25,7 +25,6 @@ class FormPage extends Component {
       gender: values.gender,
       age_range: values.age_range,
       seniority: values.seniority,
-      role: "client",
       is_active: true,
       business_focus: values.business_focus,
       agencyId: values.agency,

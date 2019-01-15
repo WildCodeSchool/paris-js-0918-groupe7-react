@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class ActivationAccount extends Component {
   state = {
@@ -25,8 +25,8 @@ class ActivationAccount extends Component {
         this.setState({ status: res.status });
       })
       .catch(err => {
-        console.log(err);
-        //this.setState({ redirect: true });
+        console.log(err.response);
+        this.setState({ status: err.response.status });
       });
   };
 
@@ -36,17 +36,25 @@ class ActivationAccount extends Component {
   };
 
   render() {
-    console.log("status", this.state.status)
+    console.log("status", this.state.status);
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }
-    if (this.state.status !== 201 && this.state.status !== 0) {
-      console.log("tata");
-      return alert("An error as occured !");
+
+    if (this.state.status === 409) {
+      return (
+        <div>
+           <h1>User already exist</h1><Link to="/login">Redirecting to home</Link>
+        </div>
+      );
     }
+
     if (this.state.status === 500) {
-      console.log("toto");
-      return alert("User already exists !");
+      return (
+        <div>
+           500  <Link to="/login">Redirecting to home</Link>
+        </div>
+      );
     }
 
     return (
