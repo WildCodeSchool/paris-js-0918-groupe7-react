@@ -78,9 +78,9 @@ class Download extends Component {
   };
 
   render() {
-    console.log("the patriots", this.state);
     const { classes } = this.props;
-
+    console.log("the patriots", this.state);
+    
     if (this.state.companies === null) return <p>loading</p>;
     return (
       <div>
