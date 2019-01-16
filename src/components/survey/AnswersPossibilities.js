@@ -8,6 +8,8 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import MenuItem from "@material-ui/core/MenuItem";
 
+import './AnswersPossibilities.css'
+
 class AnswersPossibilities extends Component {
 
   state = {
@@ -84,7 +86,7 @@ class AnswersPossibilities extends Component {
 
     if (this.state.type === 1) {
       return (
-        <div>
+        <div className="yes-no-answer">
           <Button onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
             Yes
           </Button>
@@ -100,7 +102,7 @@ class AnswersPossibilities extends Component {
 
     if (this.state.type === 2) {
       return (
-        <div>
+        <div className="lickert-answer">
           <FormControl>
             <RadioGroup
               row
@@ -140,7 +142,7 @@ class AnswersPossibilities extends Component {
     if (this.state.type === 3) {
       const index = [this.props.id]
       return (
-        <div>
+        <div className="drop-answer">
           <TextField
             select
             onChange={this.handleChange(index)}

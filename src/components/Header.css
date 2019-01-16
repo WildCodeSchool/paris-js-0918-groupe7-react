@@ -1,5 +1,19 @@
-.logo{
-    max-width: 90%;
-    max-height: 100%;
-    padding: 5%;
+.header-container{
+    justify-content: space-between;
+    box-shadow: inset 0px -5px 20px -10px rgb(0, 0, 0);
+    max-height: 300px;
+    padding-bottom: 3%;
 }
+
+
+.logo-exton{
+    width : 20vw;
+    margin: 5% 0 0 12%;
+}
+
+.logo-AAA{
+    width : 20vw;
+    margin: 5% 0 0 0;
+}
+
+
