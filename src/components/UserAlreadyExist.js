@@ -1,33 +1,16 @@
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+
+// Material UI dependencies
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import axios from "axios";
-import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
 
-class ActivationAccount extends Component {
+class UserAlreadyExist extends Component {
   state = {
-    status: 0,
     redirect: false
-  };
-
-  componentDidMount = () => {
-    const Url = `http://localhost:3002/users/activate/${
-      this.props.match.params.activation_token
-    }`;
-
-    axios
-      .post(Url)
-      .then(res => {
-        console.log("res", res);
-        this.setState({ status: res.status });
-      })
-      .catch(err => {
-        console.log(err.response);
-        this.setState({ status: err.response.status });
-      });
   };
 
   handleClick = e => {
@@ -36,23 +19,9 @@ class ActivationAccount extends Component {
   };
 
   render() {
-    console.log("status", this.state.status);
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }
-
-    if (this.state.status === 409) {
-      return <Redirect to="/error" />;
-    }
-
-    if (this.state.status === 500) {
-      return (
-        <div>
-           500  <Link to="/login">Redirecting to home</Link>
-        </div>
-      );
-    }
-
     return (
       <div>
         <Grid
@@ -90,13 +59,10 @@ class ActivationAccount extends Component {
                   letterSpacing: "0.4rem"
                 }}
               >
-                Activation of your account
+                Error during your Sign Up
               </Typography>
 
-              <p>
-                Your account has been created! You can now connect with your
-                login.
-              </p>
+              <p>User already exist! Please Login.</p>
 
               <div className="form-data">
                 <Button
@@ -139,4 +105,4 @@ class ActivationAccount extends Component {
   }
 }
 
-export default ActivationAccount;
+export default UserAlreadyExist;
