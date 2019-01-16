@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 // IMPORT COMPONENTS
 import Header from "./components/Header";
-// import BarProgress from "./components/BarProgress";
-// import Form from "./components/form/Form";
 import FormPage from "./components/FormPage";
 import Login from "./components/Login";
 import { Switch, Route } from "react-router-dom";
@@ -13,13 +11,13 @@ import AdminForm from "./components/admin/AdminForm";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import Download from "./components/admin/Download";
 import ActivationAccount from "./components/ActivationAccount";
+import UserAlreadyExist from "./components/UserAlreadyExist";
 
 import "./App.css";
 import HomeClient from "./components/HomeClient";
 import HomeAdmin from "./components/HomeAdmin";
 
 // IMPORT OTHER PAGES COMPONENTS
-// import IntroPage from './components/IntroPage';
 import Survey from "./components/survey/Survey";
 
 class App extends Component {
@@ -32,14 +30,9 @@ class App extends Component {
           <Route exact path="/" component={FormPage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/forgot_password" component={ForgotPassword} />
-          <Route
-            path="/reset_password/:reset_token"
-            component={ResetPassword}
-          />
-          <Route
-            path="/account_activation/:activation_token"
-            component={ActivationAccount}
-          />
+          <Route path="/reset_password/:reset_token" component={ResetPassword} />
+          <Route path="/account_activation/:activation_token" component={ActivationAccount}/>
+          <Route path="/error" component={UserAlreadyExist}/>
 
           {/* User routes */}
           <Route exact path="/user" component={HomeClient} />
