@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
+import Hidden from '@material-ui/core/Hidden';
 import axios from "axios";
 
 import AnswersPossibilities from "./AnswersPossibilities";
 import BarProgress from "../BarProgress";
 
 import "./Survey.css";
+import line from '../../images/line.png'
 
 import Button from "@material-ui/core/Button";
 import ValidationPage from "../ValidationPage";
@@ -146,34 +148,43 @@ class Survey extends Component {
     return (
       <div>
         <Grid container>
+        <Hidden only={['xs', 'sm']}>
           <BarProgress
             data={this.state.data.pole.pillars}
             step={this.state.length}
           />
-          <Grid item xs={12} sm={4} className="background-left">
+          </Hidden>
+
+        <Hidden only={['xs']}>
+          <Grid item sm={5} className="background-left">
             <div>
-              <h1>AGILE MATURITY ASSESSMENT</h1>
+              <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
             </div>
 
             <div>
-              <h2>{this.state.data.pole.pillars[this.state.pillarId].name}</h2>
+              <h2 className="pole-survey">{this.state.data.pole.pillars[this.state.pillarId].name}</h2>
             </div>
 
             <div>
+            <img className="line-survey" src={line} alt='separator'/>
+            </div>
+
+            <div className="container-subpillars-survey">
               {this.state.data.pole.pillars[
                 this.state.pillarId
               ].sub_pillars.map((e, i) => (
-                <h3 key={i} value={e.id}>
+                <h3 className="subpillars-survey" key={i} value={e.id}>
                   {e.name}
                 </h3>
               ))}
             </div>
           </Grid>
+          </Hidden>
 
-          <Grid item sm={8} className="background-right">
+          <Grid item xs={12} sm={7} className="background-right">
             {this.state.questionsReponses.map((elem, index) => (
               <div key={index}>
-                <h2>{elem.question}</h2>
+                <div className="question">{elem.question}</div>
                 <AnswersPossibilities
                   data_answers={elem.answers_possibilities}
                   id={elem.id}

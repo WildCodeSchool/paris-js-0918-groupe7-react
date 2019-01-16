@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   root: {
-    width: "90%"
+    width: "100%"
   },
   backButton: {
     marginRight: theme.spacing.unit
@@ -73,9 +73,9 @@ class BarProgress extends React.Component {
       />
     );
     return (
-      <Grid container spacing={8} style={{ marginTop: "1%" }}>
+      <Grid className="progressbar-container" container spacing={8} style={{ marginTop: "1%" }}>
         <div className={classes.root} style={{ margin: "auto" }}>
-          <Stepper
+          <Stepper 
             activeStep={this.props.step}
             alternativeLabel
             connector={connector}

@@ -201,7 +201,6 @@ class SimpleForm extends Component {
               type="email"
               validate={[required, email]}
               component={renderField}
-              required
             />
           </div>
         </div>
