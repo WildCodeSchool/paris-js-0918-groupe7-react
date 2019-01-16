@@ -84,31 +84,6 @@ class FormPage extends Component {
               />
             </Grid>
 
-            <Grid
-              className="grid2"
-              id="postit"
-              style={{
-                textAlign: "center",
-                justifyContent: "center",
-                verticalAlign: "middle",
-                color: "white",
-                margin: "5% auto",
-                fontFamily: "Raleway",
-                fontSize: "2em"
-              }}
-              gutterBottom
-            >
-              {" "}
-              Welcome to survey AAA
-            </Typography>
-            {/*
-          <Form /> */}
-            <SimpleForm
-              onSubmit={this.handleSubmit}
-              changeState={this.changeState}
-            />
-          </Grid>
-
           <Grid
             className="grid2"
             id="postit"

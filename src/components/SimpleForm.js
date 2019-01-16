@@ -206,10 +206,8 @@ class SimpleForm extends Component {
           <label>Email</label>
           <div>
             <Field
-              placeholder="Email"
               name="email"
               type="email"
-              placeholder="Your Email"
               validate={[required, email]}
               component={renderField}
             />
@@ -224,7 +222,6 @@ class SimpleForm extends Component {
               name="password"
               component="input"
               type="password"
-              placeholder="Your password here"
               validate={[required, minLength6]}
             />
           </div>
