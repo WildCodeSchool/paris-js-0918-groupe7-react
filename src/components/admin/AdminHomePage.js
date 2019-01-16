@@ -31,17 +31,7 @@ class AdminHomePage extends Component {
                         }} gutterBottom> Welcome Admin
                         </Typography>
                         <AdminCardCrtl />
-                        {/* <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button>
-                        <Button variant="contained"> Default </Button> */}
-
-                        {/* <CardIntro /> */}
+                        
                         
                     </Grid>
                     

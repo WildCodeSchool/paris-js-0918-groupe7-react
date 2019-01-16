@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
+import IntroImage from "../../images/intro_image.png";
 
 import { CSVLink, CSVDownload } from "react-csv";
 
@@ -93,57 +94,66 @@ class Download extends Component {
             minHeight: "100%"
           }}
         >
-          <Typography
-            className="thank"
+          <Grid item xs={12} sm={6}>
+            <Typography
+              className="thank"
+              style={{
+                textAlign: "center",
+                alignItems: "center",
+                justifyContent: "center",
+                verticalAlign: "middle",
+                color: "white",
+                margin: "5% auto",
+                fontFamily: "Raleway",
+                fontSize: "2em"
+              }}
+              gutterBottom
+            >
+              {" "}
+              Download Company Data
+            </Typography>
+            <TextField
+              className={classes.poleContainer}
+              select
+              value={this.state.company}
+              onChange={this.handleChangeCompany("company")}
+              label="Companies"
+              helperText="Please select a company"
+              margin="normal"
+              variant="outlined"
+            >
+              {this.state.companies.map(option => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              className={classes.poleContainer}
+              select
+              value={this.state.agency}
+              onChange={this.handleChangeAgency("agency")}
+              label="Agencies"
+              helperText="Please select an agency"
+              margin="normal"
+              variant="outlined"
+            >
+              {this.state.agencies.map(option => (
+                <MenuItem key={option.id} value={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </TextField>{" "}
+            {/* <button > */}
+            <CSVLink data={this.state.data}>Download me</CSVLink>
+            {/* </button> */}
+          </Grid>
+
+          <Grid item xs={12} sm={6} 
             style={{
-              textAlign: "center",
-              justifyContent: "center",
-              verticalAlign: "middle",
-              color: "white",
-              margin: "5% auto",
-              fontFamily: "Raleway",
-              fontSize: "2em"
-            }}
-            gutterBottom
-          >
-            {" "}
-            Download Company Data
-          </Typography>
-          <TextField
-            className={classes.poleContainer}
-            select
-            value={this.state.company}
-            onChange={this.handleChangeCompany("company")}
-            label="Companies"
-            helperText="Please select a company"
-            margin="normal"
-            variant="outlined"
-          >
-            {this.state.companies.map(option => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.name}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            className={classes.poleContainer}
-            select
-            value={this.state.agency}
-            onChange={this.handleChangeAgency("agency")}
-            label="Agencies"
-            helperText="Please select an agency"
-            margin="normal"
-            variant="outlined"
-          >
-            {this.state.agencies.map(option => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.name}
-              </MenuItem>
-            ))}
-          </TextField>{" "}
-          {/* <button > */}
-          <CSVLink data={this.state.data}>Download me</CSVLink>
-          {/* </button> */}
+              backgroundImage: `url(${IntroImage})`,
+            }}>
+          </Grid>
         </Grid>
       </div>
     );
