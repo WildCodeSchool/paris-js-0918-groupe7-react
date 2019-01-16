@@ -67,41 +67,39 @@ class FormPage extends Component {
     }
 
     return (
-      <div>
-        {/*<BarProgress />*/}
-        <Grid
-          container
-          className="gridthanks"
-          style={{
-            backgroundColor: "rgb(125, 146, 177)",
-            position: "absolute",
-            minHeight: "100%"
-          }}
-        >
-          <Grid item xs={12} sm={6}>
-            <Typography
-              className="thank"
-              style={{
-                textAlign: "center",
-                justifyContent: "center",
-                verticalAlign: "middle",
-                color: "white",
-                margin: "5% auto",
-                fontFamily: "Raleway",
-                fontSize: "2em"
-              }}
-              gutterBottom
-            >
-              {" "}
-              Welcome to survey AAA
-            </Typography>
-            {/*
-          <Form /> */}
-            <SimpleForm
-              onSubmit={this.handleSubmit}
-              changeState={this.changeState}
-            />
-          </Grid>
+        <div>
+          <Grid
+            container
+            className="formaccount"
+            style={{
+              backgroundColor: "rgb(125, 146, 177)",
+              position: "absolute",
+              minHeight: "100%"
+            }}
+          >
+            <Grid item xs={12} sm={6}>
+              <Typography
+                className="titleform"
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  margin: "5%",
+                  fontFamily: "Raleway",
+                  fontSize: "2em",
+
+                }}
+                gutterBottom
+              >
+                {" "}
+                Welcome to survey AAA
+              </Typography>
+              {/*
+            <Form /> */}
+              <SimpleForm
+                onSubmit={this.handleSubmit}
+                changeState={this.changeState}
+              />
+            </Grid>
 
           <Grid
             className="grid2"
