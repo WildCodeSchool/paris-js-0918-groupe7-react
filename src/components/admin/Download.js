@@ -5,6 +5,9 @@ import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@material-ui/core/Button";
+
+import { CSVLink, CSVDownload } from "react-csv";
 
 const styles = theme => ({
   companyContainer: {
@@ -14,8 +17,8 @@ const styles = theme => ({
 
 class Download extends Component {
   state = {
-    data: null,
-    companies: null,
+    data: [],
+    companies: [],
     company: "",
     agencies: [],
     agency: "",
@@ -34,50 +37,51 @@ class Download extends Component {
 
   handleChangeCompany = prop => event => {
     this.setState({ [prop]: event.target.value }, () => {
+      // Recherche d'agences
       axios({
         method: "GET",
         url: `http://localhost:3002/agencies/companyId/${this.state.company}`,
         headers: {
           authorization: `Bearer ${this.state.token}`
         }
-      }).then(res => this.setState({ agencies: res.data }));
+      }).then(res => {
+        // Si pas d'agences, récupération des données de la compagnie
+        if (res.data === []) {
+          axios({
+            method: "GET",
+            url: `http://localhost:3002/companies/uapq/${this.state.company}`, // mettre la route exacte
+            headers: {
+              authorization: `Bearer ${this.state.token}`
+            }
+          }).then(res => this.setState({ data: res.data }));
+        } else {
+          // Stockage des agences dans un state
+          this.setState({ agencies: res.data });
+        }
+      });
     });
   };
 
   handleChangeAgency = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+    const agency = event.target.value;
+    this.setState({ [prop]: agency });
 
-  // recupere la data d'une compagnie selectionnee au format csv et gestion du telechargement de la data
-  handleDownload = event => {
-    event.preventDefault();
-    if(this.state.agencies === []) {
-      axios({
-        method: "POST",
-        url: `http://localhost:3002/company`,  // mettre la route exacte
-        headers: {
-          authorization: `Bearer ${this.state.token}`
-        }
-      }).then(res => this.setState({ data: res.data }));
-    }
-    else {
-      axios({
-        method: "POST",
-        url: `http://localhost:3002/agency`, // mettre la route exacte
-        headers: {
-          authorization: `Bearer ${this.state.token}`
-        }
-      }).then(res => this.setState({ data: res.data }));
-    }
-    // Si le state finale des agences est null => axios sur route company, sinon axios route agency
-    //return telechargement
+    axios({
+      method: "GET",
+      url: `http://localhost:3002/agencies/uapq/${agency}`, // mettre la route exacte
+      headers: {
+        authorization: `Bearer ${this.state.token}`
+      }
+    }).then(res => this.setState({ data: res.data }));
+    // recupere la data d'une compagnie selectionnee au format csv et gestion du telechargement de la data
+    //mise en forme des
   };
 
   render() {
     const { classes } = this.props;
-
-    if (this.state.companies === null) return <p>loading</p>;
     console.log("the patriots", this.state);
+    
+    if (this.state.companies === null) return <p>loading</p>;
     return (
       <div>
         <Grid
@@ -137,6 +141,9 @@ class Download extends Component {
               </MenuItem>
             ))}
           </TextField>{" "}
+          {/* <button > */}
+          <CSVLink data={this.state.data}>Download me</CSVLink>
+          {/* </button> */}
         </Grid>
       </div>
     );
