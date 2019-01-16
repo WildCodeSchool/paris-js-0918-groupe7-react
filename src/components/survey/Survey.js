@@ -14,15 +14,17 @@ import ValidationPage from "../ValidationPage";
 import ThanksPage from "../ThanksPage";
 
 class Survey extends Component {
+
   state = {
     data: [],
     isLoading: false,
     questionsReponses: [],
     length: 0,
     pillarId: 0,
-    subPillarId: 0, // 2,2 pour drop down
+    subPillarId: 0,
     validationPage: false,
-    thanksPage: false
+    thanksPage: false,
+    user_answers: []
   };
 
   componentDidMount() {
@@ -46,6 +48,24 @@ class Survey extends Component {
       })
     );
   }
+
+  liftState = (sonState) => {
+    let answers = this.state.user_answers;
+    answers.push(sonState);
+    this.setState({ user_answers: answers });
+  };
+
+  updateState = (sonState) => {
+    let answers = this.state.user_answers;
+
+    answers.map((e, i) => {
+      if (e.questionId === sonState.questionId) {
+        e.userId = sonState.userId;
+        e.answersPossibilityId = sonState.answersPossibilityId;
+        answers.splice(i, 1)
+      }
+    }, () => this.setState({ user_answers: answers }));
+  };
 
   goToThanksPage = () => {
     this.setState({ thanksPage: !this.state.thanksPage });
@@ -86,6 +106,20 @@ class Survey extends Component {
     }
   };
 
+  submitAnswers = () => {
+    let url = 'http://localhost:3002/users_answers_possibilities_questions'
+    const config = this.state.user_answers
+
+    this.state.user_answers.map((e, i) => {
+      axios.post(url, config[i])
+        .then(this.setState({ user_answers: [] }));
+    })
+  }
+
+
+
+
+
   handleContinue = () => {
     if (
       this.state.subPillarId <
@@ -112,15 +146,14 @@ class Survey extends Component {
           }
         );
       } else {
-        // implémenter submit form
         this.setState({ validationPage: true, length: this.state.length + 1 });
       }
     }
     // Implémenter le submit de la partie du questionnaire
+    this.submitAnswers();
   };
 
   render() {
-    console.log("Survey:", this.state.pillarId, this.state.subPillarId)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
@@ -129,7 +162,9 @@ class Survey extends Component {
             data={this.state.data.pole.pillars}
             step={this.state.length + 2}
           />
-          <ThanksPage thanksPage={this.goToThanksPage} />
+          <ThanksPage
+            thanksPage={this.goToThanksPage}
+            answers_users={this.state.user_answers} />
         </div>
       );
     if (this.state.validationPage)
@@ -142,6 +177,7 @@ class Survey extends Component {
           <ValidationPage
             thanksPage={this.goToThanksPage}
             validPage={this.goBacktoSurvey}
+            answers_users={this.state.user_answers}
           />
         </div>
       );
@@ -187,7 +223,12 @@ class Survey extends Component {
                 <div className="question">{elem.question}</div>
                 <AnswersPossibilities
                   data_answers={elem.answers_possibilities}
+                  liftState={this.liftState}
+                  updateState={this.updateState}
+                  userAnswers={this.state.user_answers}
                   id={elem.id}
+                  user_id={this.state.data.id}
+
                 />
               </div>
             ))}

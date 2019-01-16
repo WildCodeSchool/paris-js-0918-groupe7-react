@@ -12,3 +12,11 @@
 .errorMessage{
     color:red;
 }
+
+.MuiTypography-gutterBottom-125 {
+    margin-bottom:0px !important;
+}
+
+h1 {
+    font-family: 'Raleway' !important
+}

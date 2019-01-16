@@ -63,7 +63,7 @@ class FormPage extends Component {
           {/*<BarProgress />*/}
           <Grid
             container
-            className="gridthanks"
+            className="formaccount"
             style={{
               backgroundColor: "rgb(125, 146, 177)",
               position: "absolute",
@@ -72,15 +72,14 @@ class FormPage extends Component {
           >
             <Grid item xs={12} sm={6}>
               <Typography
-                className="thank"
+                className="titleform"
                 style={{
                   textAlign: "center",
-                  justifyContent: "center",
-                  verticalAlign: "middle",
                   color: "white",
-                  margin: "5% auto",
+                  margin: "5%",
                   fontFamily: "Raleway",
-                  fontSize: "2em"
+                  fontSize: "2em",
+
                 }}
                 gutterBottom
               >
