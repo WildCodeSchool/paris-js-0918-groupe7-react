@@ -20,7 +20,6 @@ class Login extends Component {
         >
           <Grid item xs={12} sm={6}>
             <Typography
-              className="thank"
               style={{
                 textAlign: "center",
                 justifyContent: "center",

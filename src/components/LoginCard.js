@@ -96,10 +96,10 @@ class LoginCard extends Component {
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: "auto",
+          marginTop: "5%",
           marginBottom: "auto",
           paddingLeft: "10%",
-          borderRadius: "5%"
+          borderRadius: "10px"
         }}
       >
         <CardContent className="cardContent">

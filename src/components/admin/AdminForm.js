@@ -19,51 +19,51 @@ import { Grid } from '@material-ui/core';
 // Déclaration de la fonction stateless Form
 class AdminForm extends Component {
     render(){
-    return (
-    // Déclaration du formulaire
-    <Grid>
-		<Grid item xs={12}>
-			<h3>Companies</h3>
-			<CompaniesForm />
-		</Grid>
-		<br />
-        <Grid item xs={12}>
-			<h3>Agencies</h3>
-            <AgenciesForm />
-        </Grid>
-		<br />
-        <Grid item xs={12}>
-			<h3>Email Extensions</h3>
-            <EmailExtensionForm />
-        </Grid>
-		<br />
-        <Grid item xs={12}>
-			<h3>Pillars</h3>
-            <PillarsForm />
-        </Grid>
-		<br />
-        <Grid item xs={12}>
-			<h3>Poles</h3>
-            <PolesForm />
-        </Grid>
-		<br />
-        <Grid item xs={12}>
-			<h3>Sub Pillars</h3>
-            <SubPillarsForm />
-        </Grid>
-		<br />
-        <Grid item xs={12}>
-			<h3>Users</h3>
-            <usersForm />
-        </Grid>
-		<br />
-        <Grid item xs={12}>
-			<h3>Questions</h3>
-            <QuestionsForm />
-        </Grid>
-    </Grid>
-  );
- };
+        return (
+        // Déclaration du formulaire
+            <Grid>
+                <Grid item xs={12}>
+                    <h3>Companies</h3>
+                    <CompaniesForm />
+                </Grid>
+                <br />
+                <Grid item xs={12}>
+                    <h3>Agencies</h3>
+                    <AgenciesForm />
+                </Grid>
+                <br />
+                <Grid item xs={12}>
+                    <h3>Email Extensions</h3>
+                    <EmailExtensionForm />
+                </Grid>
+                <br />
+                <Grid item xs={12}>
+                    <h3>Pillars</h3>
+                    <PillarsForm />
+                </Grid>
+                <br />
+                <Grid item xs={12}>
+                    <h3>Poles</h3>
+                    <PolesForm />
+                </Grid>
+                <br />
+                <Grid item xs={12}>
+                    <h3>Sub Pillars</h3>
+                    <SubPillarsForm />
+                </Grid>
+                <br />
+                <Grid item xs={12}>
+                    <h3>Users</h3>
+                    <usersForm />
+                </Grid>
+                <br />
+                <Grid item xs={12}>
+                    <h3>Questions</h3>
+                    <QuestionsForm />
+                </Grid>
+            </Grid>
+        );
+    };
 };
 
 export default AdminForm;
