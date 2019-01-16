@@ -1,20 +1,22 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+
+// CSS
+import "./IntroPage.css";
+import IntroImage from "../images/intro_image.png";
+
+// Material UI dependencies
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import { Redirect } from "react-router-dom";
-import "./IntroPage.css";
-// import Form from "./form/Form";
-import IntroImage from "../images/intro_image.png";
-//import BarProgress from "./BarProgress";
 
-// import showResults from "../showResults";
+// React components
 import SimpleForm from "./SimpleForm";
-import axios from "axios";
 
 class FormPage extends Component {
   state = {
     redirect: false,
-    status : 0
+    status: 0
   };
 
   handleSubmit = values => {
@@ -36,24 +38,34 @@ class FormPage extends Component {
     axios
       .post(url, config)
       .then(res => {
-        console.log(res)
+        console.log(res);
         if (res.status === 200) {
-          alert(`An email has been send to ${values.email} ! Check the link within it to activate your account.`);
-          this.setState({ redirect: true })
-        }
-        else{
-          this.setState({ status : res.status })
+          alert(
+            `An email has been send to ${
+              values.email
+            } ! Check the link within it to activate your account.`
+          );
+          this.setState({ redirect: true });
+        } else {
+          this.setState({ status: res.status });
         }
       })
-      .catch(err => { console.log(err) })
-
+      .catch(err => {
+        console.log(err.response);
+        this.setState({ status: err.response.status });
+      });
   };
 
   render() {
-    console.log('status', this.state.status)
+    console.log("status", this.state.status);
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }
+
+    if (this.state.status === 409) {
+      return <Redirect to="/error" />;
+    }
+
     return (
       <div>
         {/*<BarProgress />*/}
@@ -105,7 +117,7 @@ class FormPage extends Component {
           />
         </Grid>
       </div>
-    )
+    );
   }
 }
 
