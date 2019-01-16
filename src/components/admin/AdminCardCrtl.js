@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Redirect } from 'react-router-dom';
-// import './CardIntro.css'
+
 
 
 class AdminCardCrtl extends Component {
@@ -50,7 +50,6 @@ handleClick = (e) => {
                     marginRight: 'auto',
                     display: 'block',
                     marginTop: '5%',
-                    blockSize: '18px',
                     fontSize: '1.3em',
                     fontFamily: 'Raleway'
                     }}

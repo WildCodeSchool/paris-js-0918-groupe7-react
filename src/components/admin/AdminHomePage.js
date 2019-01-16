@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-// import CardIntro from './CardIntro'
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-// import Button from '@material-ui/core/Button';
-// import './IntroPage.css';
 import ImgIntro from '../../images/intro_image.png';
 import AdminCardCrtl from './AdminCardCrtl';
 
@@ -30,9 +27,7 @@ class AdminHomePage extends Component {
                         fontSize: '2em',
                         }} gutterBottom> Welcome Admin
                         </Typography>
-                        <AdminCardCrtl />
-                        
-                        
+                        <AdminCardCrtl />                       
                     </Grid>
                     
                     <Grid className='grid2' id='postit' style={{
