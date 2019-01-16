@@ -152,20 +152,26 @@ class SimpleForm extends Component {
     return (
       <form
         style={{
-          textAlign: "left",
+          textAlign:"center",
           justifyContent: "center",
           verticalAlign: "middle",
           color: "black",
-          margin: "5%",
+          marginTop: "5%",
+          marginLeft:"17%",
+          marginRight :"17%",
+          marginBottom: "10%",
           fontFamily: "Raleway",
-          fontSize: "1em",
           backgroundColor: "white",
-          borderRadius: "10%",
-          padding: "10%"
+          borderRadius: "10px",
+          padding: "1%",
+          alignItems: 'middle',
         }}
       >
         <div>
-          <h1>Create your account</h1>
+          <h1
+            style={{
+              fontFamily: "Raleway",
+            }}>Create your account</h1>
           <label>Gender</label>
           <div>
             <label>
@@ -175,6 +181,9 @@ class SimpleForm extends Component {
                 type="radio"
                 value="male"
                 className="genderRadio"
+                style={{
+                  marginTop: "3%",
+                }}
                 required
               />{" "}
               Male
@@ -200,9 +209,9 @@ class SimpleForm extends Component {
               placeholder="Email"
               name="email"
               type="email"
+              placeholder="Your Email"
               validate={[required, email]}
               component={renderField}
-              required
             />
           </div>
         </div>
@@ -215,7 +224,7 @@ class SimpleForm extends Component {
               name="password"
               component="input"
               type="password"
-              placeholder="Password"
+              placeholder="Your password here"
               validate={[required, minLength6]}
             />
           </div>
@@ -339,24 +348,21 @@ class SimpleForm extends Component {
             style={{
               backgroundColor: "rgb(45,52,90)",
               color: "white",
-              marginLeft: "20px",
-              marginRight: "20px",
-              marginTop: "10%",
-              marginBottom: "5%",
+              margin: "5%",
               display: "block",
               fontSize: "1.3em",
-              fontFamily: "Raleway",
-              borderRadius: "15px"
+              borderRadius: "15px",
+              display: "inline"
             }}
           >
             <Typography
               gutterBottom
               style={{
-                textAlign: "center",
                 color: "white",
                 fontSize: "20px",
                 lineHeight: "14px",
-                padding: "15px 25px"
+                padding: "15px 25px",
+                verticalAlign: "middle",
               }}
             >
               {" "}
@@ -368,10 +374,8 @@ class SimpleForm extends Component {
         <Typography
           gutterBottom
           style={{
-            textAlign: "center",
             fontFamily: "Raleway, sans-serif",
             fontSize: "18px",
-            marginLeft: "20px"
           }}
         >
           Already have an account ?
@@ -384,14 +388,10 @@ class SimpleForm extends Component {
           style={{
             backgroundColor: "rgb(186, 28, 58)",
             color: "white",
-            marginLeft: "20px",
-            marginRight: "20px",
-            marginTop: "4%",
-            marginBottom: "5%",
-            display: "block",
+            margin: "5%",
+            display: "inline",
             fontSize: "1.3em",
-            fontFamily: "Raleway",
-            borderRadius: "15px"
+            borderRadius: "15px",
           }}
         >
           <Typography

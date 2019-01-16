@@ -2,12 +2,7 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
-import "./IntroPage.css";
-// import Form from "./form/Form";
 import IntroImage from "../images/intro_image.png";
-//import BarProgress from "./BarProgress";
-
-// import showResults from "../showResults";
 import SimpleForm from "./SimpleForm";
 import axios from "axios";
 
@@ -55,20 +50,43 @@ class FormPage extends Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div>
-        {/*<BarProgress />*/}
-        <Grid
-          container
-          className="gridthanks"
-          style={{
-            backgroundColor: "rgb(125, 146, 177)",
-            position: "absolute",
-            minHeight: "100%"
-          }}
-        >
-          <Grid item xs={12} sm={6}>
-            <Typography
-              className="thank"
+        <div>
+          <Grid
+            container
+            className="formaccount"
+            style={{
+              backgroundColor: "rgb(125, 146, 177)",
+              position: "absolute",
+              minHeight: "100%"
+            }}
+          >
+            <Grid item xs={12} sm={6}>
+              <Typography
+                className="titleform"
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  margin: "5%",
+                  fontFamily: "Raleway",
+                  fontSize: "2em",
+
+                }}
+                gutterBottom
+              >
+                {" "}
+                Welcome to survey AAA
+              </Typography>
+              {/*
+            <Form /> */}
+              <SimpleForm
+                onSubmit={this.handleSubmit}
+                changeState={this.changeState}
+              />
+            </Grid>
+
+            <Grid
+              className="grid2"
+              id="postit"
               style={{
                 textAlign: "center",
                 justifyContent: "center",
