@@ -33,7 +33,6 @@ class AnswersPossibilities extends Component {
 
   handleChange = prop => e => {
     let target = e.target.value;
-
     e.preventDefault();
     this.setState({ [prop]: target }, () => {
       this.props.userAnswers.map(element => {
@@ -55,22 +54,34 @@ class AnswersPossibilities extends Component {
   };
 
   handleClick = e => {
+    let target = e.currentTarget.value;
     e.preventDefault();
-    {
-      this.setState({
-        [this.props.data_answers[0].questions_answers_possibilities.questionId]: e.currentTarget.value
-      }, this.props.liftState({
-        "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
-        "answersPossibilityId": parseInt(e.currentTarget.value),
-        "userId": this.props.user_id
-      }))
-    }
+    this.setState({
+      [this.props.data_answers[0].questions_answers_possibilities.questionId]: e.currentTarget.value
+    },
+      () => {
+        this.props.userAnswers.map(element => {
+          if (element.questionId === this.props.data_answers[0].questions_answers_possibilities.questionId) {
+            this.props.updateState({
+              "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
+              "answersPossibilityId": parseInt(target),
+              "userId": this.props.user_id
+            });
+            return 0;
+          }
+        });
+        this.props.liftState({
+          "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
+          "answersPossibilityId": parseInt(target),
+          "userId": this.props.user_id
+        });
+      });
   };
 
 
 
   render() {
-    console.log("HADES", this.props.userAnswers)
+
     if (this.state.type === 1) {
       return (
         <div>
@@ -87,7 +98,6 @@ class AnswersPossibilities extends Component {
       );
     }
 
-    //onChange={this.handleChange(this.props.data_answers[0].questions_answers_possibilities.questionId)}
     if (this.state.type === 2) {
       return (
         <div>
@@ -128,8 +138,7 @@ class AnswersPossibilities extends Component {
     }
 
     if (this.state.type === 3) {
-      const index = [(`Id_Question ${this.props.id}`)]
-
+      const index = [this.props.id]
       return (
         <div>
           <TextField
@@ -151,7 +160,7 @@ class AnswersPossibilities extends Component {
       );
     }
 
-    return <h1>HELLO WORLD</h1>;
+    return 0;
   }
 }
 

@@ -19,7 +19,7 @@ class Survey extends Component {
     questionsReponses: [],
     length: 0,
     pillarId: 0,
-    subPillarId: 0, // 2,2 pour drop down
+    subPillarId: 0,
     validationPage: false,
     thanksPage: false,
     user_answers: []
@@ -54,20 +54,15 @@ class Survey extends Component {
   };
 
   updateState = (sonState) => {
-    console.log("Flic0", this.state.user_answers)
     let answers = this.state.user_answers;
+
     answers.map((e, i) => {
       if (e.questionId === sonState.questionId) {
-        console.log(i)
         e.userId = sonState.userId;
         e.answersPossibilityId = sonState.answersPossibilityId;
         answers.splice(i, 1)
       }
-
-
     }, () => this.setState({ user_answers: answers }));
-    console.log("Flic4", answers);
-
   };
 
   goToThanksPage = () => {
@@ -109,6 +104,20 @@ class Survey extends Component {
     }
   };
 
+  submitAnswers = () => {
+    let url = 'http://localhost:3002/users_answers_possibilities_questions'
+    const config = this.state.user_answers
+
+    this.state.user_answers.map((e, i) => {
+      axios.post(url, config[i])
+        .then(this.setState({ user_answers: [] }));
+    })
+  }
+
+
+
+
+
   handleContinue = () => {
     if (
       this.state.subPillarId <
@@ -135,11 +144,11 @@ class Survey extends Component {
           }
         );
       } else {
-        // implémenter submit form
         this.setState({ validationPage: true, length: this.state.length + 1 });
       }
     }
     // Implémenter le submit de la partie du questionnaire
+    this.submitAnswers();
   };
 
   render() {
