@@ -134,15 +134,16 @@ class SimpleForm extends Component {
   };
 
   render() {
+    console.log("agencies", this.state.agencies)
+    console.log("comp", this.state.companies)
+    console.log("poles", this.state.poles)
     if (
       this.state.agencies === null ||
       this.state.companies === null ||
       this.state.poles === null
     )
       return "loading.....";
-    // console.log("agencies", this.state.agencies)
-    // console.log("comp", this.state.companies)
-    // console.log("poles", this.state.poles)
+
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }
@@ -205,13 +206,10 @@ class SimpleForm extends Component {
           <label>Email</label>
           <div>
             <Field
-              placeholder="Email"
               name="email"
               type="email"
-              placeholder="Your Email"
               validate={[required, email]}
               component={renderField}
-              required
             />
           </div>
         </div>
@@ -224,7 +222,6 @@ class SimpleForm extends Component {
               name="password"
               component="input"
               type="password"
-              placeholder="Your password here"
               validate={[required, minLength6]}
             />
           </div>

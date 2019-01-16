@@ -8,6 +8,8 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import MenuItem from "@material-ui/core/MenuItem";
 
+import './AnswersPossibilities.css'
+
 class AnswersPossibilities extends Component {
 
   state = {
@@ -15,18 +17,15 @@ class AnswersPossibilities extends Component {
   };
 
   componentDidMount = () => {
-    console.log('DidMount')
     this.setState({ type: this.props.data_answers[0].answersTypeId });
   };
 
   componentWillReceiveProps = prevpropsid => {
-    console.log('WillReceiveProps')
-    if (prevpropsid.id !== this.props.id)
+    if (prevpropsid.id !== this.props.data_answers[0].questions_answers_possibilities.questionId)
       this.setState({ type: 0 })
   }
 
   componentDidUpdate = () => {
-    console.log('DidUpdate')
     if (
       this.state.type !==
       this.props.data_answers[0].answersTypeId
@@ -34,36 +33,67 @@ class AnswersPossibilities extends Component {
       this.setState({ type: this.props.data_answers[0].answersTypeId })
   };
 
-
-
   handleChange = prop => e => {
+    let target = e.target.value;
     e.preventDefault();
-    this.setState({ [prop]: e.target.value });
+    this.setState({ [prop]: target }, () => {
+      this.props.userAnswers.map(element => {
+        if (element.questionId === this.props.data_answers[0].questions_answers_possibilities.questionId) {
+          this.props.updateState({
+            "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
+            "answersPossibilityId": parseInt(target),
+            "userId": this.props.user_id
+          });
+          return 0;
+        }
+      });
+      this.props.liftState({
+        "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
+        "answersPossibilityId": parseInt(target),
+        "userId": this.props.user_id
+      });
+    });
   };
 
   handleClick = e => {
+    let target = e.currentTarget.value;
     e.preventDefault();
-    const index = [(`Id_Question ${this.props.id}`)]
-    this.setState({ [index]: e.currentTarget.value })
+    this.setState({
+      [this.props.data_answers[0].questions_answers_possibilities.questionId]: e.currentTarget.value
+    },
+      () => {
+        this.props.userAnswers.map(element => {
+          if (element.questionId === this.props.data_answers[0].questions_answers_possibilities.questionId) {
+            this.props.updateState({
+              "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
+              "answersPossibilityId": parseInt(target),
+              "userId": this.props.user_id
+            });
+            return 0;
+          }
+        });
+        this.props.liftState({
+          "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
+          "answersPossibilityId": parseInt(target),
+          "userId": this.props.user_id
+        });
+      });
   };
 
 
 
   render() {
-    console.log("SATAN", this.state)
-
-    const index = [(`Id_Question ${this.props.id}`)]
 
     if (this.state.type === 1) {
       return (
-        <div>
-          <Button onClick={this.handleClick} value="Yes" variant="outlined">
+        <div className="yes-no-answer">
+          <Button onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
             Yes
           </Button>
-          <Button onClick={this.handleClick} value="No" variant="outlined">
+          <Button onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
             No
           </Button>
-          <Button onClick={this.handleClick} value="I don't know" variant="outlined">
+          <Button onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
             I don't know
           </Button>
         </div>
@@ -72,32 +102,34 @@ class AnswersPossibilities extends Component {
 
     if (this.state.type === 2) {
       return (
-        <div>
+        <div className="lickert-answer">
           <FormControl>
-            <RadioGroup row onChange={this.handleChange(index)}>
+            <RadioGroup
+              row
+              onChange={this.handleChange()} >
               <FormControlLabel
-                value="Strongly Disagree"
+                value="4"
                 control={<Radio />}
                 label="Strongly Disagree"
               />
               <FormControlLabel
 
-                value="Disagree"
+                value="5"
                 control={<Radio />}
                 label="Disagree"
               />
               <FormControlLabel
-                value="Agree"
+                value="6"
                 control={<Radio />}
                 label="Agree"
               />
               <FormControlLabel
-                value="Strongly agree"
+                value="7"
                 control={<Radio />}
                 label="Strongly agree"
               />
               <FormControlLabel
-                value="Don't know"
+                value="8"
                 control={<Radio />}
                 label="Don't know"
               />
@@ -108,9 +140,9 @@ class AnswersPossibilities extends Component {
     }
 
     if (this.state.type === 3) {
-
+      const index = [this.props.id]
       return (
-        <div>
+        <div className="drop-answer">
           <TextField
             select
             onChange={this.handleChange(index)}
@@ -121,7 +153,7 @@ class AnswersPossibilities extends Component {
 
           >
             {this.props.data_answers.map((e, i) => (
-              <MenuItem key={i} value={e.answer}>
+              <MenuItem key={i} value={e.id}>
                 {e.answer}
               </MenuItem>
             ))}
@@ -130,7 +162,7 @@ class AnswersPossibilities extends Component {
       );
     }
 
-    return <h1>HELLO WORLD</h1>;
+    return 0;
   }
 }
 
