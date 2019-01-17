@@ -7,6 +7,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import MenuItem from "@material-ui/core/MenuItem";
+import Grid from "@material-ui/core/Grid";
 
 import './AnswersPossibilities.css'
 
@@ -14,6 +15,7 @@ class AnswersPossibilities extends Component {
 
   state = {
     type: 0,
+    selected: null
   };
 
   componentDidMount = () => {
@@ -37,7 +39,7 @@ class AnswersPossibilities extends Component {
     let target = e.target.value;
     e.preventDefault();
     this.setState({ [prop]: target }, () => {
-      this.props.userAnswers.map(element => {
+          this.props.userAnswers.map(element => {
         if (element.questionId === this.props.data_answers[0].questions_answers_possibilities.questionId) {
           this.props.updateState({
             "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
@@ -59,7 +61,7 @@ class AnswersPossibilities extends Component {
     let target = e.currentTarget.value;
     e.preventDefault();
     this.setState({
-      [this.props.data_answers[0].questions_answers_possibilities.questionId]: e.currentTarget.value
+      selected : e.currentTarget.value
     },
       () => {
         this.props.userAnswers.map(element => {
@@ -83,17 +85,17 @@ class AnswersPossibilities extends Component {
 
 
   render() {
-
+    console.log(this.state)
     if (this.state.type === 1) {
       return (
-        <div className="yes-no-answer">
-          <Button onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
+        <div className="container-yes-no-answer">
+          <Button className={ this.state.selected === "1" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
             Yes
           </Button>
-          <Button onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
+          <Button className={ this.state.selected === "2" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
             No
           </Button>
-          <Button onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
+          <Button  className={ this.state.selected === "3" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
             I don't know
           </Button>
         </div>
@@ -102,36 +104,39 @@ class AnswersPossibilities extends Component {
 
     if (this.state.type === 2) {
       return (
-        <div className="lickert-answer">
+        <div  className="container-lickert-answer">
           <FormControl>
-            <RadioGroup
-              row
+            <RadioGroup row
               onChange={this.handleChange()} >
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="4"
                 control={<Radio />}
                 label="Strongly Disagree"
+                labelPlacement="top"
               />
-              <FormControlLabel
-
+              <FormControlLabel className="lickert-answer"
                 value="5"
                 control={<Radio />}
                 label="Disagree"
+                labelPlacement="top"
               />
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="6"
                 control={<Radio />}
                 label="Agree"
+                labelPlacement="top"
               />
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="7"
                 control={<Radio />}
                 label="Strongly agree"
+                labelPlacement="top"
               />
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="8"
                 control={<Radio />}
                 label="Don't know"
+                labelPlacement="top"
               />
             </RadioGroup>
           </FormControl>
@@ -142,7 +147,7 @@ class AnswersPossibilities extends Component {
     if (this.state.type === 3) {
       const index = [this.props.id]
       return (
-        <div className="drop-answer">
+        <div className="container-drop-answer">
           <TextField
             select
             onChange={this.handleChange(index)}

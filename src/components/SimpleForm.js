@@ -172,7 +172,7 @@ class SimpleForm extends Component {
             style={{
               fontFamily: "Raleway",
             }}>Create your account</h1>
-          <label>Gender</label>
+          <label className="title-input">Gender</label>
           <div>
             <label>
               <Field
@@ -203,7 +203,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Email</label>
+          <label className="title-input">Email</label>
           <div>
             <Field
               name="email"
@@ -215,7 +215,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Password</label>
+          <label className="title-input">Password</label>
           <div>
             <Field
               className="widthInput"
@@ -228,7 +228,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Age range</label>
+          <label className="title-input">Age range</label>
           <div>
             <Field
               name="age_range"
@@ -245,7 +245,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Company</label>
+          <label className="title-input">Company</label>
           <div>
             <Field
               name="company"
@@ -264,7 +264,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Agency</label>
+          <label className="title-input">Agency</label>
           <div>
             <Field
               name="agency"
@@ -283,7 +283,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Department</label>
+          <label className="title-input">Department</label>
           <div>
             <Field
               name="department"
@@ -302,7 +302,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Business focus</label>
+          <label className="title-input">Business focus</label>
           <div>
             <Field
               name="business_focus"
@@ -319,7 +319,7 @@ class SimpleForm extends Component {
         </div>
 
         <div>
-          <label>Seniority</label>
+          <label className="title-input">Seniority</label>
           <div>
             <Field
               name="seniority"
@@ -359,7 +359,6 @@ class SimpleForm extends Component {
                 fontSize: "20px",
                 lineHeight: "14px",
                 padding: "15px 25px",
-                verticalAlign: "middle",
               }}
             >
               {" "}
