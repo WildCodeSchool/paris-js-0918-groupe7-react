@@ -8,17 +8,21 @@ import { Redirect } from 'react-router-dom';
 
 class AdminCardCrtl extends Component {
     state= {
-        download: false
+        redirect: ''
     }
 
 handleClick = (e) => {
     this.setState({
-        download: true
+        redirect: e.currentTarget.value
     })
 }
+
     render(){
-        if (this.state.download)
+        console.log(this.state.redirect)
+        if (this.state.redirect === 'download')
             return <Redirect to="/admin/DownloadData" />
+        if (this.state.redirect === 'update')
+            return <Redirect to="/admin/UpdateCompanies" />
         return (
             <Card className='card' style={{ 
                 
@@ -43,6 +47,7 @@ handleClick = (e) => {
                     variant="contained"  
                     className='but'
                     size='large'
+                    value='download'
                     style={{
                     backgroundColor: 'rgb(38, 56, 87)',
                     color: 'white',
@@ -57,10 +62,12 @@ handleClick = (e) => {
                     >
                     Download Data
                     </Button>
-                    <Button 
+                    <Button
+                    onClick={this.handleClick} 
                     variant="contained"  
                     className='but'
                     size='large'
+                    value='update'
                     style={{
                     backgroundColor: 'rgb(38, 56, 87)',
                     color: 'white',
@@ -73,9 +80,9 @@ handleClick = (e) => {
                     fontFamily: 'Raleway'
                     }}
                     >
-                    Create
+                    Update Companies
                     </Button>
-                    <Button 
+                    {/* <Button 
                     variant="contained"  
                     className='but'
                     size='large'
@@ -129,7 +136,7 @@ handleClick = (e) => {
                     >
                     Delete
                     </Button>
-                    
+                     */}
 
                 </div>
 
