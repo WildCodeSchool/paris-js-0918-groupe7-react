@@ -105,7 +105,7 @@ class DownloadCard extends Component {
           fontFamily: "Raleway",
           fontSize: "1em",
           backgroundColor:"white",
-          borderRadius:"10%",
+          borderRadius:"10px",
           padding:"10%",
               
         }}>                
