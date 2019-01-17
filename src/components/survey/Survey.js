@@ -154,6 +154,7 @@ class Survey extends Component {
   };
 
   render() {
+    console.log("MARION MARECHAL", this.state.pillarId, this.state.subPillarId)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
@@ -184,37 +185,37 @@ class Survey extends Component {
     return (
       <div>
         <Grid container>
-        <Hidden only={['xs', 'sm']}>
-          <BarProgress
-            data={this.state.data.pole.pillars}
-            step={this.state.length}
-          />
+          <Hidden only={['xs', 'sm']}>
+            <BarProgress
+              data={this.state.data.pole.pillars}
+              step={this.state.length}
+            />
           </Hidden>
 
-        <Hidden only={['xs']}>
-          <Grid item sm={5} className="background-left">
-            <div>
-              <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
-            </div>
+          <Hidden only={['xs']}>
+            <Grid item sm={5} className="background-left">
+              <div>
+                <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
+              </div>
 
-            <div>
-              <h2 className="pole-survey">{this.state.data.pole.pillars[this.state.pillarId].name}</h2>
-            </div>
+              <div>
+                <h2 className="pole-survey">{this.state.data.pole.pillars[this.state.pillarId].name}</h2>
+              </div>
 
-            <div>
-            <img className="line-survey" src={line} alt='separator'/>
-            </div>
+              <div>
+                <img className="line-survey" src={line} alt='separator' />
+              </div>
 
-            <div className="container-subpillars-survey">
-              {this.state.data.pole.pillars[
-                this.state.pillarId
-              ].sub_pillars.map((e, i) => (
-                <h3 className="subpillars-survey" key={i} value={e.id}>
-                  {e.name}
-                </h3>
-              ))}
-            </div>
-          </Grid>
+              <div className="container-subpillars-survey">
+                {this.state.data.pole.pillars[
+                  this.state.pillarId
+                ].sub_pillars.map((e, i) => (
+                  <h3 className="subpillars-survey" key={i} value={e.id}>
+                    {e.name}
+                  </h3>
+                ))}
+              </div>
+            </Grid>
           </Hidden>
 
           <Grid item xs={12} sm={7} className="background-right">
@@ -232,7 +233,7 @@ class Survey extends Component {
                 />
               </div>
             ))}
-            <Button onClick={this.handleBack}>Back</Button>
+            <Button className={this.state.pillarId === 0 && this.state.subPillarId === 0 ? 'HiddenBack' : 'VisibleBack'} onClick={this.handleBack}>Back</Button>
             <Button onClick={this.handleContinue}>continue</Button>
           </Grid>
         </Grid>

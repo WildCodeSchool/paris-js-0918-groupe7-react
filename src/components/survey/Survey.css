@@ -48,3 +48,7 @@
     margin-bottom: 3%;
 }
 
+Button.HiddenBack{
+    display:none
+}
+
