@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import './DownloadCard.css'
 
 import { CSVLink } from "react-csv";
 
@@ -26,7 +27,9 @@ class DownloadCard extends Component {
     agencies: [],
     agency: "",
     token: localStorage.getItem("token"),
-    adminHomePage: false
+    adminHomePage: false,
+    employees: 0,
+    totalEmployees:0
   };
 
   componentDidMount = () => {
@@ -57,7 +60,9 @@ class DownloadCard extends Component {
             headers: {
               authorization: `Bearer ${this.state.token}`
             }
-          }).then(res => this.setState({ data: res.data }));
+          }).then(res => 
+            this.setState({ data: res.data }, () => { this.formatData() } )
+          );        
         } else {
           // Stockage des agences dans un state
           this.setState({ agencies: res.data });
@@ -77,9 +82,7 @@ class DownloadCard extends Component {
         authorization: `Bearer ${this.state.token}`
       }
     }).then(res =>
-      this.setState({ data: res.data }, () => {
-        this.formatData();
-      })
+      this.setState({ data: res.data }, () => { this.formatData() } )
     );
   };
 
@@ -91,7 +94,6 @@ class DownloadCard extends Component {
 
   formatData = () => {
     let results = [];
-
     this.state.data[0].users.map((user, index) => {
       const axes = ["Agile Capabilities", "Agile Adoption"];
       let userData = {
@@ -100,26 +102,24 @@ class DownloadCard extends Component {
         seniority: user.seniority,
         age_range: user.age_range,
         business_focus: user.business_focus,
-        department: user.pole.name,
+        department: user.pole.name
       };
-
       axes.map(axe => {
         let axeWeight = 0;
 
         user.users_answers_possibilities_questions.filter(quest_ans => {
-          if (quest_ans.question.agile_orientation.includes(axe)) {
-            axeWeight += quest_ans.answers_possibility.weight
+          if(user.users_answers_possibilities_questions !== []) {
+            if (quest_ans.question.agile_orientation.includes(axe)) {
+              axeWeight += quest_ans.answers_possibility.weight
+            }
+            this.setState({employees: this.state.employees +1})
           }
         });
         userData[axe]=axeWeight;
       });
-
-      
-
       results.push(userData);
     });
-    console.log("EndOfFunction:", results);
-    this.setState({ results: results });
+    this.setState({ results: results, totalEmployees: this.state.data[0].users.length });
   };
 
   render() {
@@ -211,7 +211,8 @@ class DownloadCard extends Component {
                   {option.name}
                 </MenuItem>
               ))}
-            </TextField>{" "}
+            </TextField>
+            <CardContent><h5 className={this.state.totalEmployees === 0 ? 'HiddenCount' : 'VisibleCount'} >Actually, there are {this.state.employees} out of {this.state.totalEmployees} employees who are completing ( or have completed  ) your survey. </h5></CardContent>{" "}
             {/* <button > */}
             <CSVLink data={this.state.results}>Download</CSVLink>
             {/* </button> */}

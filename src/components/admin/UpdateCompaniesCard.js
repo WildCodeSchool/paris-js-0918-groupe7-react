@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Input from '@material-ui/core/Input';
 
 import { CSVLink } from "react-csv";
 
@@ -49,37 +50,7 @@ class UpdateCompaniesCard extends Component {
           authorization: `Bearer ${this.state.token}`
         }
     })
-      .then(res => {
-        // Si pas d'agences, récupération des données de la compagnie
-        if (res.data === []) {
-          axios({
-            method: "GET",
-            url: `http://localhost:3002/companies/uapq/${this.state.company}`, // mettre la route exacte
-            headers: {
-              authorization: `Bearer ${this.state.token}`
-            }
-          }).then(res => this.setState({ data: res.data }));
-        } else {
-          // Stockage des agences dans un state
-          this.setState({ agencies: res.data });
-        }
-      });
     });
-  };
-
-  handleChangeAgency = prop => event => {
-    const agency = event.target.value;
-    this.setState({ [prop]: agency });
-
-    axios({
-      method: "GET",
-      url: `http://localhost:3002/agencies/uapq/${agency}`, // mettre la route exacte
-      headers: {
-        authorization: `Bearer ${this.state.token}`
-      }
-    }).then(res => this.setState({ data: res.data }));
-    // recupere la data d'une compagnie selectionnee au format csv et gestion du telechargement de la data
-    //mise en forme des
   };
 
   handleClick = (e) => {
@@ -131,6 +102,7 @@ class UpdateCompaniesCard extends Component {
             >
             Back
           </Button>
+          
           <Typography
             className="thank"
             style={{
@@ -163,25 +135,10 @@ class UpdateCompaniesCard extends Component {
               </MenuItem>
             ))}
           </TextField>
-          <TextField
-            className={classes.poleContainer}
-            select
-            value={this.state.agency}
-            onChange={this.handleChangeAgency("agency")}
-            label="Agencies"
-            helperText="Please select an agency"
-            margin="normal"
-            variant="outlined"
-          >
-            {this.state.agencies.map(option => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.name}
-              </MenuItem>
-            ))}
-          </TextField>{" "}
-          {/* <button > */}
-          <CSVLink data={this.state.data}>Download</CSVLink>
-          {/* </button>  */}
+          <Button>Delete</Button>
+          <CardContent>
+            <Input />
+          </CardContent>
           </CardContent>  
         </Card>
       </div>
