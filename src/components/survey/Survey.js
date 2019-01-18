@@ -187,8 +187,8 @@ class Survey extends Component {
           />
           </Hidden>
 
-        <Hidden only={['xs']}>
-          <Grid item sm={4} md={3} className="background-left">
+        <Hidden only={['xs', 'sm']}>
+          <Grid item md={5} className="background-left">
             <div>
               <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
             </div>
@@ -213,7 +213,7 @@ class Survey extends Component {
           </Grid>
           </Hidden>
 
-          <Grid item xs={12} sm={8} md={9} className="background-right">
+          <Grid item xs={12} md={7} className="background-right">
             {this.state.questionsReponses.map((elem, index) => (
               <div key={index}>
                 <div className="question">{elem.question}</div>
