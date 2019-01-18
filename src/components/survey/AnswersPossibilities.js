@@ -86,13 +86,13 @@ class AnswersPossibilities extends Component {
     if (this.state.type === 1) {
       return (
         <div className="container-yes-no-answer">
-          <Button className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "1" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
+          <Button className="button-yes-no" className= { this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "1" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
             Yes
           </Button>
-          <Button className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "2" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
+          <Button className="button-yes-no" className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "2" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
             No
           </Button>
-          <Button  className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "3" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
+          <Button className="button-yes-no" className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "3" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
             I don't know
           </Button>
         </div>
@@ -106,38 +106,33 @@ class AnswersPossibilities extends Component {
             <RadioGroup row
               onChange={this.handleChange()} >
               <FormControlLabel className="lickert-answer"
-                className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "4" ? "Selected" : "Not selected"}
                 value="4"
-                control={<Radio className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "4" ? "Selected" : "Not selected"} />}
-                label="Strongly Disagree"
+                control= {<Radio className= { this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "4" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} style={{ color:'rgb(59,84,125)'}} />} 
+                label={<p>Strongly Disagree</p>}
                 labelPlacement="top"
               />
               <FormControlLabel className="lickert-answer"
-              className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "5" ? "Selected" : "Not selected"}
                 value="5"
-                control={<Radio />}
-                label="Disagree"
+                control={<Radio style={{ color:'rgb(59,84,125)'}}  />}
+                label={<p>Disagree</p>}
                 labelPlacement="top"
               />
               <FormControlLabel className="lickert-answer"
-              className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "6" ? "Selected" : "Not selected"}
                 value="6"
-                control={<Radio />}
-                label="Agree"
+                control={<Radio style={{ color:'rgb(59,84,125)'}} />}
+                label={<p>Agree</p>}
                 labelPlacement="top"
               />
               <FormControlLabel className="lickert-answer"
-                className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "7" ? "Selected" : "Not selected"}
                 value="7"
-                control={<Radio />}
-                label="Strongly agree"
+                control={<Radio style={{ color:'rgb(59,84,125)'}} />}
+                label={<p>Strongly agree</p>}
                 labelPlacement="top"
               />
               <FormControlLabel className="lickert-answer"
-                className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "8" ? "Selected" : "Not selected"}
                 value="8"
-                control={<Radio />}
-                label="Don't know"
+                control={<Radio style={{ color:'rgb(59,84,125)'}} />}
+                label={<p>Don't know</p>}
                 labelPlacement="top"
               />
             </RadioGroup>

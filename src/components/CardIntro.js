@@ -43,22 +43,23 @@ render(){
           margin:'auto',
           padding: '7%',
           borderRadius:'10%',
+          marginBottom: '10%'
         }}
       >
         <CardContent className="cardContent">
 
           <h1 className="title-intro">Some information before you begin</h1>
-
+{/* 
           <div className="container-clock">
             <img className="clock" src={clock} alt='clock'/>
-          </div>
+          </div> */}
 
 
           <Typography
             style={{
               textAlign: "center",
               fontFamily: "Raleway",
-              fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)",
+              fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)",
               marginBottom: "20px",
               textAlign: "justify"
             }}
@@ -74,7 +75,7 @@ render(){
                 style={{
                   textAlign: "center",
                   fontFamily: "Raleway",
-                  fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)",
+                  fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)",
                   marginBottom: "20px",
                   marginTop: "20px",
                   textAlign: "justify"
@@ -96,7 +97,7 @@ render(){
               variant="contained"
               size="large"
             >
-              Start Now
+              Start
             </Button>
           </div>
         </CardContent>
