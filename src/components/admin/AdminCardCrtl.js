@@ -21,114 +21,110 @@ handleClick = (e) => {
             return <Redirect to="/admin/DownloadData" />
         return (
             <Card className='card' style={{ 
-                
                 textAlign: "left",
-            justifyContent: "center",
-            verticalAlign: "middle",
-            color: "black",
-            margin: "5%",
-            fontFamily: "Raleway",
-            fontSize: "1em",
-            backgroundColor:"white",
-            borderRadius:"10%",
-            padding:"10%",
-                
-            }}>
+                justifyContent: "center",
+                verticalAlign: "middle",
+                color: "black",
+                marginBottom: "13%",
+                marginLeft: "20%",
+                marginRight: "20%",
+                marginTop: "5%",
+                fontFamily: "Raleway",
+                fontSize: "1em",
+                backgroundColor:"white",
+                borderRadius:"10px",
+                padding: "3%"
+                }}>
                 
                 <CardContent className='cardContent'>
                 
                 <div className='button'>
-                <Button 
-                    onClick={this.handleClick}
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Download Data
-                    </Button>
                     <Button 
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Create
-                    </Button>
-                    <Button 
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Read
-                    </Button>
-                    <Button 
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Update
-                    </Button>
-                    <Button 
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Delete
-                    </Button>
+                        onClick={this.handleClick}
+                        variant="contained"  
+                        className='but'
+                        size='large'
+                        style={{
+                        backgroundColor: 'rgb(38, 56, 87)',
+                        color: 'white',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                        marginTop: '5%',
+                        fontSize: '1.3em',
+                        fontFamily: 'Raleway'
+                        }}
+                        >
+                        Download Data
+                        </Button>
+                        <Button 
+                        variant="contained"  
+                        className='but'
+                        size='large'
+                        style={{
+                        backgroundColor: 'rgb(38, 56, 87)',
+                        color: 'white',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                        marginTop: '5%',
+                        fontSize: '1.3em',
+                        fontFamily: 'Raleway'
+                        }}
+                        >
+                        Create
+                        </Button>
+                        <Button 
+                        variant="contained"  
+                        className='but'
+                        size='large'
+                        style={{
+                        backgroundColor: 'rgb(38, 56, 87)',
+                        color: 'white',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                        marginTop: '5%',
+                        fontSize: '1.3em',
+                        fontFamily: 'Raleway'
+                        }}
+                        >
+                        Read
+                        </Button>
+                        <Button 
+                        variant="contained"  
+                        className='but'
+                        size='large'
+                        style={{
+                        backgroundColor: 'rgb(38, 56, 87)',
+                        color: 'white',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                        marginTop: '5%',
+                        fontSize: '1.3em',
+                        fontFamily: 'Raleway'
+                        }}
+                        >
+                        Update
+                        </Button>
+                        <Button 
+                        variant="contained"  
+                        className='but'
+                        size='large'
+                        style={{
+                        backgroundColor: 'rgb(38, 56, 87)',
+                        color: 'white',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                        marginTop: '5%',
+                        fontSize: '1.3em',
+                        fontFamily: 'Raleway'
+                        }}
+                        >
+                        Delete
+                        </Button>
                     
 
                 </div>

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import './SimpleForm.css';
 
-import Axios from 'axios';
+import axios from 'axios';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -112,19 +112,19 @@ const seniority = [
 class SimpleForm extends Component {
 
   state = {
-    agencies: null,
+    agencies: [],
     companies: null,
+    company: null,
     poles: null,
     redirect: false
   };
 
   componentDidMount() {
-    let urlA = "http://localhost:3002/agencies";
     let urlC = "http://localhost:3002/companies";
     let urlP = "http://localhost:3002/poles";
-    Axios.get(urlA).then(res => this.setState({ agencies: res.data }));
-    Axios.get(urlC).then(res => this.setState({ companies: res.data }));
-    Axios.get(urlP).then(res => this.setState({ poles: res.data }));
+    
+    axios.get(urlC).then(res => this.setState({ companies: res.data }));
+    axios.get(urlP).then(res => this.setState({ poles: res.data }));
   }
 
   handleClick = e => {
@@ -133,12 +133,17 @@ class SimpleForm extends Component {
     });
   };
 
+  handleChange = e => {
+    axios
+    .get(`http://localhost:3002/agencies/companyId/${e.target.value}`)
+    .then(res => this.setState({agencies: res.data}));
+  };
+
   render() {
     console.log("agencies", this.state.agencies)
     console.log("comp", this.state.companies)
     console.log("poles", this.state.poles)
     if (
-      this.state.agencies === null ||
       this.state.companies === null ||
       this.state.poles === null
     )
@@ -249,6 +254,7 @@ class SimpleForm extends Component {
           <div>
             <Field
               name="company"
+              onChange={this.handleChange}
               component="select"
               className="widthInput"
               validate={[required]}
@@ -346,7 +352,6 @@ class SimpleForm extends Component {
               backgroundColor: "rgb(45,52,90)",
               color: "white",
               margin: "5%",
-              display: "block",
               fontSize: "1.3em",
               borderRadius: "15px",
               display: "inline"
