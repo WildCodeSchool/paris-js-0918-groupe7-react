@@ -114,7 +114,7 @@ class AdminCardCrtl extends Component {
                                         fontSize: "1.3em",
                                         fontFamily: "Raleway"
                                     }}
-                                    onClick={this.handleClick}
+                                    onClick={this.handleLogOut}
                                 >
                                     Log Out
                                </Button>
