@@ -11,6 +11,7 @@ Button.Selected{
     color: #FFFFFF;
 }
 
+
 .container-lickert-answer{
     padding-bottom: 10%;
 }
@@ -23,4 +24,5 @@ Button.Selected{
     max-width: 15px;
     padding: 0 2.2vw;
 }
+
 

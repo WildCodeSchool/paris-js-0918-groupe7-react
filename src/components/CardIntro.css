@@ -1,15 +1,37 @@
-.button {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.title-intro {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 10%;
+    font-size: calc(0.6vw + 0.6vh + 1vmin);
 }
 
-.but {
-    display: block;
-    align-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+hr {
+    background-color: #000000;
+    max-width: 300px;
+    margin-bottom: 7%;
 }
 
 
+.container-clock{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.clock{
+    width:10%;
+    height:10%;
+}
+
+div.button{
+    display:flex;
+    justify-content: center;
+}
+.button-start-survey{
+
+    padding: 20px 40px !important;
+    font-family: "Raleway";
+    font-size: "1.3em";
+    color:#FFFFFF !important;
+    background-color: rgb(38, 56, 87) !important;
+}
