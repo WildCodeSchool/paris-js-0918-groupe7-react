@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import "./IntroPage.css";
-import ThanksImg from "../images/thanks_img.jpg";
-import ThanksCard from "./ThanksCard";
-//import BarProgress from "./BarProgress";
+import ImgIntro from "../../images/intro_image.png";
+import UpdateCompaniesCard from "./UpdateCompaniesCard";
 
-class ThanksPage extends Component {
+class UpdateCompanies extends Component {
   render() {
     return (
       <div>
-        {/*<BarProgress />*/}
         <Grid
           container
-          className="gridthanks"
+          className="gridUpdateCompanies"
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
@@ -22,7 +19,7 @@ class ThanksPage extends Component {
         >
           <Grid item xs={12} sm={6}>
             <Typography
-              className="thank"
+              className="UpdateCompanies"
               style={{
                 textAlign: "center",
                 justifyContent: "center",
@@ -35,21 +32,17 @@ class ThanksPage extends Component {
               gutterBottom
             >
               {" "}
-              Thank you for asking to Agile Maturity Assessment !
+              Update Companies
             </Typography>
-
-            <ThanksCard  />
+            <UpdateCompaniesCard />                       
           </Grid>
-
           <Grid
             style={{
-              backgroundImage: `url(${ThanksImg})`,
-              backgroundSize: "100% 100%",
+              backgroundImage: `url(${ImgIntro})`,
+              backgroundSize: "auto",
               backgroundRepeat: "no-repeat"
             }}
-            item
-            xs={12}
-            sm={6}
+            item xs={12} sm={6}
           />
         </Grid>
       </div>
@@ -57,4 +50,4 @@ class ThanksPage extends Component {
   }
 }
 
-export default ThanksPage;
+export default UpdateCompanies;

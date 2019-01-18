@@ -17,12 +17,11 @@ class AdminHomePage extends Component {
                 
                     <Grid item xs={12} sm={6}>
 
-                        <Typography className='thank' style={{
+                        <Typography style={{
                         textAlign: 'center',
                         justifyContent: 'center',
-                        verticalAlign: 'middle',
                         color: 'white',
-                        margin: '5% auto',
+                        margin: '5%',
                         fontFamily: 'Raleway',
                         fontSize: '2em',
                         }} gutterBottom> Welcome Admin
@@ -30,7 +29,7 @@ class AdminHomePage extends Component {
                         <AdminCardCrtl />                       
                     </Grid>
                     
-                    <Grid className='grid2' id='postit' style={{
+                    <Grid style={{
                         backgroundImage: `url(${ImgIntro})`,
                         backgroundSize: 'auto',
                         backgroundRepeat: 'no-repeat',
