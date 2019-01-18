@@ -16,13 +16,20 @@ handleClick = (e) => {
         redirect: e.currentTarget.value
     })
 }
-
+handleLogOut = (e) => {
+    localStorage.removeItem("token");
+    this.setState({
+        redirect: e.currentTarget.value
+    })
+}
     render(){
         console.log(this.state.redirect)
         if (this.state.redirect === 'download')
             return <Redirect to="/admin/DownloadData" />
         if (this.state.redirect === 'update')
             return <Redirect to="/admin/UpdateCompanies" />
+        if (this.state.redirect === 'logout')
+            return <Redirect to="/login" />
         return (
             <Card className='card' style={{ 
                 textAlign: "left",
@@ -56,7 +63,6 @@ handleClick = (e) => {
                     marginRight: 'auto',
                     display: 'block',
                     marginTop: '5%',
-                    blockSize: '18px',
                     fontSize: '1.3em',
                     fontFamily: 'Raleway'
                     }}
@@ -76,68 +82,31 @@ handleClick = (e) => {
                     marginRight: 'auto',
                     display: 'block',
                     marginTop: '5%',
-                    blockSize: '18px',
                     fontSize: '1.3em',
                     fontFamily: 'Raleway'
                     }}
                     >
                     Update Companies
                     </Button>
-                    {/* <Button 
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Read
+                    <Button
+                        variant="contained"
+                        className="but"
+                        size="large"
+                        value='logout'
+                        style={{
+                            backgroundColor: "rgb(186, 28, 58)",
+                            color: "white",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            display: "block",
+                            marginTop: "5%",
+                            fontSize: "1.3em",
+                            fontFamily: "Raleway"
+                        }}
+                        onClick={this.handleClick}
+                        >
+                        Log Out
                     </Button>
-                    <Button 
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Update
-                    </Button>
-                    <Button 
-                    variant="contained"  
-                    className='but'
-                    size='large'
-                    style={{
-                    backgroundColor: 'rgb(38, 56, 87)',
-                    color: 'white',
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
-                    display: 'block',
-                    marginTop: '5%',
-                    blockSize: '18px',
-                    fontSize: '1.3em',
-                    fontFamily: 'Raleway'
-                    }}
-                    >
-                    Delete
-                    </Button>
-                     */}
                 </div>
 
                 </CardContent>

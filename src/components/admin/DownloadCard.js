@@ -36,7 +36,7 @@ class DownloadCard extends Component {
   componentDidMount = () => {
     axios({
       method: "GET",
-      url: "http://localhost:3002/companies/",
+      url: "http://localhost:3002/companies/isactive",
       headers: {
         authorization: `Bearer ${this.state.token}`
       }
@@ -158,7 +158,6 @@ class DownloadCard extends Component {
                 marginRight: "auto",
                 display: "block",
                 marginTop: "5%",
-                blockSize: "18px",
                 fontSize: "1.3em",
                 fontFamily: "Raleway"
               }}

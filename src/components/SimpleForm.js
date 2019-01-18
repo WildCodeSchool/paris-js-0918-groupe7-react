@@ -120,7 +120,7 @@ class SimpleForm extends Component {
   };
 
   componentDidMount() {
-    let urlC = "http://localhost:3002/companies";
+    let urlC = "http://localhost:3002/companies/isactive";
     let urlP = "http://localhost:3002/poles";
     
     axios.get(urlC).then(res => this.setState({ companies: res.data }));
