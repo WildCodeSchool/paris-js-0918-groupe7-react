@@ -38,7 +38,7 @@ class IntroPage extends Component {
                     <Grid item md={6}
                         style={{
                             backgroundImage: `url(${ImgIntro})`,
-                            backgroundSize: 'auto',
+                            backgroundSize: 'auto 100%',
                             backgroundRepeat: 'no-repeat',
                         }} >
                     </Grid>
