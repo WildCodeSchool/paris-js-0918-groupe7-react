@@ -37,7 +37,7 @@ class AnswersPossibilities extends Component {
     let target = e.target.value;
     e.preventDefault();
     this.setState({ [prop]: target }, () => {
-      this.props.userAnswers.map(element => {
+          this.props.userAnswers.map(element => {
         if (element.questionId === this.props.data_answers[0].questions_answers_possibilities.questionId) {
           this.props.updateState({
             "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
@@ -59,7 +59,7 @@ class AnswersPossibilities extends Component {
     let target = e.currentTarget.value;
     e.preventDefault();
     this.setState({
-      [this.props.data_answers[0].questions_answers_possibilities.questionId]: e.currentTarget.value
+      [this.props.data_answers[0].questions_answers_possibilities.questionId] : e.currentTarget.value
     },
       () => {
         this.props.userAnswers.map(element => {
@@ -81,19 +81,18 @@ class AnswersPossibilities extends Component {
   };
 
 
-
   render() {
-
+    console.log(this.state)
     if (this.state.type === 1) {
       return (
-        <div className="yes-no-answer">
-          <Button onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
+        <div className="container-yes-no-answer">
+          <Button className="button-yes-no" className= { this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "1" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
             Yes
           </Button>
-          <Button onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
+          <Button className="button-yes-no" className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "2" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
             No
           </Button>
-          <Button onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
+          <Button className="button-yes-no" className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "3" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
             I don't know
           </Button>
         </div>
@@ -102,36 +101,39 @@ class AnswersPossibilities extends Component {
 
     if (this.state.type === 2) {
       return (
-        <div className="lickert-answer">
+        <div  className="container-lickert-answer">
           <FormControl>
-            <RadioGroup
-              row
+            <RadioGroup row
               onChange={this.handleChange()} >
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="4"
-                control={<Radio />}
-                label="Strongly Disagree"
+                control= {<Radio className= { this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "4" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} style={{ color:'rgb(59,84,125)'}} />} 
+                label={<p>Strongly Disagree</p>}
+                labelPlacement="top"
               />
-              <FormControlLabel
-
+              <FormControlLabel className="lickert-answer"
                 value="5"
-                control={<Radio />}
-                label="Disagree"
+                control={<Radio style={{ color:'rgb(59,84,125)'}}  />}
+                label={<p>Disagree</p>}
+                labelPlacement="top"
               />
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="6"
-                control={<Radio />}
-                label="Agree"
+                control={<Radio style={{ color:'rgb(59,84,125)'}} />}
+                label={<p>Agree</p>}
+                labelPlacement="top"
               />
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="7"
-                control={<Radio />}
-                label="Strongly agree"
+                control={<Radio style={{ color:'rgb(59,84,125)'}} />}
+                label={<p>Strongly agree</p>}
+                labelPlacement="top"
               />
-              <FormControlLabel
+              <FormControlLabel className="lickert-answer"
                 value="8"
-                control={<Radio />}
-                label="Don't know"
+                control={<Radio style={{ color:'rgb(59,84,125)'}} />}
+                label={<p>Don't know</p>}
+                labelPlacement="top"
               />
             </RadioGroup>
           </FormControl>
@@ -142,7 +144,7 @@ class AnswersPossibilities extends Component {
     if (this.state.type === 3) {
       const index = [this.props.id]
       return (
-        <div className="drop-answer">
+        <div className="container-drop-answer">
           <TextField
             select
             onChange={this.handleChange(index)}
