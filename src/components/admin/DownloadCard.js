@@ -8,7 +8,6 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-
 import { CSVLink } from "react-csv";
 
 
@@ -106,7 +105,7 @@ class DownloadCard extends Component {
           fontFamily: "Raleway",
           fontSize: "1em",
           backgroundColor:"white",
-          borderRadius:"10%",
+          borderRadius:"10px",
           padding:"10%",
               
         }}>                
@@ -123,7 +122,6 @@ class DownloadCard extends Component {
             marginRight: 'auto',
             display: 'block',
             marginTop: '5%',
-            blockSize: '18px',
             fontSize: '1.3em',
             fontFamily: 'Raleway'
             }}
