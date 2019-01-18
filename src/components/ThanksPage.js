@@ -42,8 +42,6 @@ class ThanksPage extends Component {
           </Grid>
 
           <Grid
-            className="grid2"
-            id="postit"
             style={{
               backgroundImage: `url(${ThanksImg})`,
               backgroundSize: "100% 100%",

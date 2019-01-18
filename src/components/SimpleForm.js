@@ -346,7 +346,6 @@ class SimpleForm extends Component {
               backgroundColor: "rgb(45,52,90)",
               color: "white",
               margin: "5%",
-              display: "block",
               fontSize: "1.3em",
               borderRadius: "15px",
               display: "inline"

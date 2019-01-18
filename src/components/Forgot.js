@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import axios from "axios";
+import './Forgot.css';
 import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
@@ -84,7 +85,7 @@ class Forgot extends Component {
               marginTop: "auto",
               marginBottom: "auto",
               paddingLeft: "10%",
-              borderRadius: "5%"
+              borderRadius: "10px"
             }}
           >
             <CardContent className="cardContent">
@@ -105,11 +106,10 @@ class Forgot extends Component {
                   fontFamily: "Raleway, sans-serif",
                   fontSize: "28px",
                   marginTop: "5%",
-                  marginLeft: "1%",
                   letterSpacing: "0.4rem"
                 }}
               >
-                Forgot Password
+                Forgot your password ? 
               </Typography>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-data">
