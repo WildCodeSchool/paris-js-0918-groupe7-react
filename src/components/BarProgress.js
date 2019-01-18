@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   root: {
-    width: "100%"
+    width: "100%",
   },
   backButton: {
     marginRight: theme.spacing.unit
@@ -18,18 +18,18 @@ const styles = theme => ({
 
   instructions: {
     marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   connectorActive: {
     "& $connectorLine": {
       borderColor: theme.palette.secondary.main,
-      border: "solid 2px"
+      border: "solid 2px",
     }
   },
   connectorCompleted: {
     "& $connectorLine": {
       borderColor: theme.palette.secondary.main,
-      border: "solid 2px"
+      border: "solid 2px",
     }
   },
   connectorDisabled: {
@@ -39,7 +39,7 @@ const styles = theme => ({
   },
   connectorLine: {
     "& $connectorLine": {
-      transition: theme.transitions.create("border-color")
+      transition: theme.transitions.create("border-color"),
     }
   }
 });
@@ -75,7 +75,7 @@ class BarProgress extends React.Component {
     return (
       <Grid className="progressbar-container" container spacing={8} style={{ marginTop: "1%" }}>
         <div className={classes.root} style={{ margin: "auto" }}>
-          <Stepper 
+          <Stepper
             activeStep={this.props.step}
             alternativeLabel
             connector={connector}
@@ -96,7 +96,7 @@ class BarProgress extends React.Component {
               } else {
                 return (
                   <Step key={index}>
-                    <StepLabel>{label}</StepLabel>
+                    <StepLabel >{label}</StepLabel>
                   </Step>
                 );
               }

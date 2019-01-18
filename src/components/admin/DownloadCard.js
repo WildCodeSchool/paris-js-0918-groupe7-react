@@ -10,6 +10,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import './DownloadCard.css'
 
+
 import { CSVLink } from "react-csv";
 
 const styles = theme => ({
@@ -93,7 +94,7 @@ class DownloadCard extends Component {
   };
 
   formatData = () => {
-    let results = [];
+        let results = [];
     this.state.data[0].users.map((user, index) => {
       const axes = ["Agile Capabilities", "Agile Adoption"];
       let userData = {

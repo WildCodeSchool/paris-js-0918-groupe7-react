@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import AdminHomePage from './admin/AdminHomePage'
+
 
 // Helpers
 import checkRole from '../helpers/checkRole';
@@ -25,7 +27,7 @@ class HomeAdmin extends Component {
             return <h1>ACCESS DENIED!!!!!!!!!!!</h1>
 
             
-        return <h1>HELLO THERE, GENERAL KENOBI!!!</h1>
+        return <AdminHomePage />
     }
 }
 

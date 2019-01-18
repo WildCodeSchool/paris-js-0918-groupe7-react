@@ -32,19 +32,20 @@ handleLogOut = (e) => {
             return <Redirect to="/login" />
         return (
             <Card className='card' style={{ 
-                
                 textAlign: "left",
-            justifyContent: "center",
-            verticalAlign: "middle",
-            color: "black",
-            margin: "5%",
-            fontFamily: "Raleway",
-            fontSize: "1em",
-            backgroundColor:"white",
-            borderRadius:"10%",
-            padding:"10%",
-                
-            }}>
+                justifyContent: "center",
+                verticalAlign: "middle",
+                color: "black",
+                marginBottom: "13%",
+                marginLeft: "20%",
+                marginRight: "20%",
+                marginTop: "5%",
+                fontFamily: "Raleway",
+                fontSize: "1em",
+                backgroundColor:"white",
+                borderRadius:"10px",
+                padding: "3%"
+                }}>
                 
                 <CardContent className='cardContent'>
                 
