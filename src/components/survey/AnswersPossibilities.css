@@ -1,11 +1,46 @@
-.yes-no-answer{
+.container-yes-no-answer{
+    padding-bottom: 10%;
+}
+
+/* Button{
+    background-color: rgba(85, 85, 85, 0.25) !important;
+    border:inherit !important;
+    margin-right: 2vw !important;
+    padding: 10px 30px !important;
+    font-size: calc(0.4vw + 0.4vh + 0.6vmin) !important;
+    border-radius: 5% !important;
+} */
+
+Button:hover{
+    background-color: rgba(59,84,125,0.5) !important;
+}
+
+Button:active{
+    background-color: inherit !important;
+}
+
+Button.Selected{
+    background-color: rgb(59,84,125) !important;
+    color: #FFFFFF;
+}
+
+
+
+.container-lickert-answer{
+    padding-bottom: 10%;
+}
+
+.container-drop-answer{
     padding-bottom: 10%;
 }
 
 .lickert-answer{
-    padding-bottom: 10%;
+    max-width: 15px;
+    padding: 0 2.2vw;
 }
 
-.drop-answer{
-    padding-bottom: 10%;
+
+p{
+    font-size:calc(0.4vw + 0.4vh + 0.6vmin);
+    text-align: center;
 }

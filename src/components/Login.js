@@ -20,7 +20,6 @@ class Login extends Component {
         >
           <Grid item xs={12} sm={6}>
             <Typography
-              className="thank"
               style={{
                 textAlign: "center",
                 justifyContent: "center",
@@ -43,7 +42,7 @@ class Login extends Component {
             id="postit"
             style={{
               backgroundImage: `url(${IntroImage})`,
-              backgroundSize: "100% 100%",
+              backgroundSize: "100% 100% 100%",
               backgroundRepeat: "no-repeat"
             }}
             item
