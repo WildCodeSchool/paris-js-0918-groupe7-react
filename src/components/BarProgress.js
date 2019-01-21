@@ -90,7 +90,7 @@ class BarProgress extends React.Component {
               ) {
                 return (
                   <Step key={index}>
-                    <StepLabel className="polesCircle">{label}</StepLabel>
+                    <StepLabel className="polesCircle" >{label}</StepLabel>
                   </Step>
                 );
               } else {

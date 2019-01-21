@@ -13,6 +13,8 @@ import Button from "@material-ui/core/Button";
 import ValidationPage from "../ValidationPage";
 import ThanksPage from "../ThanksPage";
 
+import arrow from "../../images/left-arrow.png"
+
 class Survey extends Component {
 
   state = {
@@ -246,8 +248,15 @@ class Survey extends Component {
                 />
               </div>
             ))}
-            <Button className={this.state.pillarId === 0 && this.state.subPillarId === 0 ? 'HiddenBack' : 'VisibleBack'} onClick={this.handleBack}>Back</Button>
-            <Button onClick={this.handleContinue}>continue</Button>
+            <div className="container-survey-button">
+            <Button style={{padding: "2%" ,marginRight: "50px", fontSize:"calc(0.5vw + 0.5vh + 0.5vmin)"}}
+              className={this.state.pillarId === 0 && this.state.subPillarId === 0 ? 'HiddenBack' : 'VisibleBack'} onClick={this.handleBack}>
+              <img className="arrow" src={arrow} alt="back arrow"/>
+              Back
+            </Button>
+
+            <Button className="continue-button" onClick={this.handleContinue}>continue</Button>
+            </div>
           </Grid>
         </Grid>
       </div>
