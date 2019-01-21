@@ -5,6 +5,8 @@ import "./IntroPage.css";
 import IntroImage from "../images/intro_image.png";
 import LoginCard from "./LoginCard";
 
+import Hidden from '@material-ui/core/Hidden';
+
 class Login extends Component {
   render() {
     return (
@@ -15,10 +17,10 @@ class Login extends Component {
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
-            minHeight: "100%"
+            minHeight:"100%"
           }}
         >
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <Typography
               style={{
                 textAlign: "center",
@@ -27,7 +29,7 @@ class Login extends Component {
                 color: "white",
                 margin: "5% auto",
                 fontFamily: "Raleway",
-                fontSize: "2em"
+                fontSize: "calc(1.4vw + 1.4vh + 1.7vmin)" ,
               }}
               gutterBottom
             >
@@ -37,18 +39,18 @@ class Login extends Component {
             <LoginCard />
           </Grid>
 
-          <Grid
-            className="grid2"
-            id="postit"
-            style={{
-              backgroundImage: `url(${IntroImage})`,
-              backgroundSize: "100% 100% 100%",
-              backgroundRepeat: "no-repeat"
-            }}
-            item
-            xs={12}
-            sm={6}
-          />
+          <Hidden only={['xs', 'sm']}>
+            <Grid item xs={12} md={6}
+              className="grid2"
+              id="postit"
+              style={{
+                backgroundImage: `url(${IntroImage})`,
+                backgroundSize: "100% 100%",
+                backgroundRepeat: "no-repeat"
+              }}
+            >
+          </Grid>
+        </Hidden>
         </Grid>
       </div>
     );

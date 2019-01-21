@@ -14,6 +14,10 @@ import "./LoginCard.css";
 import checkRole from '../helpers/checkRole';
 import { Redirect } from "react-router-dom";
 
+
+import arrow from "../images/left-arrow.png"
+
+
 const styles = theme => ({
   pos: {
     margin: 30
@@ -86,62 +90,58 @@ class LoginCard extends Component {
       } else if(this.state.role === "admin" || this.state.role === "super_admin" )
         return <Redirect to="/admin"/>
     }
-    
+
     return (
       <Card
         className="card"
         style={{
           width: "70%",
-          height: "60%",
+          maxHeight: "70%",
           alignContent: "center",
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
           marginTop: "5%",
           marginBottom: "auto",
-          paddingLeft: "10%",
           borderRadius: "10px"
         }}
       >
         <CardContent className="cardContent">
-          <Button
-            style={{
-              border: "solid",
-              marginTop: "2%"
-            }}
-            onClick={this.BackFunction}
-          >
-            {" "}
-            Back{" "}
+
+          <Button style={{ fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)" ,padding: "2%" ,marginRight: "50px"}}
+          onClick={this.BackFunction}>
+          <img className="arrow" src={arrow} alt="back arrow"/>
+            Back
           </Button>
 
           <Typography
             gutterBottom
             style={{
               fontFamily: "Raleway, sans-serif",
-              fontSize: "28px",
+              fontSize: "calc(1vw + 1vh + 1vmin)",
               marginTop: "5%",
-              marginLeft: "1%",
-              letterSpacing: "0.4rem"
+              textAlign:"start",
+              fontWeight:"bold",
+              paddingLeft: "13%"
             }}
           >
             Login
           </Typography>
           <form onSubmit={this.handleSubmit}>
-            <div className="form-data">
+            <div >
               <Input
                 type="text"
                 id="email"
                 name="email"
                 required
                 placeholder="Email"
-                style={{ marginTop: "5%", width: "80%" }}
+                style={{fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)" ,margin: "10% auto 0 auto", width: "70%", marginLeft: "13%", }}
                 onChange={this.onChange}
                 value={this.state.email}
               />
             </div>
 
-            <div className="form-data">
+            <div>
               <Input
                 type="password"
                 id="password"
@@ -149,13 +149,14 @@ class LoginCard extends Component {
                 required
                 placeholder="Password"
                 minLength="8"
-                style={{ marginTop: "5%", width: "80%" }}
+                style={{fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)", margin: "5% auto 0 auto", width: "70%", marginLeft: "13%", }}
                 onChange={this.onChange}
                 value={this.state.password}
               />
             </div>
 
-            <Button
+
+            {/* <Button
               style={{
                 marginLeft: "63%",
                 marginTop: "15%",
@@ -167,13 +168,18 @@ class LoginCard extends Component {
                 style={{
                   color: "rgb(55,61,98)",
                   fontSize: "14px",
-                  fontFamily: "Helvetica",
-                  lineHeight: "14px"
+                  textAlign:"start",
                 }}
               >
                 Forgot password ?
               </Typography>
-            </Button>
+            </Button> */}
+            <div className="link-forgot-password">
+              <a onClick={this.handleClick}>
+                Forgot password ?
+              </a>
+            </div>
+
 
             <div className="form-data">
               <Button
@@ -183,14 +189,8 @@ class LoginCard extends Component {
                 style={{
                   backgroundColor: "rgb(186, 28, 58)",
                   color: "white",
-                  marginLeft: "auto",
-                  marginRight: "20px",
-                  marginTop: "10%",
-                  marginBottom: "50%",
-                  display: "block",
-                  fontSize: "1.3em",
                   fontFamily: "Raleway",
-                  borderRadius: "15px"
+                  borderRadius: "15px",
                 }}
               >
                 <Typography
@@ -198,9 +198,9 @@ class LoginCard extends Component {
                   style={{
                     textAlign: "center",
                     color: "white",
-                    fontSize: "20px",
-                    lineHeight: "14px",
-                    padding: "15px 35px"
+                    fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+                    padding: "15px 35px",
+                    fontFamily: "Raleway",
                   }}
                 >
                   Login

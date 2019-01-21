@@ -12,7 +12,6 @@ class HomeAdmin extends Component {
     }
 
     componentDidMount = async () => {
-        
         this.setState({
             role: await checkRole(),
             isLoading: false
@@ -26,7 +25,6 @@ class HomeAdmin extends Component {
         if(!this.state.role.includes("admin"))
             return <h1>ACCESS DENIED!!!!!!!!!!!</h1>
 
-            
         return <AdminHomePage />
     }
 }
