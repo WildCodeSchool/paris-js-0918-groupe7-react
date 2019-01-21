@@ -94,8 +94,26 @@ render(){
               onClick={this.handleClick}
               variant="contained"
               size="large"
+              style={{
+                backgroundColor: "rgb(45,52,90)",
+                color: "white",
+                fontFamily: "Raleway",
+                borderRadius: "15px",
+                marginTop: "5%"
+              }}
             >
-              Start
+              <Typography
+                gutterBottom
+                style={{
+                  textAlign: "center",
+                  color: "white",
+                  fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+                  padding: "15px 35px",
+                  fontFamily: "Raleway",
+                }}
+                >
+                START
+              </Typography>
             </Button>
           </div>
         </CardContent>

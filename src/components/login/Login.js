@@ -12,7 +12,6 @@ class Login extends Component {
       <div>
         <Grid
           container
-          className="gridthanks"
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
@@ -39,7 +38,7 @@ class Login extends Component {
           </Grid>
 
           <Hidden only={['xs', 'sm']}>
-            <Grid item xs={12} md={6}
+            <Grid item md={6}
               className="grid2"
               id="postit"
               style={{
