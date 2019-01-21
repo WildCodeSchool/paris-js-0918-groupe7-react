@@ -76,19 +76,16 @@ class Forgot extends Component {
           <Card
             className="card"
             style={{
-              width: "70%",
-              height: "60%",
-              alignContent: "center",
-              alignItems: "center",
+              width: "auto",
               marginLeft: "auto",
               marginRight: "auto",
               marginTop: "auto",
+              padding: "1%",
               marginBottom: "auto",
-              paddingLeft: "10%",
-              borderRadius: "10px"
+              borderRadius: "10px",
             }}
           >
-            <CardContent className="cardContent">
+            <CardContent className="cardContent" style={{paddingBottom:"0px"}}>
               <Button
                 style={{
                   border: "solid",
@@ -106,7 +103,8 @@ class Forgot extends Component {
                   fontFamily: "Raleway, sans-serif",
                   fontSize: "28px",
                   marginTop: "5%",
-                  letterSpacing: "0.4rem"
+                  letterSpacing: "0.4rem",
+                  textAlign: "left",
                 }}
               >
                 Forgot your password ? 
@@ -119,7 +117,7 @@ class Forgot extends Component {
                     name="email"
                     required
                     placeholder="Email"
-                    style={{ marginTop: "5%", width: "80%" }}
+                    style={{ marginTop: "5%", width: "100%" }}
                     onChange={this.onChange}
                     value={this.state.email}
                   />
@@ -133,9 +131,8 @@ class Forgot extends Component {
                     style={{
                       backgroundColor: "rgb(186, 28, 58)",
                       color: "white",
-                      marginLeft: "auto",
-                      marginRight: "20px",
                       marginTop: "10%",
+                      float: "right",
                       marginBottom: "5%",
                       display: "block",
                       fontSize: "1.3em",
@@ -146,7 +143,6 @@ class Forgot extends Component {
                     <Typography
                       gutterBottom
                       style={{
-                        textAlign: "center",
                         color: "white",
                         fontSize: "20px",
                         lineHeight: "14px",

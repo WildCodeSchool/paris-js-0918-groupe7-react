@@ -42,7 +42,7 @@ class Login extends Component {
             id="postit"
             style={{
               backgroundImage: `url(${IntroImage})`,
-              backgroundSize: "100% 100% 100%",
+              backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat"
             }}
             item
