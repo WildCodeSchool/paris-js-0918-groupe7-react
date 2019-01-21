@@ -8,8 +8,6 @@ import Button from "@material-ui/core/Button";
 
 import "./CardIntro.css";
 
-import clock from '../images/clock.png'
-
 
 import { Redirect } from "react-router-dom";
 
