@@ -6,6 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import "./CardValidation.css";
 
+
+import arrow from "../../images/left-arrow.png"
+
 const styles = {
   pos: {
     marginBottom: 0
@@ -39,7 +42,7 @@ class CardValidation extends Component {
         }}
       >
         <CardContent className="cardContent">
-          <Button
+          {/* <Button
             onClick={this.props.validPage}
             style={{
               border: "solid"
@@ -47,13 +50,21 @@ class CardValidation extends Component {
           >
             {" "}
             Back{" "}
+          </Button> */}
+
+          <Button style={{ fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)" ,padding: "2%" ,marginRight: "50px"}}
+            onClick={this.props.validPage}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
+              Back
           </Button>
+
           <Typography
             gutterBottom
             style={{
               textAlign: "center",
-              fontFamily: "Raleway",
-              fontSize: "1.5em"
+              fontFamily: "Raleway, sans-serif",
+              fontSize: "calc(0.8vw + 0.8vh + 1.2vmin)",
+              marginTop: "5%"
             }}
           >
             Congratulations, you’ve finished !
@@ -62,30 +73,39 @@ class CardValidation extends Component {
             gutterBottom
             style={{
               textAlign: "center",
-              fontFamily: "Raleway",
-              fontSize: "1.5em"
+              fontFamily: "Raleway, sans-serif",
+              fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
             }}
           >
             Please note that no changes will be possible after the validation
           </Typography>
 
           <div className="button">
-            <Button
+          <Button className="button-start-survey"
               onClick={this.handleClick}
               variant="contained"
-              color="primary"
-              className="but"
+              size="large"
               style={{
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                marginTop: "5%",
+                backgroundColor: "rgb(186, 28, 58)",
+                color: "white",
                 fontFamily: "Raleway",
-                fontSize: "1.5em"
+                borderRadius: "15px",
+                marginTop: "5%"
               }}
             >
-              DONE
-            </Button>
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+                    padding: "15px 35px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
+                  SIGN OUT
+                </Typography>
+              </Button>
           </div>
         </CardContent>
       </Card>
