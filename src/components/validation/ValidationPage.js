@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CardValidation from "./CardValidation";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import ImgValidation from "../images/validationImg.jpg";
+import ImgValidation from "../../images/validationImg.jpg";
 
 class ValidationPage extends Component {
   render() {

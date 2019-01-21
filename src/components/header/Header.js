@@ -8,8 +8,8 @@ import './Header.css';
 import { Grid } from '@material-ui/core';
 
 // Import du logo Exton depuis dossiers images
-import logo_Exton_consulting from '../images/Logo_Exton_consulting.png';
-import logo_Exton_AAA from '../images/logo_Exton_AAA_2.png';
+import logo_Exton_consulting from '../../images/Logo_Exton_consulting.png';
+import logo_Exton_AAA from '../../images/logo_Exton_AAA_2.png';
 
 
 // Déclaration de la fonction stateless HEADER

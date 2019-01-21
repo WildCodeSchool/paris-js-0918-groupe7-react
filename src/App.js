@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 
 // IMPORT COMPONENTS
-import Header from "./components/Header";
-import FormPage from "./components/FormPage";
-import Login from "./components/Login";
+import Header from "./components/header/Header";
+import FormPage from "./components/form/FormPage";
+import Login from "./components/login/Login";
 import { Switch, Route } from "react-router-dom";
-import ForgotPassword from "./components/Forgot.js";
-import ResetPassword from "./components/ResetPassword";
+import ForgotPassword from "./components/forgot/Forgot.js";
+import ResetPassword from "./components/resetPassword/ResetPassword";
 import AdminForm from "./components/admin/AdminForm";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import Download from "./components/admin/Download";
 import UpdateCompanies from "./components/admin/UpdateCompanies";
-import ActivationAccount from "./components/ActivationAccount";
-import UserAlreadyExist from "./components/UserAlreadyExist";
+import ActivationAccount from "./components/activationAccount/ActivationAccount";
+import UserAlreadyExist from "./components/userAlreadyExist/UserAlreadyExist";
 
 import "./App.css";
-import HomeClient from "./components/HomeClient";
-import HomeAdmin from "./components/HomeAdmin";
+import HomeClient from "./components/homeClient/HomeClient";
+import HomeAdmin from "./components/admin/HomeAdmin";
 
 // IMPORT OTHER PAGES COMPONENTS
 import Survey from "./components/survey/Survey";
