@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import CardValidation from "./CardValidation";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import "./IntroPage.css";
-import IntroImage from "../images/intro_image.png";
-import LoginCard from "./LoginCard";
+import ImgValidation from "../../images/validationImg.jpg";
 
-class Login extends Component {
+class ValidationPage extends Component {
   render() {
+    console.table(this.props.answers_users)
     return (
-      <div>
+      <div className="ValidationContainer">
         <Grid
           container
           className="gridthanks"
@@ -18,31 +18,36 @@ class Login extends Component {
             minHeight: "100%"
           }}
         >
-          <Grid item xs={12} sm={6}>
+          <Grid className="color" item xs={12} sm={6}>
             <Typography
+              className="thank"
               style={{
                 textAlign: "center",
                 justifyContent: "center",
                 verticalAlign: "middle",
-                color: "white",
-                margin: "5% auto",
                 fontFamily: "Raleway",
-                fontSize: "2em"
+                fontSize: "2em",
+                color: "white",
+                margin: "5% auto"
               }}
               gutterBottom
             >
               {" "}
-              Welcome to survey AAA
+              Thank you for asking to Agile Maturity Assessment
             </Typography>
-            <LoginCard />
+
+            <CardValidation
+              thanksPage={this.props.thanksPage}
+              validPage={this.props.validPage}
+            />
           </Grid>
 
           <Grid
             className="grid2"
-            id="postit"
+            id="imgvalidation"
             style={{
-              backgroundImage: `url(${IntroImage})`,
-              backgroundSize: "100% 100% 100%",
+              backgroundImage: `url(${ImgValidation})`,
+              backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat"
             }}
             item
@@ -55,4 +60,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default ValidationPage;

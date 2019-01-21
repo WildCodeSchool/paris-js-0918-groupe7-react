@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import CardValidation from "./CardValidation";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import ImgValidation from "../images/validationImg.jpg";
+import ThanksImg from "../../images/thanks_img.jpg";
+import ThanksCard from "./ThanksCard";
+//import BarProgress from "./BarProgress";
 
-class ValidationPage extends Component {
+class ThanksPage extends Component {
   render() {
-    console.table(this.props.answers_users)
     return (
-      <div className="ValidationContainer">
+      <div>
+        {/*<BarProgress />*/}
         <Grid
           container
           className="gridthanks"
@@ -18,35 +19,30 @@ class ValidationPage extends Component {
             minHeight: "100%"
           }}
         >
-          <Grid className="color" item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <Typography
               className="thank"
               style={{
                 textAlign: "center",
                 justifyContent: "center",
                 verticalAlign: "middle",
-                fontFamily: "Raleway",
-                fontSize: "2em",
                 color: "white",
-                margin: "5% auto"
+                margin: "5% auto",
+                fontFamily: "Raleway",
+                fontSize: "2em"
               }}
               gutterBottom
             >
               {" "}
-              Thank you for asking to Agile Maturity Assessment
+              Thank you for asking to Agile Maturity Assessment !
             </Typography>
 
-            <CardValidation
-              thanksPage={this.props.thanksPage}
-              validPage={this.props.validPage}
-            />
+            <ThanksCard  />
           </Grid>
 
           <Grid
-            className="grid2"
-            id="imgvalidation"
             style={{
-              backgroundImage: `url(${ImgValidation})`,
+              backgroundImage: `url(${ThanksImg})`,
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat"
             }}
@@ -60,4 +56,4 @@ class ValidationPage extends Component {
   }
 }
 
-export default ValidationPage;
+export default ThanksPage;

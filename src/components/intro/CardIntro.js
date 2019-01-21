@@ -8,8 +8,6 @@ import Button from "@material-ui/core/Button";
 
 import "./CardIntro.css";
 
-import clock from '../images/clock.png'
-
 
 import { Redirect } from "react-router-dom";
 
@@ -57,9 +55,9 @@ render(){
 
           <Typography
             style={{
-              textAlign: "center",
+
               fontFamily: "Raleway",
-              fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)",
+              fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)",
               marginBottom: "20px",
               textAlign: "justify"
             }}
@@ -75,7 +73,7 @@ render(){
                 style={{
                   textAlign: "center",
                   fontFamily: "Raleway",
-                  fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)",
+                  fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)",
                   marginBottom: "20px",
                   marginTop: "20px",
                   textAlign: "justify"

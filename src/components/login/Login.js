@@ -1,28 +1,26 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import "./IntroPage.css";
-import ThanksImg from "../images/thanks_img.jpg";
-import ThanksCard from "./ThanksCard";
-//import BarProgress from "./BarProgress";
+import IntroImage from "../../images/intro_image.png";
+import LoginCard from "./LoginCard";
 
-class ThanksPage extends Component {
+import Hidden from '@material-ui/core/Hidden';
+
+class Login extends Component {
   render() {
     return (
       <div>
-        {/*<BarProgress />*/}
         <Grid
           container
           className="gridthanks"
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
-            minHeight: "100%"
+            minHeight:"100%"
           }}
         >
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <Typography
-              className="thank"
               style={{
                 textAlign: "center",
                 justifyContent: "center",
@@ -30,31 +28,32 @@ class ThanksPage extends Component {
                 color: "white",
                 margin: "5% auto",
                 fontFamily: "Raleway",
-                fontSize: "2em"
+                fontSize: "calc(1.4vw + 1.4vh + 1.7vmin)" ,
               }}
               gutterBottom
             >
               {" "}
-              Thank you for asking to Agile Maturity Assessment !
+              Welcome to survey AAA
             </Typography>
-
-            <ThanksCard  />
+            <LoginCard />
           </Grid>
 
-          <Grid
-            style={{
-              backgroundImage: `url(${ThanksImg})`,
-              backgroundSize: "100% 100%",
-              backgroundRepeat: "no-repeat"
-            }}
-            item
-            xs={12}
-            sm={6}
-          />
+          <Hidden only={['xs', 'sm']}>
+            <Grid item xs={12} md={6}
+              className="grid2"
+              id="postit"
+              style={{
+                backgroundImage: `url(${IntroImage})`,
+                backgroundSize: "100% 100%",
+                backgroundRepeat: "no-repeat"
+              }}
+            >
+          </Grid>
+        </Hidden>
         </Grid>
       </div>
     );
   }
 }
 
-export default ThanksPage;
+export default Login;

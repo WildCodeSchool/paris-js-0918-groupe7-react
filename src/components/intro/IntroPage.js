@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CardIntro from './CardIntro'
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-import ImgIntro from '../images/intro_image.png';
+import ImgIntro from '../../images/intro_image.png';
 
 
 
@@ -27,7 +27,7 @@ class IntroPage extends Component {
                                 color: 'white',
                                 margin: '5% auto',
                                 fontFamily: 'Raleway',
-                                fontSize: '3vh',
+                                fontSize: "calc(1.4vw + 1.4vh + 1.7vmin)" ,
                                 }}>
                                 Thank you for creating your account !
                         </Typography>

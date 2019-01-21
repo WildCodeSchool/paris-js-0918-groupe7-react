@@ -52,3 +52,23 @@ Button.HiddenBack{
     display:none
 }
 
+
+.continue-button{
+    width: 10vw;
+    padding: 18px 30px !important;
+    font-family: "Raleway";
+    font-size: calc(0.5vw + 0.5vh + 0.5vmin) !important;
+    color:#FFFFFF !important;
+    background-color: rgb(38, 56, 87) !important;
+}
+
+
+.arrow{
+    max-width: 1.5vw;
+    padding-right: 15px;
+}
+
+.container-survey-button{
+    align-items:center;
+    justify-content: center;
+}
