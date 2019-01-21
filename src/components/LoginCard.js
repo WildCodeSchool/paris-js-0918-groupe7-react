@@ -79,10 +79,11 @@ class LoginCard extends Component {
     if (this.state.back) {
       return <Redirect to="/" />;
     }
+    console.log("test", this.state.role)
     if(!this.state.isLoading) {
       if(this.state.role === "client") {
         return <Redirect to="/user"/>
-      } else if(this.state.role === "admin" || this.state.role === "adminIT" )
+      } else if(this.state.role === "admin" || this.state.role === "super_admin" )
         return <Redirect to="/admin"/>
     }
     
