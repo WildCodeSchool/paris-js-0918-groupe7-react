@@ -61,7 +61,7 @@ class ThanksCard extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "1.5em",
+              fontSize: "calc(0.8vw + 0.8vh + 1.2vmin)",
               marginTop: "5%"
             }}
           >
@@ -73,14 +73,39 @@ class ThanksCard extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "1.5em"
+              fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
             }}
           >
             Thank you for your time and your participation !
           </Typography>
 
           <div className="button">
-            <Button
+          <Button className="button-start-survey"
+              onClick={this.handleClick}
+              variant="contained"
+              size="large"
+              style={{
+                backgroundColor: "rgb(186, 28, 58)",
+                color: "white",
+                fontFamily: "Raleway",
+                borderRadius: "15px",
+                marginTop: "5%"
+              }}
+            >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+                    padding: "15px 35px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
+                  SIGN OUT
+                </Typography>
+              </Button>
+            {/* <Button
               variant="contained"
               className="but"
               size="large"
@@ -97,7 +122,7 @@ class ThanksCard extends Component {
               onClick={this.handleClick}
             >
               Sign Out
-            </Button>
+            </Button> */}
           </div>
         </CardContent>
       </Card>

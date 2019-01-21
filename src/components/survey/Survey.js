@@ -169,15 +169,16 @@ class Survey extends Component {
   };
 
   render() {
-    console.log("MARION MARECHAL", this.state.pillarId, this.state.subPillarId)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
         <div>
-          <BarProgress
-            data={this.state.data.pole.pillars}
-            step={this.state.length + 2}
-          />
+          <Hidden only={['xs', 'sm']}>
+            <BarProgress
+              data={this.state.data.pole.pillars}
+              step={this.state.length + 2}
+            />
+          </Hidden>
           <ThanksPage
             thanksPage={this.goToThanksPage}
             answers_users={this.state.user_answers} />
@@ -186,10 +187,12 @@ class Survey extends Component {
     if (this.state.validationPage)
       return (
         <div>
+        <Hidden only={['xs', 'sm']}>
           <BarProgress
             data={this.state.data.pole.pillars}
             step={this.state.length + 1}
           />
+        </Hidden>
           <ValidationPage
             thanksPage={this.goToThanksPage}
             validPage={this.goBacktoSurvey}
@@ -197,6 +200,7 @@ class Survey extends Component {
           />
         </div>
       );
+
     return (
       <div>
         <Grid container>
@@ -255,7 +259,7 @@ class Survey extends Component {
               Back
             </Button>
 
-            <Button className="continue-button" onClick={this.handleContinue}>continue</Button>
+            <Button className="continue-button" onClick={this.handleContinue}>CONTINUE</Button>
             </div>
           </Grid>
         </Grid>

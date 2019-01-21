@@ -57,7 +57,6 @@ class ActivationAccount extends Component {
       <div>
         <Grid
           container
-          className="gridthanks"
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
