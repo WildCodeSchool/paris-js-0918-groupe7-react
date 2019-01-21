@@ -189,7 +189,7 @@ class SimpleForm extends Component {
                 style={{
                   marginTop: "3%",
                 }}
-                required
+                validate={[required]}
               />{" "}
               Male
             </label>
@@ -200,7 +200,7 @@ class SimpleForm extends Component {
                 type="radio"
                 value="female"
                 className="genderRadio"
-                required
+                validate={[required]}
               />{" "}
               Female
             </label>
@@ -314,7 +314,7 @@ class SimpleForm extends Component {
               name="business_focus"
               component="select"
               className="widthInput"
-              required
+              validate={[required]}
             >
               <option />
               {business_focus.map((e, i) => (
@@ -351,19 +351,20 @@ class SimpleForm extends Component {
             style={{
               backgroundColor: "rgb(45,52,90)",
               color: "white",
-              margin: "5%",
-              fontSize: "1.3em",
+              fontFamily: "Raleway",
               borderRadius: "15px",
-              display: "inline"
+              maxWidth: "200px",
+              margin: "5% 0 15% 0"
             }}
           >
             <Typography
               gutterBottom
               style={{
+                textAlign: "center",
                 color: "white",
-                fontSize: "20px",
-                lineHeight: "14px",
-                padding: "15px 25px",
+                fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+                padding: "15px 35px",
+                fontFamily: "Raleway",
               }}
             >
               {" "}
@@ -389,10 +390,10 @@ class SimpleForm extends Component {
           style={{
             backgroundColor: "rgb(186, 28, 58)",
             color: "white",
-            margin: "5%",
-            display: "inline",
-            fontSize: "1.3em",
+            fontFamily: "Raleway",
             borderRadius: "15px",
+            margin: "5% 0 15% 0"
+
           }}
         >
           <Typography
@@ -400,9 +401,9 @@ class SimpleForm extends Component {
             style={{
               textAlign: "center",
               color: "white",
-              fontSize: "20px",
-              lineHeight: "14px",
-              padding: "15px 35px"
+              fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+              padding: "15px 42px",
+              fontFamily: "Raleway",
             }}
           >
             {" "}

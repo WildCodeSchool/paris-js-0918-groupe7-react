@@ -199,7 +199,7 @@ class LoginCard extends Component {
                     textAlign: "center",
                     color: "white",
                     fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
-                    padding: "15px 35px",
+                    padding: "15px 42px",
                     fontFamily: "Raleway",
                   }}
                 >
