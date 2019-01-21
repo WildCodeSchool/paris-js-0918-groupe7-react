@@ -114,7 +114,7 @@ class Forgot extends Component {
                   letterSpacing: "0.4rem"
                 }}
               >
-                Forgot your password ? 
+                Forgot your password ?
               </Typography>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-data">
