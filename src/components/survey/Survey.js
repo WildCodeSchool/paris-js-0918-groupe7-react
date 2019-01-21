@@ -31,9 +31,10 @@ class Survey extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
 
+
     axios({
       method: "GET",
-      url: "http://localhost:3002/users/surveyById/",
+      url: (`https://exton-back.herokuapp.com/users/surveyById/`),
       headers: {
         authorization: `Bearer ${token}`
       }
@@ -109,24 +110,24 @@ class Survey extends Component {
   };
 
   submitAnswers = () => {
-    let url = 'http://localhost:3002/users_answers_possibilities_questions'
+    let url = (`https://exton-back.herokuapp.com/users_answers_possibilities_questions`)
     let array = this.state.isPosted
     const config = this.state.user_answers
 
 
-    if(this.state.length === 4 || this.state.length === 8 || this.state.length === 12)
+    if (this.state.length === 4 || this.state.length === 8 || this.state.length === 12)
       array.push(0);
 
-    if(array[this.state.length] === 0) {
+    if (array[this.state.length] === 0) {
       array.push(0);
       array[this.state.length] = 1;
-      
+
 
       this.state.user_answers.map((e, i) => {
         axios.post(url, config[i])
           .then(this.setState({ user_answers: [], isPosted: array }));
       });
-    } else if(array[this.state.length] === 1) {
+    } else if (array[this.state.length] === 1) {
       this.state.user_answers.map((e, i) => {
         axios.put(url, config[i])
           .then(this.setState({ user_answers: [], isPosted: array }));
@@ -139,13 +140,14 @@ class Survey extends Component {
       this.state.subPillarId <
       this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1
     ) {
-      this.setState({ subPillarId: this.state.subPillarId + 1 }, 
-      () => {this.setState({
-        questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
-          .sub_pillars[this.state.subPillarId].questions,
-        length: this.state.length + 1,
+      this.setState({ subPillarId: this.state.subPillarId + 1 },
+        () => {
+          this.setState({
+            questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
+              .sub_pillars[this.state.subPillarId].questions,
+            length: this.state.length + 1,
+          });
         });
-      });  
     } else {
       if (this.state.pillarId < this.state.data.pole.pillars.length - 1) {
         this.setState(
@@ -167,7 +169,7 @@ class Survey extends Component {
   };
 
   render() {
-    console.log("MARION MARECHAL", this.state.pillarId, this.state.subPillarId)
+    console.log("UNITED-STATES", this.state)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
@@ -205,11 +207,11 @@ class Survey extends Component {
             />
           </Hidden>
 
-        <Hidden only={['xs', 'sm']}>
-          <Grid item md={5} className="background-left">
-            <div>
-              <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
-            </div>
+          <Hidden only={['xs', 'sm']}>
+            <Grid item md={5} className="background-left">
+              <div>
+                <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
+              </div>
 
               <div>
                 <h2 className="pole-survey">{this.state.data.pole.pillars[this.state.pillarId].name}</h2>

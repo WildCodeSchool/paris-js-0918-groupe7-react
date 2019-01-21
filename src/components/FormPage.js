@@ -20,7 +20,7 @@ class FormPage extends Component {
   };
 
   handleSubmit = values => {
-    const url = "http://localhost:3002/users/register";
+    const url = (`https://exton-back.herokuapp.com/users/register`);
     const config = {
       email: values.email,
       password: values.password,
@@ -42,7 +42,7 @@ class FormPage extends Component {
         if (res.status === 200) {
           alert(
             `An email has been send to ${
-              values.email
+            values.email
             } ! Check the link within it to activate your account.`
           );
           this.setState({ redirect: true });
@@ -67,39 +67,39 @@ class FormPage extends Component {
     }
 
     return (
-        <div>
-          <Grid
-            container
-            className="formaccount"
-            style={{
-              backgroundColor: "rgb(125, 146, 177)",
-              position: "absolute",
-              minHeight: "100%"
-            }}
-          >
-            <Grid item xs={12} sm={6}>
-              <Typography
-                className="titleform"
-                style={{
-                  textAlign: "center",
-                  color: "white",
-                  margin: "5%",
-                  fontFamily: "Raleway",
-                  fontSize: "2em",
+      <div>
+        <Grid
+          container
+          className="formaccount"
+          style={{
+            backgroundColor: "rgb(125, 146, 177)",
+            position: "absolute",
+            minHeight: "100%"
+          }}
+        >
+          <Grid item xs={12} sm={6}>
+            <Typography
+              className="titleform"
+              style={{
+                textAlign: "center",
+                color: "white",
+                margin: "5%",
+                fontFamily: "Raleway",
+                fontSize: "2em",
 
-                }}
-                gutterBottom
-              >
-                {" "}
-                Welcome to survey AAA
+              }}
+              gutterBottom
+            >
+              {" "}
+              Welcome to survey AAA
               </Typography>
-              {/*
+            {/*
             <Form /> */}
-              <SimpleForm
-                onSubmit={this.handleSubmit}
-                changeState={this.changeState}
-              />
-            </Grid>
+            <SimpleForm
+              onSubmit={this.handleSubmit}
+              changeState={this.changeState}
+            />
+          </Grid>
 
           <Grid
             className="grid2"

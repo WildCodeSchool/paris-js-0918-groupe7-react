@@ -25,16 +25,16 @@ const renderField = ({
   type,
   meta: { touched, error, warning }
 }) => (
-  <div>
-    <label>{label}</label>
     <div>
-      <input {...input} placeholder={label} type={type} className="widthInput" />
-      {touched
+      <label>{label}</label>
+      <div>
+        <input {...input} placeholder={label} type={type} className="widthInput" />
+        {touched
           && ((error && <span className="errorMessage">{error}</span>)
             || (warning && <span>{warning}</span>))}
+      </div>
     </div>
-  </div>
-);
+  );
 
 const age_range = [
   {
@@ -120,9 +120,9 @@ class SimpleForm extends Component {
   };
 
   componentDidMount() {
-    let urlC = "http://localhost:3002/companies/isactive";
-    let urlP = "http://localhost:3002/poles";
-    
+    let urlC = ('https://exton-back.herokuapp.com/companies/isactive');
+    let urlP = ('https://exton-back.herokuapp.com/poles');
+
     axios.get(urlC).then(res => this.setState({ companies: res.data }));
     axios.get(urlP).then(res => this.setState({ poles: res.data }));
   }
@@ -133,10 +133,10 @@ class SimpleForm extends Component {
     });
   };
 
-  handleChange = e => {
+  handleChange = e => {
     axios
-    .get(`http://localhost:3002/agencies/companyId/${e.target.value}`)
-    .then(res => this.setState({agencies: res.data}));
+      .get(`https://exton-back.herokuapp.com/agencies/companyId/${e.target.value}`)
+      .then(res => this.setState({ agencies: res.data }));
   };
 
   render() {
@@ -157,13 +157,13 @@ class SimpleForm extends Component {
     return (
       <form
         style={{
-          textAlign:"center",
+          textAlign: "center",
           justifyContent: "center",
           verticalAlign: "middle",
           color: "black",
           marginTop: "5%",
-          marginLeft:"17%",
-          marginRight :"17%",
+          marginLeft: "17%",
+          marginRight: "17%",
           marginBottom: "10%",
           fontFamily: "Raleway",
           backgroundColor: "white",
@@ -240,7 +240,7 @@ class SimpleForm extends Component {
               component="select"
               className="widthInput"
               validate={[required]}>
-            >
+              >
               <option />
               {age_range.map((e, i) => (
                 <option key={i}>{e.value}</option>

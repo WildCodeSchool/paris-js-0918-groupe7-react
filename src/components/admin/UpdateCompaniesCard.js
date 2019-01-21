@@ -34,7 +34,7 @@ class UpdateCompaniesCard extends Component {
   componentDidMount = () => {
     axios({
       method: "GET",
-      url: "http://localhost:3002/companies/isactive",
+      url: (`https://exton-back.herokuapp.com/companies/isactive`),
       headers: {
         authorization: `Bearer ${this.state.token}`
       }
@@ -47,7 +47,7 @@ class UpdateCompaniesCard extends Component {
       // Recherche d'agences
       axios({
         method: "GET",
-        url: `http://localhost:3002/agencies/companyId/${this.state.company}`,
+        url: (`https://exton-back.herokuapp.com/agencies/companyId/${this.state.company}`),
         headers: {
           authorization: `Bearer ${this.state.token}`
         }
@@ -64,7 +64,7 @@ class UpdateCompaniesCard extends Component {
   handleDelete = () => {
     axios({
       method: "PUT",
-      url: `http://localhost:3002/companies/${this.state.company}`,
+      url: (`https://exton-back.herokuapp.com/companies/${this.state.company}`),
       headers: {
         authorization: `Bearer ${this.state.token}`
       },
@@ -76,7 +76,7 @@ class UpdateCompaniesCard extends Component {
       if (res.status === 200) {
         axios({
           method: "PUT",
-          url: `http://localhost:3002/agencies/companyId/${this.state.company}`,
+          url: (`https://exton-back.herokuapp.com/agencies/companyId/${this.state.company}`),
           headers: {
             authorization: `Bearer ${this.state.token}`
           },
@@ -88,9 +88,7 @@ class UpdateCompaniesCard extends Component {
             // Désactivation des emails extensions
             axios({
               method: "DELETE",
-              url: `http://localhost:3002/email_extensions/companyId/${
-                this.state.company
-              }`,
+              url: (`https://exton-back.herokuapp.com/email_extensions/companyId/${this.state.company}`),
               headers: {
                 authorization: `Bearer ${this.state.token}`
               }
@@ -105,7 +103,7 @@ class UpdateCompaniesCard extends Component {
 
   handleAddCompany = e => {
     e.preventDefault();
-    const url = `http://localhost:3002/companies/`;
+    const url = (`https://exton-back.herokuapp.com/companies`);
     const config = {
       name: this.state.addCompany
     };
@@ -121,7 +119,7 @@ class UpdateCompaniesCard extends Component {
 
   handleAddEmailExtension = e => {
     e.preventDefault();
-    const url = `http://localhost:3002/email_extensions/`;
+    const url = (`https://exton-back.herokuapp.com/email_extensions`);
     const config = {
       email_extension: this.state.addEmailExtension,
       companyId: this.state.company

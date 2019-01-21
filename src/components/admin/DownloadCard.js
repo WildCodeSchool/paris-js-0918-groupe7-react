@@ -30,13 +30,13 @@ class DownloadCard extends Component {
     token: localStorage.getItem("token"),
     adminHomePage: false,
     employees: 0,
-    totalEmployees:0
+    totalEmployees: 0
   };
 
   componentDidMount = () => {
     axios({
       method: "GET",
-      url: "http://localhost:3002/companies/isactive",
+      url: (`https://exton-back.herokuapp.com/companies/isactive`),
       headers: {
         authorization: `Bearer ${this.state.token}`
       }
@@ -48,7 +48,7 @@ class DownloadCard extends Component {
       // Recherche d'agences
       axios({
         method: "GET",
-        url: `http://localhost:3002/agencies/companyId/${this.state.company}`,
+        url: ( `https://exton-back.herokuapp.com/agencies/companyId/${this.state.company}`),
         headers: {
           authorization: `Bearer ${this.state.token}`
         }
@@ -57,13 +57,13 @@ class DownloadCard extends Component {
         if (res.data === []) {
           axios({
             method: "GET",
-            url: `http://localhost:3002/companies/uapq/${this.state.company}`,
+            url: (`https://exton-back.herokuapp.com/companies/uapq/${this.state.company}`),
             headers: {
               authorization: `Bearer ${this.state.token}`
             }
-          }).then(res => 
-            this.setState({ data: res.data }, () => { this.formatData() } )
-          );        
+          }).then(res =>
+            this.setState({ data: res.data }, () => { this.formatData() })
+          );
         } else {
           // Stockage des agences dans un state
           this.setState({ agencies: res.data });
@@ -78,12 +78,12 @@ class DownloadCard extends Component {
 
     axios({
       method: "GET",
-      url: `http://localhost:3002/agencies/uapq/${agency}`,
+      url: ( `https://exton-back.herokuapp.com/agencies/uapq/${agency}`),
       headers: {
         authorization: `Bearer ${this.state.token}`
       }
     }).then(res =>
-      this.setState({ data: res.data }, () => { this.formatData() } )
+      this.setState({ data: res.data }, () => { this.formatData() })
     );
   };
 
@@ -94,7 +94,7 @@ class DownloadCard extends Component {
   };
 
   formatData = () => {
-        let results = [];
+    let results = [];
     this.state.data[0].users.map((user, index) => {
       const axes = ["Agile Capabilities", "Agile Adoption"];
       let userData = {
@@ -109,14 +109,14 @@ class DownloadCard extends Component {
         let axeWeight = 0;
 
         user.users_answers_possibilities_questions.filter(quest_ans => {
-          if(user.users_answers_possibilities_questions !== []) {
+          if (user.users_answers_possibilities_questions !== []) {
             if (quest_ans.question.agile_orientation.includes(axe)) {
               axeWeight += quest_ans.answers_possibility.weight
             }
-            this.setState({employees: this.state.employees +1})
+            this.setState({ employees: this.state.employees + 1 })
           }
         });
-        userData[axe]=axeWeight;
+        userData[axe] = axeWeight;
       });
       results.push(userData);
     });

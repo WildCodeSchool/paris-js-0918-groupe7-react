@@ -42,7 +42,7 @@ class Forgot extends Component {
       email: this.state.email
     };
 
-    let Url = "http://localhost:3002/users/forgot";
+    let Url = (`https://exton-back.herokuapp.com/users/forgot`);
     axios
       .post(Url, config)
       .then(res => {
@@ -109,7 +109,7 @@ class Forgot extends Component {
                   letterSpacing: "0.4rem"
                 }}
               >
-                Forgot your password ? 
+                Forgot your password ?
               </Typography>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-data">

@@ -56,23 +56,25 @@ class LoginCard extends Component {
       password: this.state.password
     };
 
-    let Url = "http://localhost:3002/users/login";
+    let Url = (`https://exton-back.herokuapp.com/users/login`);
     axios
       .post(Url, config)
       .then(res => {
         localStorage.setItem("token", res.headers["x-access-token"]);
       })
       .then(async () => {
-          const role = await checkRole();
+        const role = await checkRole();
 
-          this.setState({
-            role: role,
-            isLoading: false})
+        this.setState({
+          role: role,
+          isLoading: false
+        })
       })
       .catch(err => alert("Wrong Email or Password"));
   };
 
   render() {
+
     if (this.state.forgot) {
       return <Redirect to="/forgot_password" />;
     }
@@ -80,13 +82,13 @@ class LoginCard extends Component {
       return <Redirect to="/" />;
     }
     console.log("test", this.state.role)
-    if(!this.state.isLoading) {
-      if(this.state.role === "client") {
-        return <Redirect to="/user"/>
-      } else if(this.state.role === "admin" || this.state.role === "super_admin" )
-        return <Redirect to="/admin"/>
+    if (!this.state.isLoading) {
+      if (this.state.role === "client") {
+        return <Redirect to="/user" />
+      } else if (this.state.role === "admin" || this.state.role === "super_admin")
+        return <Redirect to="/admin" />
     }
-    
+
     return (
       <Card
         className="card"

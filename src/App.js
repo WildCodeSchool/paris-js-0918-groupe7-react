@@ -32,8 +32,8 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/forgot_password" component={ForgotPassword} />
           <Route path="/reset_password/:reset_token" component={ResetPassword} />
-          <Route path="/account_activation/:activation_token" component={ActivationAccount}/>
-          <Route path="/error" component={UserAlreadyExist}/>
+          <Route path="/account_activation/:activation_token" component={ActivationAccount} />
+          <Route path="/error" component={UserAlreadyExist} />
 
           {/* User routes */}
           <Route exact path="/user" component={HomeClient} />
@@ -45,6 +45,7 @@ class App extends Component {
           <Route exact path="/admin/Forms" component={AdminForm} />
           <Route exact path="/admin/DownloadData" component={Download} />
           <Route exact path="/admin/UpdateCompanies" component={UpdateCompanies} />
+
 
           {/* <Route exact path="/client/thanks" component={ThanksPage} />
           <Route exact path="/client/survey_validation" component={ValidationPage} /> */}

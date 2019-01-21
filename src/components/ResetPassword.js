@@ -25,7 +25,7 @@ class ResetPassword extends Component {
         new_pass: this.state.password
       };
 
-      let Url = `http://localhost:3002/users/reset/${this.props.match.params.reset_token}`;
+      let Url = (`https://exton-back.herokuapp.com/users/reset/${this.props.match.params.reset_token}`);
       axios
         .put(Url, config)
         .then(res => {

@@ -14,9 +14,9 @@ class ActivationAccount extends Component {
   };
 
   componentDidMount = () => {
-    const Url = `http://localhost:3002/users/activate/${
+    const Url = (`https://exton-back.herokuapp.com/users/activate/${
       this.props.match.params.activation_token
-    }`;
+      }`);
 
     axios
       .post(Url)
