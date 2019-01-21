@@ -3,8 +3,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 // CSS
-import "./IntroPage.css";
-import IntroImage from "../images/intro_image.png";
+import IntroImage from "../../images/intro_image.png";
 
 // Material UI dependencies
 import Grid from "@material-ui/core/Grid";

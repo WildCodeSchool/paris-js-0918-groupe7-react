@@ -4,14 +4,14 @@ import Hidden from '@material-ui/core/Hidden';
 import axios from "axios";
 
 import AnswersPossibilities from "./AnswersPossibilities";
-import BarProgress from "../BarProgress";
+import BarProgress from "../progressBar/BarProgress";
 
 import "./Survey.css";
 import line from '../../images/line.png'
 
 import Button from "@material-ui/core/Button";
-import ValidationPage from "../ValidationPage";
-import ThanksPage from "../ThanksPage";
+import ValidationPage from "../validation/ValidationPage";
+import ThanksPage from "../thanks/ThanksPage";
 
 import arrow from "../../images/left-arrow.png"
 

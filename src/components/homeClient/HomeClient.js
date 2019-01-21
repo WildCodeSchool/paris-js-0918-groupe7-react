@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import IntroPage from "./IntroPage";
+import IntroPage from "../intro/IntroPage";
 
 // Helpers
-import checkRole from '../helpers/checkRole';
+import checkRole from '../../helpers/checkRole';
 
 class HomeClient extends Component {
     state = {

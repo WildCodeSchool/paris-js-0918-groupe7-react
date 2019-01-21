@@ -11,11 +11,11 @@ import "./LoginCard.css";
 // import Forgot from "./Forgot.js";
 
 // Helpers
-import checkRole from '../helpers/checkRole';
+import checkRole from '../../helpers/checkRole';
 import { Redirect } from "react-router-dom";
 
 
-import arrow from "../images/left-arrow.png"
+import arrow from "../../images/left-arrow.png"
 
 
 const styles = theme => ({

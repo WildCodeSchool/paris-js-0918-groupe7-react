@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import AdminHomePage from './admin/AdminHomePage'
+import AdminHomePage from './AdminHomePage'
 
 
 // Helpers
-import checkRole from '../helpers/checkRole';
+import checkRole from '../../helpers/checkRole';
 
 class HomeAdmin extends Component {
     state = {
