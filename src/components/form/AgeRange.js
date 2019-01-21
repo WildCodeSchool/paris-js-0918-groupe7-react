@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   ageRangeContainer: {
-    width: 300,
+    width: 200,
   },
 });
 
