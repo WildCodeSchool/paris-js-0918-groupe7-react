@@ -11,6 +11,8 @@ import axios from "axios";
 import './Forgot.css';
 import { Redirect } from "react-router-dom";
 
+import arrow from "../../images/left-arrow.png"
+
 const styles = theme => ({
   pos: {
     margin: 30
@@ -86,7 +88,7 @@ class Forgot extends Component {
             }}
           >
             <CardContent className="cardContent" style={{ paddingBottom: "0px" }}>
-              <Button
+              {/* <Button
                 style={{
                   border: "solid",
                   marginTop: "2%"
@@ -95,7 +97,13 @@ class Forgot extends Component {
               >
                 {" "}
                 Back{" "}
-              </Button>
+              </Button> */}
+
+            <Button style={{ fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)" ,padding: "2%" ,marginRight: "50px"}}
+              onClick={this.BackFunction}>
+              <img className="arrow" src={arrow} alt="back arrow"/>
+              Back
+            </Button>
 
               <Typography
                 gutterBottom
