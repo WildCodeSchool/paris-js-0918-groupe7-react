@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import ImgIntro from "../../images/intro_image.png";
 import UpdateUsersRoleCard from "./UpdateUsersRoleCard";
 
 class UpdateUsersRole extends Component {
@@ -36,14 +35,6 @@ class UpdateUsersRole extends Component {
             </Typography>
             <UpdateUsersRoleCard />                       
           </Grid>
-          {/* <Grid
-            style={{
-              backgroundImage: `url(${ImgIntro})`,
-              backgroundSize: "auto",
-              backgroundRepeat: "no-repeat"
-            }}
-            item xs={12} sm={6}
-          /> */}
         </Grid>
       </div>
     );
