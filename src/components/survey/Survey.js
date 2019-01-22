@@ -27,7 +27,7 @@ class Survey extends Component {
     subPillarId: 0,
     validationPage: false,
     thanksPage: false,
-    user_answers: []
+    user_answers: [],
   };
 
   componentDidMount() {
@@ -80,12 +80,14 @@ class Survey extends Component {
   };
 
   handleBack = () => {
+
     if (this.state.subPillarId > 0)
       this.setState({ subPillarId: this.state.subPillarId - 1 }, () => {
         this.setState({
           questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
             .sub_pillars[this.state.subPillarId].questions,
-          length: this.state.length - 1
+          length: this.state.length - 1,
+          user_answers: [],
         });
       });
     else {
@@ -102,7 +104,8 @@ class Survey extends Component {
               questionsReponses: this.state.data.pole.pillars[
                 this.state.pillarId
               ].sub_pillars[this.state.subPillarId].questions,
-              length: this.state.length - 2
+              length: this.state.length - 2,
+              user_answers: [],
             });
           }
         );
@@ -170,7 +173,7 @@ class Survey extends Component {
   };
 
   render() {
-
+    console.table(this.state.user_answers)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
@@ -260,7 +263,7 @@ class Survey extends Component {
                 Back
             </Button>
 
-              <Button className="continue-button" onClick={this.handleContinue}>CONTINUE</Button>
+              <Button className={this.state.questionsReponses.length === this.state.user_answers.length ? "continue-button" : "hidden-button"} onClick={this.handleContinue}>CONTINUE</Button>
             </div>
           </Grid>
         </Grid>
