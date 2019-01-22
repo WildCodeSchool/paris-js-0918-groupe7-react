@@ -116,19 +116,19 @@ class Survey extends Component {
     const config = this.state.user_answers
 
 
-    if(this.state.length === 4 || this.state.length === 8 || this.state.length === 12)
+    if (this.state.length === 4 || this.state.length === 8 || this.state.length === 12)
       array.push(0);
 
-    if(array[this.state.length] === 0) {
+    if (array[this.state.length] === 0) {
       array.push(0);
       array[this.state.length] = 1;
-      
+
 
       this.state.user_answers.map((e, i) => {
         axios.post(url, config[i])
           .then(this.setState({ user_answers: [], isPosted: array }));
       });
-    } else if(array[this.state.length] === 1) {
+    } else if (array[this.state.length] === 1) {
       this.state.user_answers.map((e, i) => {
         axios.put(url, config[i])
           .then(this.setState({ user_answers: [], isPosted: array }));
@@ -141,13 +141,14 @@ class Survey extends Component {
       this.state.subPillarId <
       this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1
     ) {
-      this.setState({ subPillarId: this.state.subPillarId + 1 }, 
-      () => {this.setState({
-        questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
-          .sub_pillars[this.state.subPillarId].questions,
-        length: this.state.length + 1,
+      this.setState({ subPillarId: this.state.subPillarId + 1 },
+        () => {
+          this.setState({
+            questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
+              .sub_pillars[this.state.subPillarId].questions,
+            length: this.state.length + 1,
+          });
         });
-      });  
     } else {
       if (this.state.pillarId < this.state.data.pole.pillars.length - 1) {
         this.setState(
@@ -169,6 +170,7 @@ class Survey extends Component {
   };
 
   render() {
+
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
@@ -187,12 +189,12 @@ class Survey extends Component {
     if (this.state.validationPage)
       return (
         <div>
-        <Hidden only={['xs', 'sm']}>
-          <BarProgress
-            data={this.state.data.pole.pillars}
-            step={this.state.length + 1}
-          />
-        </Hidden>
+          <Hidden only={['xs', 'sm']}>
+            <BarProgress
+              data={this.state.data.pole.pillars}
+              step={this.state.length + 1}
+            />
+          </Hidden>
           <ValidationPage
             thanksPage={this.goToThanksPage}
             validPage={this.goBacktoSurvey}
@@ -211,11 +213,11 @@ class Survey extends Component {
             />
           </Hidden>
 
-        <Hidden only={['xs', 'sm']}>
-          <Grid item md={5} className="background-left">
-            <div>
-              <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
-            </div>
+          <Hidden only={['xs', 'sm']}>
+            <Grid item md={5} className="background-left">
+              <div>
+                <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
+              </div>
 
               <div>
                 <h2 className="pole-survey">{this.state.data.pole.pillars[this.state.pillarId].name}</h2>
@@ -229,7 +231,7 @@ class Survey extends Component {
                 {this.state.data.pole.pillars[
                   this.state.pillarId
                 ].sub_pillars.map((e, i) => (
-                  <h3 className="subpillars-survey" key={i} value={e.id}>
+                  <h3 className={this.state.subPillarId === i ? "subpillars-survey-active" : "subpillar-survey"} key={i} value={e.id}>
                     {e.name}
                   </h3>
                 ))}
@@ -253,13 +255,13 @@ class Survey extends Component {
               </div>
             ))}
             <div className="container-survey-button">
-            <Button style={{padding: "2%" ,marginRight: "50px", fontSize:"calc(0.5vw + 0.5vh + 0.5vmin)"}}
-              className={this.state.pillarId === 0 && this.state.subPillarId === 0 ? 'HiddenBack' : 'VisibleBack'} onClick={this.handleBack}>
-              <img className="arrow" src={arrow} alt="back arrow"/>
-              Back
+              <Button style={{ padding: "2%", marginRight: "50px", fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)" }}
+                className={this.state.pillarId === 0 && this.state.subPillarId === 0 ? 'HiddenBack' : 'VisibleBack'} onClick={this.handleBack}>
+                <img className="arrow" src={arrow} alt="back arrow" />
+                Back
             </Button>
 
-            <Button className="continue-button" onClick={this.handleContinue}>CONTINUE</Button>
+              <Button className="continue-button" onClick={this.handleContinue}>CONTINUE</Button>
             </div>
           </Grid>
         </Grid>
