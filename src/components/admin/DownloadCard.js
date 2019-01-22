@@ -8,7 +8,8 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import './DownloadCard.css'
+import './DownloadCard.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 import { CSVLink } from "react-csv";
@@ -127,7 +128,7 @@ class DownloadCard extends Component {
     const { classes } = this.props;
     if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
 
-    if (this.state.companies === null) return <p>loading</p>;
+    if (this.state.companies === null) return <CircularProgress disableShrink style={{ alignItems:"center"}}/>;;
     return (
       <div>
         <Card

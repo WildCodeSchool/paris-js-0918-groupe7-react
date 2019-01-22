@@ -8,6 +8,7 @@ import axios from 'axios';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 
@@ -147,7 +148,7 @@ class SimpleForm extends Component {
       this.state.companies === null ||
       this.state.poles === null
     )
-      return "loading.....";
+      return <CircularProgress disableShrink style={{ alignItems:"center" }}/>; ;
 
     if (this.state.redirect) {
       return <Redirect to="/login" />;

@@ -5,6 +5,7 @@ import axios from "axios";
 
 import AnswersPossibilities from "./AnswersPossibilities";
 import BarProgress from "../progressBar/BarProgress";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import "./Survey.css";
 import line from '../../images/line.png'
@@ -171,7 +172,7 @@ class Survey extends Component {
 
   render() {
 
-    if (!this.state.isLoading) return <div>Loading...</div>;
+    if (!this.state.isLoading) return <CircularProgress disableShrink style={{ alignItems:"center", height: "300%", alignContent: "center", margin: "auto" }}/>;
     if (this.state.thanksPage)
       return (
         <div>

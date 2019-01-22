@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import IntroPage from "../intro/IntroPage";
 
+//Material-UI
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // Helpers
 import checkRole from '../../helpers/checkRole';
+
 
 class HomeClient extends Component {
     state = {
@@ -21,7 +25,7 @@ class HomeClient extends Component {
 
     render() {
         if(this.state.isLoading)
-            return <h1>LOADING.........</h1>
+            return <CircularProgress disableShrink style={{ alignItems:"center", size: "300", alignContent: "center", margin: "auto" }}/>;
         if(this.state.role !== "client")
             return <h1>ACCESS DENIED!!!!!!!!!!!</h1>
         return <IntroPage/>
