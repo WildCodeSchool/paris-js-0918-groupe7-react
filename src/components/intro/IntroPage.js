@@ -25,7 +25,7 @@ class IntroPage extends Component {
                                 justifyContent: 'center',
                                 verticalAlign: 'middle',
                                 color: 'white',
-                                margin: '5% auto',
+                                margin: '7% auto',
                                 fontFamily: 'Raleway',
                                 fontSize: "calc(1vw + 1vh + 1vmin)" ,
                                 }}>

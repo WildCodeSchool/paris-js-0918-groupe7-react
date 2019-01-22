@@ -52,10 +52,10 @@ class CardValidation extends Component {
             Back{" "}
           </Button> */}
 
-          <Button style={{ fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)" ,padding: "2%" ,marginRight: "50px"}}
+          <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
             onClick={this.props.validPage}>
-            <img className="arrow" src={arrow} alt="back arrow"/>
-              Back
+          <img className="arrow" src={arrow} alt="back arrow"/>
+            Back
           </Button>
 
           <Typography
@@ -63,7 +63,7 @@ class CardValidation extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "calc(0.8vw + 0.8vh + 1.2vmin)",
+              fontSize: "calc(0.7vw + 0.7vh + 0.7vmin)",
               marginTop: "5%"
             }}
           >
@@ -74,32 +74,31 @@ class CardValidation extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+              fontSize: "calc(0.45vw + 0.45vh + 0.45vmin)",
+              marginTop: "5%"
             }}
           >
             Please note that no changes will be possible after the validation
           </Typography>
 
           <div className="button">
-          <Button className="button-start-survey"
-              onClick={this.handleClick}
-              variant="contained"
-              size="large"
-              style={{
-                backgroundColor: "rgb(186, 28, 58)",
-                color: "white",
-                fontFamily: "Raleway",
-                borderRadius: "15px",
-                marginTop: "5%"
-              }}
+          <Button onClick={this.handleClick}
+                style={{
+                  backgroundColor: "rgb(186, 28, 58)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"0 0 5% 0"
+                }}
             >
                 <Typography
                   gutterBottom
                   style={{
                     textAlign: "center",
+                    alignItems:"center",
                     color: "white",
-                    fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
-                    padding: "15px 35px",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
                     fontFamily: "Raleway",
                   }}
                   >
