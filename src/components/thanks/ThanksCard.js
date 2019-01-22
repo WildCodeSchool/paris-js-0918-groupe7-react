@@ -61,7 +61,7 @@ class ThanksCard extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "calc(0.8vw + 0.8vh + 1.2vmin)",
+              fontSize: "calc(0.7vw + 0.7vh + 0.7vmin)",
               marginTop: "5%"
             }}
           >
@@ -73,7 +73,8 @@ class ThanksCard extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
+              fontSize: "calc(0.45vw + 0.45vh + 0.45vmin)",
+              marginTop: "5%"
             }}
           >
             Thank you for your time and your participation !
@@ -82,23 +83,22 @@ class ThanksCard extends Component {
           <div className="button">
           <Button className="button-start-survey"
               onClick={this.handleClick}
-              variant="contained"
-              size="large"
               style={{
                 backgroundColor: "rgb(186, 28, 58)",
                 color: "white",
                 fontFamily: "Raleway",
                 borderRadius: "15px",
-                marginTop: "5%"
+                margin:"0 0 5% 0"
               }}
             >
                 <Typography
                   gutterBottom
                   style={{
                     textAlign: "center",
+                    alignItems:"center",
                     color: "white",
-                    fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
-                    padding: "15px 35px",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
                     fontFamily: "Raleway",
                   }}
                   >

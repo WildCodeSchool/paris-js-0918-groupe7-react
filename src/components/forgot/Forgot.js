@@ -88,22 +88,12 @@ class Forgot extends Component {
             }}
           >
             <CardContent className="cardContent" style={{ paddingBottom: "0px" }}>
-              {/* <Button
-                style={{
-                  border: "solid",
-                  marginTop: "2%"
-                }}
-                onClick={this.BackFunction}
-              >
-                {" "}
-                Back{" "}
-              </Button> */}
 
-            <Button style={{ fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)" ,padding: "2%" ,marginRight: "50px"}}
-              onClick={this.BackFunction}>
-              <img className="arrow" src={arrow} alt="back arrow"/>
-              Back
-            </Button>
+            <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
+          onClick={this.BackFunction}>
+          <img className="arrow" src={arrow} alt="back arrow"/>
+            Back
+          </Button>
 
               <Typography
                 gutterBottom

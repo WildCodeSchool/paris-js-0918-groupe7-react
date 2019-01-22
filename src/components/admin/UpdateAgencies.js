@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import ImgIntro from "../../images/intro_image.png";
-import UpdateCompaniesCard from "./UpdateCompaniesCard";
+import UpdateAgenciesCard from "./UpdateAgenciesCard";
 
-class UpdateCompanies extends Component {
+class UpdateAgencies extends Component {
   render() {
     return (
       <div>
@@ -32,9 +32,9 @@ class UpdateCompanies extends Component {
               gutterBottom
             >
               {" "}
-              Update Companies
+              Update Agencies
             </Typography>
-            <UpdateCompaniesCard />                       
+            <UpdateAgenciesCard />                       
           </Grid>
           <Grid
             style={{
@@ -50,4 +50,4 @@ class UpdateCompanies extends Component {
   }
 }
 
-export default UpdateCompanies;
+export default UpdateAgencies;
