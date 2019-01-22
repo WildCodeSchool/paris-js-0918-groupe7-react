@@ -4,14 +4,17 @@ import Hidden from '@material-ui/core/Hidden';
 import axios from "axios";
 
 import AnswersPossibilities from "./AnswersPossibilities";
-import BarProgress from "../BarProgress";
+import BarProgress from "../progressBar/BarProgress";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import "./Survey.css";
 import line from '../../images/line.png'
 
 import Button from "@material-ui/core/Button";
-import ValidationPage from "../ValidationPage";
-import ThanksPage from "../ThanksPage";
+import ValidationPage from "../validation/ValidationPage";
+import ThanksPage from "../thanks/ThanksPage";
+
+import arrow from "../../images/left-arrow.png"
 
 class Survey extends Component {
 
@@ -25,12 +28,16 @@ class Survey extends Component {
     subPillarId: 0,
     validationPage: false,
     thanksPage: false,
-    user_answers: []
+    user_answers: [],
   };
 
   componentDidMount() {
     const token = localStorage.getItem("token");
+    let progression = [0];
 
+    if(localStorage.getItem("progression") !== null)
+      progression = localStorage.getItem("progression").split(",").map(e => e = parseInt(e))
+    
     axios({
       method: "GET",
       url: "http://localhost:3002/users/surveyById/",
@@ -46,9 +53,10 @@ class Survey extends Component {
           res.data[0].pole.pillars[this.state.pillarId].sub_pillars[
             this.state.subPillarId
           ].questions,
-        isPosted: [0]
+          isPosted: progression
       })
     );
+    console.log("Mounted", this.state.isPosted, progression)
   }
 
   liftState = (sonState) => {
@@ -83,7 +91,8 @@ class Survey extends Component {
         this.setState({
           questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
             .sub_pillars[this.state.subPillarId].questions,
-          length: this.state.length - 1
+          length: this.state.length - 1,
+          user_answers: [],
         });
       });
     else {
@@ -100,7 +109,8 @@ class Survey extends Component {
               questionsReponses: this.state.data.pole.pillars[
                 this.state.pillarId
               ].sub_pillars[this.state.subPillarId].questions,
-              length: this.state.length - 2
+              length: this.state.length - 2,
+              user_answers: [],
             });
           }
         );
@@ -109,29 +119,37 @@ class Survey extends Component {
   };
 
   submitAnswers = () => {
-    let url = 'http://localhost:3002/users_answers_possibilities_questions'
-    let array = this.state.isPosted
+    let url = 'http://localhost:3002/users_answers_possibilities_questions';
     const config = this.state.user_answers
 
+    let array = this.state.isPosted;
+    console.log("array", this.state.isPosted)
 
-    if(this.state.length === 4 || this.state.length === 8 || this.state.length === 12)
-      array.push(0);
-
-    if(array[this.state.length] === 0) {
-      array.push(0);
-      array[this.state.length] = 1;
-      
-
-      this.state.user_answers.map((e, i) => {
-        axios.post(url, config[i])
-          .then(this.setState({ user_answers: [], isPosted: array }));
-      });
-    } else if(array[this.state.length] === 1) {
+    if (array[this.state.length] === 1) {
       this.state.user_answers.map((e, i) => {
         axios.put(url, config[i])
           .then(this.setState({ user_answers: [], isPosted: array }));
       });
+    } else {
+      if (this.state.length === 4 || this.state.length === 8 || this.state.length === 12) {
+        array.push(0);
+      }
+  
+      if (array[this.state.length] === 0) {
+        array.push(0);
+        array[this.state.length] = 1;
+  
+        this.state.user_answers.map((e, i) => {
+          axios.post(url, config[i])
+            .then(this.setState({ user_answers: [], isPosted: array }));
+        });
+      }
+
     }
+
+    
+    localStorage.setItem("progression", array.join(','))
+    console.log("FINAL", this.state.isPosted)
   }
 
   handleContinue = () => {
@@ -139,13 +157,14 @@ class Survey extends Component {
       this.state.subPillarId <
       this.state.data.pole.pillars[this.state.pillarId].sub_pillars.length - 1
     ) {
-      this.setState({ subPillarId: this.state.subPillarId + 1 }, 
-      () => {this.setState({
-        questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
-          .sub_pillars[this.state.subPillarId].questions,
-        length: this.state.length + 1,
+      this.setState({ subPillarId: this.state.subPillarId + 1 },
+        () => {
+          this.setState({
+            questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
+              .sub_pillars[this.state.subPillarId].questions,
+            length: this.state.length + 1,
+          });
         });
-      });  
     } else {
       if (this.state.pillarId < this.state.data.pole.pillars.length - 1) {
         this.setState(
@@ -167,15 +186,17 @@ class Survey extends Component {
   };
 
   render() {
-    console.log("MARION MARECHAL", this.state.pillarId, this.state.subPillarId)
-    if (!this.state.isLoading) return <div>Loading...</div>;
+
+    if (!this.state.isLoading) return <CircularProgress disableShrink style={{ alignItems:"center", height: "300%", alignContent: "center", margin: "auto" }}/>;
     if (this.state.thanksPage)
       return (
         <div>
-          <BarProgress
-            data={this.state.data.pole.pillars}
-            step={this.state.length + 2}
-          />
+          <Hidden only={['xs']}>
+            <BarProgress
+              data={this.state.data.pole.pillars}
+              step={this.state.length + 2}
+            />
+          </Hidden>
           <ThanksPage
             thanksPage={this.goToThanksPage}
             answers_users={this.state.user_answers} />
@@ -184,10 +205,12 @@ class Survey extends Component {
     if (this.state.validationPage)
       return (
         <div>
-          <BarProgress
-            data={this.state.data.pole.pillars}
-            step={this.state.length + 1}
-          />
+          <Hidden only={['xs']}>
+            <BarProgress
+              data={this.state.data.pole.pillars}
+              step={this.state.length + 1}
+            />
+          </Hidden>
           <ValidationPage
             thanksPage={this.goToThanksPage}
             validPage={this.goBacktoSurvey}
@@ -195,21 +218,22 @@ class Survey extends Component {
           />
         </div>
       );
+
     return (
       <div>
         <Grid container>
-          <Hidden only={['xs', 'sm']}>
+          <Hidden only={['xs']}>
             <BarProgress
               data={this.state.data.pole.pillars}
               step={this.state.length}
             />
           </Hidden>
 
-        <Hidden only={['xs', 'sm']}>
-          <Grid item md={5} className="background-left">
-            <div>
-              <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
-            </div>
+          <Hidden only={['xs']}>
+            <Grid item sm={3} md={4} className="background-left">
+              <div>
+                <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
+              </div>
 
               <div>
                 <h2 className="pole-survey">{this.state.data.pole.pillars[this.state.pillarId].name}</h2>
@@ -223,7 +247,7 @@ class Survey extends Component {
                 {this.state.data.pole.pillars[
                   this.state.pillarId
                 ].sub_pillars.map((e, i) => (
-                  <h3 className="subpillars-survey" key={i} value={e.id}>
+                  <h3 className={this.state.subPillarId === i ? "subpillars-survey-active" : "subpillar-survey"} key={i} value={e.id}>
                     {e.name}
                   </h3>
                 ))}
@@ -231,7 +255,7 @@ class Survey extends Component {
             </Grid>
           </Hidden>
 
-          <Grid item xs={12} md={7} className="background-right">
+          <Grid item xs={12} sm={9} md={8} className="background-right">
             {this.state.questionsReponses.map((elem, index) => (
               <div key={index}>
                 <div className="question">{elem.question}</div>
@@ -242,12 +266,18 @@ class Survey extends Component {
                   userAnswers={this.state.user_answers}
                   id={elem.id}
                   user_id={this.state.data.id}
-
                 />
               </div>
             ))}
-            <Button className={this.state.pillarId === 0 && this.state.subPillarId === 0 ? 'HiddenBack' : 'VisibleBack'} onClick={this.handleBack}>Back</Button>
-            <Button onClick={this.handleContinue}>continue</Button>
+            <div className="container-survey-button">
+              <Button style={{ padding: "2%", marginRight: "50px", fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)" }}
+                className={this.state.pillarId === 0 && this.state.subPillarId === 0 ? 'HiddenBack' : 'VisibleBack'} onClick={this.handleBack}>
+                <img className="arrow" src={arrow} alt="back arrow" />
+                Back
+            </Button>
+
+              <Button className={this.state.questionsReponses.length === this.state.user_answers.length ? "continue-button" : "hidden-button"} onClick={this.handleContinue}>CONTINUE</Button>
+            </div>
           </Grid>
         </Grid>
       </div>

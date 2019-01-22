@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const checkRole = () => {
+const checkRole = async () => {
     const token = localStorage.getItem("token");
 
-    const role =  axios({
+    const role =  await axios({
         method: 'POST',
         url: 'http://localhost:3002/users/getrole/',
         headers: {
@@ -11,7 +11,9 @@ const checkRole = () => {
         }
     }).then(res => res.data.role);
 
-    return role;
+    let hasRole= role === "client" || role === "admin" || role === "super_admin"
+    
+    return hasRole ? role : "visitor";
 }
 
 export default checkRole;

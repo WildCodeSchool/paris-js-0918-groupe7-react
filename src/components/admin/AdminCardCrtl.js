@@ -25,8 +25,12 @@ class AdminCardCrtl extends Component {
         console.log(this.state.redirect)
         if (this.state.redirect === 'download')
             return <Redirect to="/admin/DownloadData" />
-        if (this.state.redirect === 'update')
+        if (this.state.redirect === 'updateCompanies')
             return <Redirect to="/admin/UpdateCompanies" />
+        if (this.state.redirect === 'updateAgencies')
+            return <Redirect to="/admin/UpdateAgencies" />
+        if (this.state.redirect === 'updateUsersRole')
+            return <Redirect to="/admin/UpdateUsersRole" />
         if (this.state.redirect === 'logout')
             return <Redirect to="/login" />
         return (
@@ -81,7 +85,7 @@ class AdminCardCrtl extends Component {
                                     variant="contained"
                                     className='but'
                                     size='large'
-                                    value='update'
+                                    value='updateCompanies'
                                     style={{
                                         backgroundColor: 'rgb(38, 56, 87)',
                                         color: 'white',
@@ -95,6 +99,44 @@ class AdminCardCrtl extends Component {
                                     }}
                                 >
                                     Update Companies
+                    </Button>
+                    <Button
+                        onClick={this.handleClick} 
+                        variant="contained"  
+                        className='but'
+                        size='large'
+                        value='updateAgencies'
+                        style={{
+                        backgroundColor: 'rgb(38, 56, 87)',
+                        color: 'white',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                        marginTop: '5%',
+                        fontSize: '1.3em',
+                        fontFamily: 'Raleway'
+                        }}
+                    >
+                    Update Agencies
+                    </Button>
+                    <Button
+                        onClick={this.handleClick} 
+                        variant="contained"  
+                        className='but'
+                        size='large'
+                        value='updateUsersRole'
+                        style={{
+                        backgroundColor: 'rgb(38, 56, 87)',
+                        color: 'white',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        display: 'block',
+                        marginTop: '5%',
+                        fontSize: '1.3em',
+                        fontFamily: 'Raleway'
+                        }}
+                    >
+                    Update Users Role
                     </Button>
                             </Grid>
                             <Grid md={12}>

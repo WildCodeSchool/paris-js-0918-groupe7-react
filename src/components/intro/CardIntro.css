@@ -1,0 +1,38 @@
+.title-intro {
+    display:flex;
+    justify-content: center;
+    margin: 0 0 10% 0;
+    font-size: calc(0.7vw + 0.7vh + 0.7vmin);
+}
+
+hr {
+    background-color: #000000;
+    max-width: 300px;
+    margin-bottom: 7%;
+}
+
+
+.container-clock{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.clock{
+    width:10%;
+    height:10%;
+}
+
+div.button{
+    display:flex;
+    justify-content: center;
+    margin-top:10%;
+}
+/* .button-start-survey{
+    width: 10vw;
+    padding: 18px 30px !important;
+    font-family: "Raleway";
+    font-size: calc(0.6vw + 0.6vh + 1vmin) !important;
+    color:#FFFFFF !important;
+    background-color: rgb(38, 56, 87) !important;
+} */

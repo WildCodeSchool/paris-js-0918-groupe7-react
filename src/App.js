@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 
 // IMPORT COMPONENTS
-import Header from "./components/Header";
-import FormPage from "./components/FormPage";
-import Login from "./components/Login";
+import Header from "./components/header/Header";
+import FormPage from "./components/form/FormPage";
+import Login from "./components/login/Login";
 import { Switch, Route } from "react-router-dom";
-import ForgotPassword from "./components/Forgot.js";
-import ResetPassword from "./components/ResetPassword";
-import AdminForm from "./components/admin/AdminForm";
+import ForgotPassword from "./components/forgot/Forgot.js";
+import ResetPassword from "./components/resetPassword/ResetPassword";
+
 import AdminHomePage from "./components/admin/AdminHomePage";
 import Download from "./components/admin/Download";
 import UpdateCompanies from "./components/admin/UpdateCompanies";
-import ActivationAccount from "./components/ActivationAccount";
-import UserAlreadyExist from "./components/UserAlreadyExist";
+import UpdateAgencies from "./components/admin/UpdateAgencies";
+import UpdateUsersRole from "./components/admin/UpdateUsersRole";
+import ActivationAccount from "./components/activationAccount/ActivationAccount";
+import UserAlreadyExist from "./components/userAlreadyExist/UserAlreadyExist";
 
 import "./App.css";
-import HomeClient from "./components/HomeClient";
-import HomeAdmin from "./components/HomeAdmin";
+import HomeClient from "./components/homeClient/HomeClient";
+import HomeAdmin from "./components/admin/HomeAdmin";
 
 // IMPORT OTHER PAGES COMPONENTS
 import Survey from "./components/survey/Survey";
@@ -42,9 +44,12 @@ class App extends Component {
           {/* Admin routes */}
           <Route exact path="/admin" component={HomeAdmin} />
           <Route exact path="/admin/Home" component={AdminHomePage} />
-          <Route exact path="/admin/Forms" component={AdminForm} />
           <Route exact path="/admin/DownloadData" component={Download} />
           <Route exact path="/admin/UpdateCompanies" component={UpdateCompanies} />
+          <Route exact path="/admin/UpdateAgencies" component={UpdateAgencies} />
+          <Route exact path="/admin/UpdateUsersRole" component={UpdateUsersRole} />
+
+
 
           {/* <Route exact path="/client/thanks" component={ThanksPage} />
           <Route exact path="/client/survey_validation" component={ValidationPage} /> */}
