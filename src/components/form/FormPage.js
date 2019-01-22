@@ -84,8 +84,7 @@ class FormPage extends Component {
                   color: "white",
                   margin: "5%",
                   fontFamily: "Raleway",
-                  fontSize: "2em",
-
+                  fontSize: "calc(1vw + 1vh + 1vmin)"
                 }}
                 gutterBottom
               >

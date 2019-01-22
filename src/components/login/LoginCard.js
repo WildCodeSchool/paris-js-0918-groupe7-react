@@ -108,7 +108,7 @@ class LoginCard extends Component {
       >
         <CardContent className="cardContent">
 
-          <Button style={{ fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)" ,padding: "2%" ,marginRight: "50px"}}
+          <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
           onClick={this.BackFunction}>
           <img className="arrow" src={arrow} alt="back arrow"/>
             Back
@@ -135,7 +135,7 @@ class LoginCard extends Component {
                 name="email"
                 required
                 placeholder="Email"
-                style={{fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)" ,margin: "10% auto 0 auto", width: "70%", marginLeft: "13%", }}
+                style={{fontSize: "calc(0.4vw + 0.4vh + 0.4vmin)" ,margin: "10% auto 0 auto", width: "70%", marginLeft: "13%", }}
                 onChange={this.onChange}
                 value={this.state.email}
               />
@@ -149,7 +149,7 @@ class LoginCard extends Component {
                 required
                 placeholder="Password"
                 minLength="8"
-                style={{fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)", margin: "5% auto 0 auto", width: "70%", marginLeft: "13%", }}
+                style={{fontSize: "calc(0.4vw + 0.4vh + 0.4vmin)", margin: "5% auto 0 auto", width: "70%", marginLeft: "13%", }}
                 onChange={this.onChange}
                 value={this.state.password}
               />
@@ -191,15 +191,17 @@ class LoginCard extends Component {
                   color: "white",
                   fontFamily: "Raleway",
                   borderRadius: "15px",
+                  margin:"5% 2% 10% 0"
                 }}
               >
                 <Typography
                   gutterBottom
                   style={{
                     textAlign: "center",
+                    alignItems:"center",
                     color: "white",
-                    fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
-                    padding: "15px 42px",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
                     fontFamily: "Raleway",
                   }}
                 >

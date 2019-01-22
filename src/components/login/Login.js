@@ -18,8 +18,10 @@ class Login extends Component {
             minHeight:"100%"
           }}
         >
-          <Grid item xs={12} md={6}>
-            <Typography
+          <Grid item xs={12} md={6}  style={{
+              marginTop:"5%"
+            }}>
+            {/* <Typography
               style={{
                 textAlign: "center",
                 justifyContent: "center",
@@ -27,13 +29,14 @@ class Login extends Component {
                 color: "white",
                 margin: "5% auto",
                 fontFamily: "Raleway",
-                fontSize: "calc(1.4vw + 1.4vh + 1.7vmin)" ,
+                fontSize: "calc(1vw + 1vh + 1vmin)" ,
+                fontSize: "35px" ,
               }}
               gutterBottom
             >
               {" "}
               Welcome to survey AAA
-            </Typography>
+            </Typography> */}
             <LoginCard />
           </Grid>
 

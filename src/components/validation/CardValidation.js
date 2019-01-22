@@ -103,7 +103,7 @@ class CardValidation extends Component {
                     fontFamily: "Raleway",
                   }}
                   >
-                  SIGN OUT
+                  VALIDATE
                 </Typography>
               </Button>
           </div>

@@ -177,7 +177,7 @@ class SimpleForm extends Component {
             style={{
               fontFamily: "Raleway",
             }}>Create your account</h1>
-          <label className="title-input">Gender</label>
+          {/* <label className="title-input">Gender</label> */}
           <div>
             <label>
               <Field
@@ -353,21 +353,20 @@ class SimpleForm extends Component {
               color: "white",
               fontFamily: "Raleway",
               borderRadius: "15px",
-              maxWidth: "200px",
-              margin: "5% 0 15% 0"
+              margin:"5% 2% 10% 0"
             }}
           >
             <Typography
               gutterBottom
               style={{
                 textAlign: "center",
+                alignItems:"center",
                 color: "white",
-                fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
-                padding: "15px 35px",
+                fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                padding: "8px 30px",
                 fontFamily: "Raleway",
               }}
             >
-              {" "}
               Sign Up
             </Typography>
           </Button>
@@ -392,21 +391,20 @@ class SimpleForm extends Component {
             color: "white",
             fontFamily: "Raleway",
             borderRadius: "15px",
-            margin: "5% 0 15% 0"
-
+            margin:"5% 2% 10% 0"
           }}
         >
           <Typography
             gutterBottom
             style={{
               textAlign: "center",
+              alignItems:"center",
               color: "white",
-              fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
-              padding: "15px 42px",
+              fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+              padding: "8px 30px",
               fontFamily: "Raleway",
             }}
           >
-            {" "}
             Login
           </Typography>
         </Button>
