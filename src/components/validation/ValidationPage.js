@@ -22,7 +22,6 @@ class ValidationPage extends Component {
         >
           <Grid className="color" item xs={12} md={6}>
             <Typography
-              className="thank"
               style={{
                 textAlign: "center",
                 justifyContent: "center",

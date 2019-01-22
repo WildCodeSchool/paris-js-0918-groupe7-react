@@ -27,7 +27,7 @@ class Survey extends Component {
     subPillarId: 0,
     validationPage: false,
     thanksPage: false,
-    user_answers: []
+    user_answers: [],
   };
 
   componentDidMount() {
@@ -90,7 +90,8 @@ class Survey extends Component {
         this.setState({
           questionsReponses: this.state.data.pole.pillars[this.state.pillarId]
             .sub_pillars[this.state.subPillarId].questions,
-          length: this.state.length - 1
+          length: this.state.length - 1,
+          user_answers: [],
         });
       });
     else {
@@ -107,7 +108,8 @@ class Survey extends Component {
               questionsReponses: this.state.data.pole.pillars[
                 this.state.pillarId
               ].sub_pillars[this.state.subPillarId].questions,
-              length: this.state.length - 2
+              length: this.state.length - 2,
+              user_answers: [],
             });
           }
         );
@@ -183,12 +185,13 @@ class Survey extends Component {
   };
 
   render() {
-
+    console.table('UnitedStates', this.state.user_answers)
+    console.table(this.state.user_answers)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
       return (
         <div>
-          <Hidden only={['xs', 'sm']}>
+          <Hidden only={['xs']}>
             <BarProgress
               data={this.state.data.pole.pillars}
               step={this.state.length + 2}
@@ -202,7 +205,7 @@ class Survey extends Component {
     if (this.state.validationPage)
       return (
         <div>
-          <Hidden only={['xs', 'sm']}>
+          <Hidden only={['xs']}>
             <BarProgress
               data={this.state.data.pole.pillars}
               step={this.state.length + 1}
@@ -219,15 +222,15 @@ class Survey extends Component {
     return (
       <div>
         <Grid container>
-          <Hidden only={['xs', 'sm']}>
+          <Hidden only={['xs']}>
             <BarProgress
               data={this.state.data.pole.pillars}
               step={this.state.length}
             />
           </Hidden>
 
-          <Hidden only={['xs', 'sm']}>
-            <Grid item md={5} className="background-left">
+          <Hidden only={['xs']}>
+            <Grid item sm={3} md={4} className="background-left">
               <div>
                 <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
               </div>
@@ -252,7 +255,7 @@ class Survey extends Component {
             </Grid>
           </Hidden>
 
-          <Grid item xs={12} md={7} className="background-right">
+          <Grid item xs={12} sm={9} md={8} className="background-right">
             {this.state.questionsReponses.map((elem, index) => (
               <div key={index}>
                 <div className="question">{elem.question}</div>
@@ -263,7 +266,6 @@ class Survey extends Component {
                   userAnswers={this.state.user_answers}
                   id={elem.id}
                   user_id={this.state.data.id}
-
                 />
               </div>
             ))}
@@ -274,7 +276,7 @@ class Survey extends Component {
                 Back
             </Button>
 
-              <Button className="continue-button" onClick={this.handleContinue}>CONTINUE</Button>
+              <Button className={this.state.questionsReponses.length === this.state.user_answers.length ? "continue-button" : "hidden-button"} onClick={this.handleContinue}>CONTINUE</Button>
             </div>
           </Grid>
         </Grid>
