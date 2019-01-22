@@ -80,7 +80,6 @@ class Survey extends Component {
   };
 
   handleBack = () => {
-
     if (this.state.subPillarId > 0)
       this.setState({ subPillarId: this.state.subPillarId - 1 }, () => {
         this.setState({
@@ -173,6 +172,7 @@ class Survey extends Component {
   };
 
   render() {
+    console.table('UnitedStates', this.state.user_answers)
     console.table(this.state.user_answers)
     if (!this.state.isLoading) return <div>Loading...</div>;
     if (this.state.thanksPage)
