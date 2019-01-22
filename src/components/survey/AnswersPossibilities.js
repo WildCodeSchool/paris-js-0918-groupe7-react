@@ -31,7 +31,7 @@ class AnswersPossibilities extends Component {
         this.props.data_answers[0].answersTypeId)
     ) {
 
-      this.setState({ type: this.props.data_answers[0].answersTypeId })
+      this.setState({ type: this.props.data_answers[0].answersTypeId, [this.props.data_answers[0].questions_answers_possibilities.questionId]: '0' })
     }
   };
 
