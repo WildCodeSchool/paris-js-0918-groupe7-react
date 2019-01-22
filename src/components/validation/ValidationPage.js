@@ -29,8 +29,9 @@ class ValidationPage extends Component {
                 verticalAlign: "middle",
                 color: "white",
                 margin: "5% auto",
+                padding: "0% 5%",
                 fontFamily: "Raleway",
-                fontSize: "calc(1.4vw + 1.4vh + 1.7vmin)",
+                fontSize: "calc(1vw + 1vh + 1vmin)",
               }}
               gutterBottom
             >

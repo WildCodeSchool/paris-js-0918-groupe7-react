@@ -176,6 +176,7 @@ class SimpleForm extends Component {
           <h1
             style={{
               fontFamily: "Raleway",
+              fontSize: "calc(0.7vw + 0.7vh + 0.7vmin)"
             }}>Create your account</h1>
           {/* <label className="title-input">Gender</label> */}
           <div>
