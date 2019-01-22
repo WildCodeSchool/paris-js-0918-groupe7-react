@@ -27,7 +27,7 @@ class IntroPage extends Component {
                                 color: 'white',
                                 margin: '5% auto',
                                 fontFamily: 'Raleway',
-                                fontSize: "calc(1.3vw + 1.3vh + 1.3vmin)" ,
+                                fontSize: "calc(1vw + 1vh + 1vmin)" ,
                                 }}>
                                 Thank you for creating your account !
                         </Typography>

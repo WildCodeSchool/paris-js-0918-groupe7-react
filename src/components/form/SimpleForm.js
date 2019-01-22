@@ -376,7 +376,7 @@ class SimpleForm extends Component {
           gutterBottom
           style={{
             fontFamily: "Raleway, sans-serif",
-            fontSize: "18px",
+            fontSize: "calc(0.4vw + 0.4vh + 0.5vmin)",
           }}
         >
           Already have an account ?
@@ -391,7 +391,7 @@ class SimpleForm extends Component {
             color: "white",
             fontFamily: "Raleway",
             borderRadius: "15px",
-            margin:"5% 2% 10% 0"
+            margin:"2% 2% 10% 0"
           }}
         >
           <Typography
