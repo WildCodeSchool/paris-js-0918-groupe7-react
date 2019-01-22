@@ -1,18 +1,16 @@
 .title-survey{
     padding: 5% 0 0 8%;
     font-family: 'raleway';
-    /* letter-spacing: 0.1em; */
-    font-size:calc(1.2vw + 1.2vh + 0.6vmin);
+    font-size:calc(0.7vw + 0.7vh + 0.7vmin);
     color:#FFFFFF;
 }
 
 .pole-survey{
     color:#FFFFFF;
     padding: 5% 0 0 8%;
-    font-size:calc(1vw + 1vh + 0.6vmin);
+    font-size:calc(0.6vw + 0.6vh + 0.6vmin);
     font-family: 'raleway';
     text-transform: uppercase;
-    letter-spacing: 0.1em;
 }
 
 .line-survey{
@@ -42,20 +40,23 @@ Button.hidden-button {
 }
 
 .question{
-    font-size: 2vh;
+    font-size:calc(0.45vw + 0.45vh + 0.45vmin);
     margin-bottom: 3%;
-   
+    color: rgb(38, 56, 87);
 }
 
-.subpillars-survey{
+.subpillar-survey{
     padding: 0 0 0 8%;
     font-family: 'raleway';
-    font-size:calc(0.8vw + 0.8vh + 0.6vmin);
+    font-size:calc(0.45vw + 0.45vh + 0.45vmin);
     font-weight: normal;
 }
 
 .subpillars-survey-active{
-    color: #FFFFFF
+    padding: 0 0 0 8%;
+    font-family: 'raleway';
+    color: #FFFFFF;
+    font-size:calc(0.45vw + 0.45vh + 0.45vmin);
 }
 
 Button.HiddenBack{
