@@ -71,7 +71,6 @@ render(){
 
               <Typography
                 style={{
-                  textAlign: "center",
                   fontFamily: "Raleway",
                   fontSize: "calc(0.45vw + 0.45vh + 0.45vmin)",
                   marginBottom: "20px",

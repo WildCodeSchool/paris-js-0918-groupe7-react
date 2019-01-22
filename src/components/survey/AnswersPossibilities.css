@@ -11,20 +11,25 @@
     border-radius: 5% !important;
 } */
 
-Button:hover{
-    background-color: rgba(59,84,125,0.5) !important;
+Button{
+    font-family: 'raleway' !important;
+    font-size:calc(0.4vw + 0.4vh + 0.4vmin) !important;
 }
+
+/* Button:hover{
+    background-color: rgba(59,84,125,0.5) !important;
+} */
 
 Button:active{
     background-color: inherit !important;
+    transform: translate(2px,2px);
 }
+
 
 Button.Selected{
     background-color: rgb(59,84,125) !important;
     color: #FFFFFF;
 }
-
-
 
 .container-lickert-answer{
     padding-bottom: 10%;
@@ -35,12 +40,11 @@ Button.Selected{
 }
 
 .lickert-answer{
-    max-width: 15px;
-    padding: 0 2.2vw;
+    padding: 0 0 0 0;
 }
 
-
 p{
-    font-size:calc(0.4vw + 0.4vh + 0.6vmin);
+    font-family: 'raleway';
+    font-size:calc(0.4vw + 0.4vh + 0.4vmin);
     text-align: center;
 }

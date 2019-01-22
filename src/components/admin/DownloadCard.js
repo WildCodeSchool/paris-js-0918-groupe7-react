@@ -55,16 +55,16 @@ class DownloadCard extends Component {
         }
       }).then(res => {
         // Si pas d'agences, récupération des données de la compagnie
-        if (res.data === []) {
+        if (res.data.length === 0) {
           axios({
             method: "GET",
             url: `http://localhost:3002/companies/uapq/${this.state.company}`,
             headers: {
               authorization: `Bearer ${this.state.token}`
             }
-          }).then(res => 
+          }).then(res =>
             this.setState({ data: res.data }, () => { this.formatData() } )
-          );        
+          );
         } else {
           // Stockage des agences dans un state
           this.setState({ agencies: res.data });
@@ -181,43 +181,46 @@ class DownloadCard extends Component {
               {" "}
               Download Company Data
             </Typography>
-            <TextField
-              className={classes.poleContainer}
-              select
-              value={this.state.company}
-              onChange={this.handleChangeCompany("company")}
-              label="Companies"
-              helperText="Please select a company"
-              margin="normal"
-              variant="outlined"
-            >
-              {this.state.companies.map(option => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              className={classes.poleContainer}
-              select
-              value={this.state.agency}
-              onChange={this.handleChangeAgency("agency")}
-              label="Agencies"
-              helperText="Please select an agency"
-              margin="normal"
-              variant="outlined"
-            >
-              {this.state.agencies.map(option => (
-                <MenuItem key={option.id} value={option.id}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </TextField>
+            <CardContent>
+              <TextField
+                className={classes.poleContainer}
+                select
+                value={this.state.company}
+                onChange={this.handleChangeCompany("company")}
+                label="Companies"
+                helperText="Please select a company"
+                margin="normal"
+                variant="outlined"
+              >
+                {this.state.companies.map(option => (
+                  <MenuItem key={option.id} value={option.id}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </CardContent>
+            <CardContent>
+              <TextField
+                className={classes.poleContainer}
+                select
+                value={this.state.agency}
+                onChange={this.handleChangeAgency("agency")}
+                label="Agencies"
+                helperText="Please select an agency"
+                margin="normal"
+                variant="outlined"
+              >
+                {this.state.agencies.map(option => (
+                  <MenuItem key={option.id} value={option.id}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </CardContent>
             <CardContent><h5 className={this.state.totalEmployees === 0 ? 'HiddenCount' : 'VisibleCount'} >Actually, there are {this.state.employees} out of {this.state.totalEmployees} employees who are completing ( or have completed  ) your survey. </h5></CardContent>{" "}
-            {/* <button > */}
             <CSVLink data={this.state.results}>Download</CSVLink>
-            {/* </button> */}
           </CardContent>
+          <h3>* Don't forget to refresh your page after your changes</h3>
         </Card>
       </div>
     );

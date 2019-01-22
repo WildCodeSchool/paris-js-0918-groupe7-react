@@ -7,10 +7,12 @@ import Login from "./components/login/Login";
 import { Switch, Route } from "react-router-dom";
 import ForgotPassword from "./components/forgot/Forgot.js";
 import ResetPassword from "./components/resetPassword/ResetPassword";
-import AdminForm from "./components/admin/AdminForm";
+
 import AdminHomePage from "./components/admin/AdminHomePage";
 import Download from "./components/admin/Download";
 import UpdateCompanies from "./components/admin/UpdateCompanies";
+import UpdateAgencies from "./components/admin/UpdateAgencies";
+import UpdateUsersRole from "./components/admin/UpdateUsersRole";
 import ActivationAccount from "./components/activationAccount/ActivationAccount";
 import UserAlreadyExist from "./components/userAlreadyExist/UserAlreadyExist";
 
@@ -42,9 +44,12 @@ class App extends Component {
           {/* Admin routes */}
           <Route exact path="/admin" component={HomeAdmin} />
           <Route exact path="/admin/Home" component={AdminHomePage} />
-          <Route exact path="/admin/Forms" component={AdminForm} />
           <Route exact path="/admin/DownloadData" component={Download} />
           <Route exact path="/admin/UpdateCompanies" component={UpdateCompanies} />
+          <Route exact path="/admin/UpdateAgencies" component={UpdateAgencies} />
+          <Route exact path="/admin/UpdateUsersRole" component={UpdateUsersRole} />
+
+
 
           {/* <Route exact path="/client/thanks" component={ThanksPage} />
           <Route exact path="/client/survey_validation" component={ValidationPage} /> */}
