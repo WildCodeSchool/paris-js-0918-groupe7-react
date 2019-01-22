@@ -32,7 +32,11 @@ class Survey extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
+    let progression = [0];
 
+    if(localStorage.getItem("progression") !== null)
+      progression = localStorage.getItem("progression").split(",").map(e => e = parseInt(e))
+    
     axios({
       method: "GET",
       url: "http://localhost:3002/users/surveyById/",
@@ -48,9 +52,10 @@ class Survey extends Component {
           res.data[0].pole.pillars[this.state.pillarId].sub_pillars[
             this.state.subPillarId
           ].questions,
-        isPosted: [0]
+          isPosted: progression
       })
     );
+    console.log("Mounted", this.state.isPosted, progression)
   }
 
   liftState = (sonState) => {
@@ -111,29 +116,37 @@ class Survey extends Component {
   };
 
   submitAnswers = () => {
-    let url = 'http://localhost:3002/users_answers_possibilities_questions'
-    let array = this.state.isPosted
+    let url = 'http://localhost:3002/users_answers_possibilities_questions';
     const config = this.state.user_answers
 
+    let array = this.state.isPosted;
+    console.log("array", this.state.isPosted)
 
-    if (this.state.length === 4 || this.state.length === 8 || this.state.length === 12)
-      array.push(0);
-
-    if (array[this.state.length] === 0) {
-      array.push(0);
-      array[this.state.length] = 1;
-
-
-      this.state.user_answers.map((e, i) => {
-        axios.post(url, config[i])
-          .then(this.setState({ user_answers: [], isPosted: array }));
-      });
-    } else if (array[this.state.length] === 1) {
+    if (array[this.state.length] === 1) {
       this.state.user_answers.map((e, i) => {
         axios.put(url, config[i])
           .then(this.setState({ user_answers: [], isPosted: array }));
       });
+    } else {
+      if (this.state.length === 4 || this.state.length === 8 || this.state.length === 12) {
+        array.push(0);
+      }
+  
+      if (array[this.state.length] === 0) {
+        array.push(0);
+        array[this.state.length] = 1;
+  
+        this.state.user_answers.map((e, i) => {
+          axios.post(url, config[i])
+            .then(this.setState({ user_answers: [], isPosted: array }));
+        });
+      }
+
     }
+
+    
+    localStorage.setItem("progression", array.join(','))
+    console.log("FINAL", this.state.isPosted)
   }
 
   handleContinue = () => {

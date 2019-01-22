@@ -82,7 +82,6 @@ class AnswersPossibilities extends Component {
 
 
   render() {
-    console.log(this.state)
     if (this.state.type === 1) {
       return (
         <div className="container-yes-no-answer">
