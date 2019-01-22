@@ -53,7 +53,7 @@ class DownloadCard extends Component {
         }
       }).then(res => {
         // Si pas d'agences, récupération des données de la compagnie
-        if (res.data === []) {
+        if (res.data.length === 0) {
           axios({
             method: "GET",
             url: `http://localhost:3002/companies/uapq/${this.state.company}`,
@@ -216,6 +216,7 @@ class DownloadCard extends Component {
             <CSVLink data={this.state.results}>Download</CSVLink>
             {/* </button> */}
           </CardContent>
+          <h3>* Don't forget to refresh your page after your changes</h3>
         </Card>
       </div>
     );

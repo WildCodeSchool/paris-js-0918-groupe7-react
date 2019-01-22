@@ -19,7 +19,7 @@ const styles = theme => ({
   }
 });
 
-class UpdateCompaniesCard extends Component {
+class UpdateAgenciesCard extends Component {
   state = {
     data: [],
     companies: [],
@@ -43,16 +43,44 @@ class UpdateCompaniesCard extends Component {
 
   handleChangeCompany = prop => event => {
     this.setState({ [prop]: event.target.value }, () => {
-      console.log("testId", event.target.value);
       // Recherche d'agences
       axios({
         method: "GET",
-        url: `http://localhost:3002/agencies/companyId/${this.state.company}`,
+        url: `http://localhost:3002/agencies/companyId/${
+          this.state.company
+        }/is_active`,
         headers: {
           authorization: `Bearer ${this.state.token}`
         }
-      }).then(res => this.setState({ data: res.data }));
+      }).then(res => {
+        // Si pas d'agences, récupération des données de la compagnie
+        if (res.data === []) {
+          axios({
+            method: "GET",
+            url: `http://localhost:3002/companies/uapq/${this.state.company}`,
+            headers: {
+              authorization: `Bearer ${this.state.token}`
+            }
+          }).then(res => this.setState({ data: res.data }));
+        } else {
+          // Stockage des agences dans un state
+          this.setState({ agencies: res.data });
+        }
+      });
     });
+  };
+
+  handleChangeAgency = prop => event => {
+    const agency = event.target.value;
+    this.setState({ [prop]: agency });
+
+    axios({
+      method: "GET",
+      url: `http://localhost:3002/agencies/uapq/${agency}`,
+      headers: {
+        authorization: `Bearer ${this.state.token}`
+      }
+    }).then(res => this.setState({ data: res.data }));
   };
 
   handleClick = e => {
@@ -64,7 +92,7 @@ class UpdateCompaniesCard extends Component {
   handleDelete = () => {
     axios({
       method: "PUT",
-      url: `http://localhost:3002/companies/${this.state.company}`,
+      url: `http://localhost:3002/agencies/${this.state.agency}`,
       headers: {
         authorization: `Bearer ${this.state.token}`
       },
@@ -72,85 +100,39 @@ class UpdateCompaniesCard extends Component {
         is_active: 0
       }
     }).then(res => {
-      // Desactivation de l'agence ou des  agences?
       if (res.status === 200) {
+        // Désactivation des users de la companie
         axios({
           method: "PUT",
-          url: `http://localhost:3002/agencies/companyId/${this.state.company}`,
+          url: `http://localhost:3002/users/agencyId/${this.state.agency}`,
           headers: {
             authorization: `Bearer ${this.state.token}`
           },
           data: {
             is_active: 0
           }
-        }).then(res => {
-          if (res.status === 200) {
-            // Désactivation des users de la companie
-            axios({
-              method: "PUT",
-              url: `http://localhost:3002/users/companyId/${
-                this.state.company
-              }`,
-              headers: {
-                authorization: `Bearer ${this.state.token}`
-              },
-              data: {
-                is_active: 0
-              }
-            }).then(res => {
-              if (res.status === 200) {
-                // Désactivation des emails extensions
-                axios({
-                  method: "DELETE",
-                  url: `http://localhost:3002/email_extensions/companyId/${
-                    this.state.company
-                  }`,
-                  headers: {
-                    authorization: `Bearer ${this.state.token}`
-                  }
-                })
-                  .then(res => this.setState({ deleteStatus: res.status }))
-                  .then(alert(`Company with Id ${this.state.company} deleted`));
-              }
-            });
-          }
-        });
+        })
+          .then(res => this.setState({ deleteStatus: res.status }))
+          .then(alert(`Agency with Id ${this.state.agency} deleted`));
       }
     });
   };
 
-  handleAddCompany = e => {
+  handleAddAgency = e => {
     e.preventDefault();
-    const url = `http://localhost:3002/companies/`;
+    const url = `http://localhost:3002/agencies/`;
     const config = {
-      name: this.state.addCompany
-    };
-    const headers = {
-      authorization: `Bearer ${this.state.token}`
-    };
-
-    axios
-      .post(url, config)
-      .then(res => this.setState({ data: res.data }))
-      .then(alert(`Company ${this.state.addCompany} added`));
-  };
-
-  handleAddEmailExtension = e => {
-    e.preventDefault();
-    const url = `http://localhost:3002/email_extensions/`;
-    const config = {
-      email_extension: this.state.addEmailExtension,
+      name: this.state.addAgency,
       companyId: this.state.company
     };
-
-    console.log("SAURON", config);
     const headers = {
       authorization: `Bearer ${this.state.token}`
     };
+
     axios
       .post(url, config)
       .then(res => this.setState({ data: res.data }))
-      .then(alert(`Email extension ${this.state.addEmailExtension} added`));
+      .then(alert(`Agency ${this.state.addAgency} added`));
   };
 
   onChange = event => {
@@ -163,7 +145,6 @@ class UpdateCompaniesCard extends Component {
     if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
 
     const { classes } = this.props;
-    console.log("the patriots", this.state);
 
     if (this.state.companies === null) return <p>loading</p>;
     return (
@@ -217,7 +198,7 @@ class UpdateCompaniesCard extends Component {
               gutterBottom
             >
               {" "}
-              Update Companies
+              Update Agencies
             </Typography>
             <form>
               <Grid>
@@ -230,11 +211,24 @@ class UpdateCompaniesCard extends Component {
                   helperText="Please select a company"
                   margin="normal"
                   variant="outlined"
-                  style={{
-                    marginTop: "1%"
-                  }}
                 >
                   {this.state.companies.map(option => (
+                    <MenuItem key={option.id} value={option.id}>
+                      {option.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                <TextField
+                  className={classes.poleContainer}
+                  select
+                  value={this.state.agency}
+                  onChange={this.handleChangeAgency("agency")}
+                  label="Agencies"
+                  helperText="Please select an agency"
+                  margin="normal"
+                  variant="outlined"
+                >
+                  {this.state.agencies.map(option => (
                     <MenuItem key={option.id} value={option.id}>
                       {option.name}
                     </MenuItem>
@@ -245,53 +239,34 @@ class UpdateCompaniesCard extends Component {
                   onClick={this.handleDelete}
                   style={{ border: "solid" }}
                 >
-                  Delete Company
+                  Delete Agency
                 </Button>
               </Grid>
             </form>
 
             <CardContent>
-              <form onSubmit={this.handleAddCompany}>
+              <form onSubmit={this.handleAddAgency}>
                 <Input
                   onChange={this.onChange}
-                  name="addCompany"
+                  name="addAgency"
                   style={{ width: "200px" }}
-                  placeholder="Your company name here"
+                  placeholder="Your agency name here"
                 />
                 <Button
                   className="ButtonSubmit"
-                  onClick={this.handleAddCompany}
+                  onClick={this.handleAddAgency}
                   style={{
                     border: "solid"
                   }}
                 >
-                  Add Company
+                  Add Agency
                 </Button>
               </form>
             </CardContent>
 
             <CardContent>
-              <form onSubmit={this.handleAddEmailExtension}>
-                <Input
-                  onChange={this.onChange}
-                  name="addEmailExtension"
-                  placeholder="Exemple: @gmail.com"
-                  style={{ width: "200px" }}
-                />
-
-                <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleAddEmailExtension}
-                  style={{
-                    border: "solid"
-                  }}
-                >
-                  Add Email Company
-                </Button>
-                
-              </form>
+              <p>* Select a company and a agency before deleting this agency</p>
             </CardContent>
-            <CardContent><p>* Select a company before adding an email extension</p></CardContent>
             <CardContent><h3>** Don't forget to refresh your page after your changes</h3></CardContent>
           </CardContent>
         </Card>
@@ -300,4 +275,4 @@ class UpdateCompaniesCard extends Component {
   }
 }
 
-export default withStyles(styles)(UpdateCompaniesCard);
+export default withStyles(styles)(UpdateAgenciesCard);

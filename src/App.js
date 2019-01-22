@@ -11,6 +11,8 @@ import AdminForm from "./components/admin/AdminForm";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import Download from "./components/admin/Download";
 import UpdateCompanies from "./components/admin/UpdateCompanies";
+import UpdateAgencies from "./components/admin/UpdateAgencies";
+import UpdateUsersRole from "./components/admin/UpdateUsersRole";
 import ActivationAccount from "./components/ActivationAccount";
 import UserAlreadyExist from "./components/UserAlreadyExist";
 
@@ -45,6 +47,8 @@ class App extends Component {
           <Route exact path="/admin/Forms" component={AdminForm} />
           <Route exact path="/admin/DownloadData" component={Download} />
           <Route exact path="/admin/UpdateCompanies" component={UpdateCompanies} />
+          <Route exact path="/admin/UpdateAgencies" component={UpdateAgencies} />
+          <Route exact path="/admin/UpdateUsersRole" component={UpdateUsersRole} />
 
           {/* <Route exact path="/client/thanks" component={ThanksPage} />
           <Route exact path="/client/survey_validation" component={ValidationPage} /> */}
