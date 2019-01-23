@@ -67,6 +67,7 @@ class LoginCard extends Component {
         localStorage.setItem("token", res.headers["x-access-token"]);
       })
       .then(async () => {
+          console.log("toto")
           const role = await checkRole();
 
           this.setState({
@@ -74,6 +75,7 @@ class LoginCard extends Component {
             isLoading: false})
       })
       .catch(err => alert("Wrong Email or Password"));
+      console.log("states", this.state)
   };
 
   render() {
