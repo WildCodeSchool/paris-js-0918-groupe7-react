@@ -6,7 +6,7 @@ import AdminCardCrtl from './AdminCardCrtl';
 
 
 class AdminHomePage extends Component {
-    render(){
+    render() {
         return (
             <div>
                 <Grid container className='gridintro' style={{
@@ -14,29 +14,22 @@ class AdminHomePage extends Component {
                     position: 'absolute',
                     minHeight: '100%'
                 }}>
-                
-                    <Grid item xs={12} sm={6}>
+
+                    <Grid sm={12}>
 
                         <Typography style={{
-                        textAlign: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        margin: '5%',
-                        fontFamily: 'Raleway',
-                        fontSize: '2em',
+                            textAlign: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            margin: '5%',
+                            fontFamily: 'Raleway',
+                            fontSize: '2em',
                         }} gutterBottom> Welcome Admin
                         </Typography>
-                        <AdminCardCrtl />                       
+                        <AdminCardCrtl />
                     </Grid>
-                    
-                    <Grid style={{
-                        backgroundImage: `url(${ImgIntro})`,
-                        backgroundSize: 'auto',
-                        backgroundRepeat: 'no-repeat',
-                        
-                    }} item xs={12} sm={6}>
-                          
-                    </Grid>
+
+
                 </Grid>
             </div>
         )

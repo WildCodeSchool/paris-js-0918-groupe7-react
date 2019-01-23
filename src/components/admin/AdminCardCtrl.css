@@ -1,0 +1,13 @@
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  margin:auto;
+  color:#000;
+  
+}
+a {
+  margin:auto;
+  text-decoration: none;
+  color:#000 !important;
+
+}
