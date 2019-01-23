@@ -24,6 +24,7 @@ class HomeClient extends Component {
     
 
     render() {
+        console.log(this.state.role)
         if(this.state.isLoading)
             return <CircularProgress disableShrink style={{ alignItems:"center", size: "300", alignContent: "center", margin: "auto" }}/>;
         if(this.state.role !== "client")
