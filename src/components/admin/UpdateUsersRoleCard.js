@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
 import axios from "axios";
 import SimpleTable from './SimpleTable';
 import TextField from "@material-ui/core/TextField";
@@ -21,14 +20,14 @@ class UpdateUsersRoleCard extends Component {
   state = {
     users: [],
     roles: ["client", "admin", "super_admin"],
-    role:"",
+    role: "",
     selectedUsers: [],
     token: localStorage.getItem("token"),
     adminHomePage: false
   };
 
   componentDidMount = () => {
-    const company="Exton"
+    const company = "Exton"
 
     axios({
       method: "GET",
@@ -36,15 +35,15 @@ class UpdateUsersRoleCard extends Component {
       headers: {
         authorization: `Bearer ${this.state.token}`
       }
-    }).then( res => this.setState({ users: res.data }));
+    }).then(res => this.setState({ users: res.data }));
   };
 
   handleChangeRole = event => {
-    this.setState({role: event.target.value})
+    this.setState({ role: event.target.value })
   };
 
   selectingUsers = (array) => {
-    this.setState({selectedUsers: array})
+    this.setState({ selectedUsers: array })
   };
 
   handleBack = e => {
@@ -55,24 +54,26 @@ class UpdateUsersRoleCard extends Component {
 
   handleValidate = () => {
     this.state.selectedUsers.map(selectedUser => {
-      axios({
-        method: "PUT",
-        url: `http://localhost:3002/users/${selectedUser}`,
-        headers: {
-          authorization: `Bearer ${this.state.token}`
-        },
-        data: {
-          role: this.state.role
-        }
-      })
-      .then(res => res.status)  
+      return (
+        axios({
+          method: "PUT",
+          url: `http://localhost:3002/users/${selectedUser}`,
+          headers: {
+            authorization: `Bearer ${this.state.token}`
+          },
+          data: {
+            role: this.state.role
+          }
+        })
+          .then(res => res.status)
+      )
     });
     alert(`The role has been set to ${this.state.role}`);
   };
 
   render() {
     // console.log(this.state.users.length === 0)
-    if(this.state.users.length === 0)
+    if (this.state.users.length === 0)
       return <h3>LOADING...</h3>
     const { classes } = this.props;
     if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
@@ -115,7 +116,7 @@ class UpdateUsersRoleCard extends Component {
             >
               Back
             </Button>
-            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers}/>
+            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers} />
             <TextField
               className={classes.poleContainer}
               select
@@ -134,11 +135,11 @@ class UpdateUsersRoleCard extends Component {
             </TextField>
             <CardContent>
               <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleValidate}
-                  style={{ border: "solid" }}
-                >
-                  Validate
+                className="ButtonSubmit"
+                onClick={this.handleValidate}
+                style={{ border: "solid" }}
+              >
+                Validate
               </Button>
             </CardContent>
             <CardContent><h3>* Don't forget to refresh your page after your changes</h3></CardContent>

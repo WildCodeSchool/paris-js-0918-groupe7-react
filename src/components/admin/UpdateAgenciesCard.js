@@ -48,7 +48,7 @@ class UpdateAgenciesCard extends Component {
         method: "GET",
         url: `http://localhost:3002/agencies/companyId/${
           this.state.company
-        }/is_active`,
+          }/is_active`,
         headers: {
           authorization: `Bearer ${this.state.token}`
         }
@@ -125,9 +125,9 @@ class UpdateAgenciesCard extends Component {
       name: this.state.addAgency,
       companyId: this.state.company
     };
-    const headers = {
-      authorization: `Bearer ${this.state.token}`
-    };
+    // const headers = {
+    //   authorization: `Bearer ${this.state.token}`
+    // };
 
     axios
       .post(url, config)

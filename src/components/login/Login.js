@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
 import IntroImage from "../../images/intro_image.png";
 import LoginCard from "./LoginCard";
 
