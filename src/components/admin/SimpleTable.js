@@ -51,6 +51,22 @@ class SimpleTable extends Component {
         id=0;
     };
 
+    componentWillUpdate = () => {
+        console.log("refresh1", this.props.refresh)
+        if(this.props.refresh === true) {
+            console.log("SUCCESS")
+            this.setState({
+                selected: [],
+                numSelected: 0,
+            }, 
+            () => {
+                id=0;
+                this.createTable()
+                this.props.disableRefresh()
+            });
+        }
+    }
+
     handleClick = (event, id) => {
         const { selected } = this.state;
         const selectedIndex = selected.indexOf(id);
@@ -73,7 +89,7 @@ class SimpleTable extends Component {
         if(newSelected.length !== 0) {
 
             newSelected.map(selectedRow => {
-                console.log("papa", selectedRow)
+                console.log("papa", this.state, selectedRow)
                 tableId.push(this.state.rows[selectedRow - 1].userID)
             })
         }
