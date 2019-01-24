@@ -35,9 +35,9 @@ class Survey extends Component {
     const token = localStorage.getItem("token");
     let progression = [0];
 
-    if(localStorage.getItem("progression") !== null)
+    if (localStorage.getItem("progression") !== null)
       progression = localStorage.getItem("progression").split(",").map(e => e = parseInt(e))
-    
+
     axios({
       method: "GET",
       url: "http://localhost:3002/users/surveyById/",
@@ -53,10 +53,10 @@ class Survey extends Component {
           res.data[0].pole.pillars[this.state.pillarId].sub_pillars[
             this.state.subPillarId
           ].questions,
-          isPosted: progression
+        isPosted: progression
       })
     );
-    console.log("Mounted", this.state.isPosted, progression)
+
   }
 
   liftState = (sonState) => {
@@ -69,11 +69,13 @@ class Survey extends Component {
     let answers = this.state.user_answers;
 
     answers.map((e, i) => {
+
       if (e.questionId === sonState.questionId) {
         e.userId = sonState.userId;
         e.answersPossibilityId = sonState.answersPossibilityId;
         answers.splice(i, 1)
       }
+      return 0
     }, () => this.setState({ user_answers: answers }));
   };
 
@@ -123,33 +125,35 @@ class Survey extends Component {
     const config = this.state.user_answers
 
     let array = this.state.isPosted;
-    console.log("array", this.state.isPosted)
+
 
     if (array[this.state.length] === 1) {
       this.state.user_answers.map((e, i) => {
         axios.put(url, config[i])
           .then(this.setState({ user_answers: [], isPosted: array }));
+        return 0
       });
     } else {
       if (this.state.length === 4 || this.state.length === 8 || this.state.length === 12) {
         array.push(0);
       }
-  
+
       if (array[this.state.length] === 0) {
         array.push(0);
         array[this.state.length] = 1;
-  
+
         this.state.user_answers.map((e, i) => {
           axios.post(url, config[i])
             .then(this.setState({ user_answers: [], isPosted: array }));
+          return 0
         });
       }
 
     }
 
-    
+
     localStorage.setItem("progression", array.join(','))
-    console.log("FINAL", this.state.isPosted)
+
   }
 
   handleContinue = () => {
@@ -187,7 +191,7 @@ class Survey extends Component {
 
   render() {
 
-    if (!this.state.isLoading) return <CircularProgress disableShrink style={{ alignItems:"center", height: "300%", alignContent: "center", margin: "auto" }}/>;
+    if (!this.state.isLoading) return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>
     if (this.state.thanksPage)
       return (
         <div>

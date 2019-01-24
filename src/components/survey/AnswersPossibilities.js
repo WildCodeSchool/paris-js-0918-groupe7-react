@@ -46,8 +46,8 @@ class AnswersPossibilities extends Component {
             "answersPossibilityId": parseInt(target),
             "userId": this.props.user_id
           });
-          return 0;
         }
+        return 0;
       });
       this.props.liftState({
         "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
@@ -71,8 +71,8 @@ class AnswersPossibilities extends Component {
               "answersPossibilityId": parseInt(target),
               "userId": this.props.user_id
             });
-            return 0;
           }
+          return 0;
         });
         this.props.liftState({
           "questionId": this.props.data_answers[0].questions_answers_possibilities.questionId,
@@ -88,36 +88,36 @@ class AnswersPossibilities extends Component {
       return (
         <div className="container-yes-no-answer">
           <Button style={{
-                backgroundColor: "rgba(85, 85, 85, 0.25)",
-                border:"inherit",
-                marginRight: "2vw",
-                padding: "10px 30px",
-                fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
-                borderRadius: "5%",
-           }} 
-           className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "1" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
+            backgroundColor: "rgba(85, 85, 85, 0.25)",
+            border: "inherit",
+            marginRight: "2vw",
+            padding: "10px 30px",
+            fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+            borderRadius: "5%",
+          }}
+            className={this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "1" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[0].id} variant="outlined">
             Yes
           </Button>
           <Button style={{
-                backgroundColor: "rgba(85, 85, 85, 0.25)",
-                border:"inherit",
-                marginRight: "2vw",
-                padding: "10px 30px",
-                fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
-                borderRadius: "5%",
-           }} 
-          className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId]=== "2" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
+            backgroundColor: "rgba(85, 85, 85, 0.25)",
+            border: "inherit",
+            marginRight: "2vw",
+            padding: "10px 30px",
+            fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+            borderRadius: "5%",
+          }}
+            className={this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "2" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[1].id} variant="outlined">
             No
           </Button>
           <Button style={{
-                backgroundColor: "rgba(85, 85, 85, 0.25)",
-                border:"inherit",
-                marginRight: "2vw",
-                padding: "10px 30px",
-                fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
-                borderRadius: "5%",
-           }} 
-           className={ this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "3" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
+            backgroundColor: "rgba(85, 85, 85, 0.25)",
+            border: "inherit",
+            marginRight: "2vw",
+            padding: "10px 30px",
+            fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+            borderRadius: "5%",
+          }}
+            className={this.state[this.props.data_answers[0].questions_answers_possibilities.questionId] === "3" ? "Selected" : "Not selected"} onClick={this.handleClick} value={this.props.data_answers[2].id} variant="outlined">
             I don't know
           </Button>
         </div>
@@ -132,7 +132,7 @@ class AnswersPossibilities extends Component {
               onChange={this.handleChange()} >
               <FormControlLabel className="lickert-answer"
                 value="4"
-                control= {<Radio style={{ color:'rgb(59,84,125)' }} />}
+                control={<Radio style={{ color: 'rgb(59,84,125)' }} />}
                 label={<p>Strongly Disagree</p>}
                 labelPlacement="top"
               />
