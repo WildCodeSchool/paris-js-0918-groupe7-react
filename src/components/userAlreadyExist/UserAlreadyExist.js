@@ -52,7 +52,6 @@ class UserAlreadyExist extends Component {
                 gutterBottom
                 style={{
                   fontFamily: "Raleway, sans-serif",
-                  fontSize: "18px",
                   marginTop: "5%",
                   marginLeft: "1%",
                   fontSize: "calc(1vw + 1vh + 0.8vmin)"
@@ -72,24 +71,19 @@ class UserAlreadyExist extends Component {
                   style={{
                     backgroundColor: "rgb(186, 28, 58)",
                     color: "white",
-                    marginLeft: "auto",
-                    marginRight: "20px",
-                    marginTop: "10%",
-                    marginBottom: "5%",
-                    display: "block",
-                    fontSize: "1.3em",
                     fontFamily: "Raleway",
-                    borderRadius: "15px"
+                    borderRadius: "15px",
                   }}
                 >
                   <Typography
                     gutterBottom
                     style={{
                       textAlign: "center",
+                      alignItems: "center",
                       color: "white",
-                      fontSize: "20px",
-                      lineHeight: "14px",
-                      padding: "15px 35px"
+                      fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                      padding: "8px 30px",
+                      fontFamily: "Raleway",
                     }}
                   >
                     Login
