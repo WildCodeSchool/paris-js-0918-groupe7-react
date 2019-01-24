@@ -83,7 +83,6 @@ class ActivationAccount extends Component {
                 gutterBottom
                 style={{
                   fontFamily: "Raleway, sans-serif",
-                  fontSize: "18px",
                   marginTop: "5%",
                   marginLeft: "1%",
                   fontSize: "calc(1vw + 1vh + 0.8vmin)"
