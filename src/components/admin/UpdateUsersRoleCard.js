@@ -29,11 +29,12 @@ class UpdateUsersRoleCard extends Component {
     role: "",
     selectedUsers: [],
     token: localStorage.getItem("token"),
-    adminHomePage: false
+    adminHomePage: false,
+    refresh: false
   };
 
-  componentDidMount = () => {
-    const company = "Exton"
+  getExtonUsers = () => {
+    const company="Exton"
 
     axios({
       method: "GET",
@@ -44,12 +45,20 @@ class UpdateUsersRoleCard extends Component {
     }).then(res => this.setState({ users: res.data }));
   };
 
+  componentDidMount = () => {
+   this.getExtonUsers();
+  };
+
   handleChangeRole = event => {
     this.setState({ role: event.target.value })
   };
 
   selectingUsers = (array) => {
     this.setState({ selectedUsers: array })
+  };
+
+  disableRefresh = () => {
+    this.setState({refresh: false})
   };
 
   handleBack = e => {
@@ -59,26 +68,32 @@ class UpdateUsersRoleCard extends Component {
   };
 
   handleValidate = () => {
+    let promises = [];
+
     this.state.selectedUsers.map(selectedUser => {
-      return (
-        axios({
-          method: "PUT",
-          url: `http://localhost:3002/users/${selectedUser}`,
-          headers: {
-            authorization: `Bearer ${this.state.token}`
-          },
-          data: {
-            role: this.state.role
-          }
-        })
-          .then(res => res.status)
-      )
-    });
-    alert(`The role has been set to ${this.state.role}`);
+      const promise = axios({
+        method: "PUT",
+        url: `http://localhost:3002/users/${selectedUser}`,
+        headers: {
+          authorization: `Bearer ${this.state.token}`
+        },
+        data: {
+          role: this.state.role
+        }
+      })
+      .then(res => res); 
+
+      promises.push(promise)
+    })
+
+    Promise.all(promises)
+    .then( (res) => {
+      this.getExtonUsers();
+    })
+    .then(() => this.setState({refresh: true, role: ""}))
   };
 
   render() {
-    // console.log(this.state.users.length === 0)
     if(this.state.users.length === 0)
       return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>;
     const { classes } = this.props;
@@ -109,7 +124,7 @@ class UpdateUsersRoleCard extends Component {
           </Button>
 
           <Grid style={{ padding:"0 5%"}}>
-            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers}/>
+            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers} refresh={this.state.refresh} disableRefresh={this.disableRefresh}/>
             <TextField
               className={classes.poleContainer}
               select
