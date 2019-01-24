@@ -36,16 +36,15 @@ class UserAlreadyExist extends Component {
           <Card
             className="card"
             style={{
-              width: "70%",
-              height: "60%",
+              width: "35%",
+              maxHeight: "70%",
               alignContent: "center",
               alignItems: "center",
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: "auto",
+              marginTop: "10%",
               marginBottom: "auto",
-              paddingLeft: "10%",
-              borderRadius: "5%"
+              borderRadius: "10px"
             }}
           >
             <CardContent className="cardContent">
@@ -53,10 +52,10 @@ class UserAlreadyExist extends Component {
                 gutterBottom
                 style={{
                   fontFamily: "Raleway, sans-serif",
-                  fontSize: "28px",
+                  fontSize: "18px",
                   marginTop: "5%",
                   marginLeft: "1%",
-                  letterSpacing: "0.4rem"
+                  fontSize: "calc(1vw + 1vh + 0.8vmin)"
                 }}
               >
                 Error during your Sign Up
