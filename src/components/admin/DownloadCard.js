@@ -220,10 +220,10 @@ class DownloadCard extends Component {
             </Button>
             </div>
           </CardContent>
-          <h3 style={{
+          {/* <h3 style={{
             textAlign: "center",
             alignItems:"center",
-            fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}> * Don't forget to refresh your page after your changes</h3>
+            fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}> * Don't forget to refresh your page after your changes</h3> */}
         </Card>
       </div>
     );

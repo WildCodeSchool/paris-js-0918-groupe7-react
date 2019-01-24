@@ -31,7 +31,7 @@ class UpdateCompaniesCard extends Component {
     deleteStatus: 0
   };
 
-  componentDidMount = () => {
+  getCompanies = () => {
     axios({
       method: "GET",
       url: "http://localhost:3002/companies/isactive",
@@ -39,6 +39,10 @@ class UpdateCompaniesCard extends Component {
         authorization: `Bearer ${this.state.token}`
       }
     }).then(res => this.setState({ companies: res.data }));
+  };
+
+  componentDidMount = () => {
+    this.getCompanies();
   };
 
   handleChangeCompany = prop => event => {
@@ -61,7 +65,8 @@ class UpdateCompaniesCard extends Component {
     });
   };
 
-  handleDelete = () => {
+  handleDelete = event => {
+    event.preventDefault();
     axios({
       method: "PUT",
       url: `http://localhost:3002/companies/${this.state.company}`,
@@ -110,7 +115,8 @@ class UpdateCompaniesCard extends Component {
                   }
                 })
                   .then(res => this.setState({ deleteStatus: res.status }))
-                  .then(alert(`Company with Id ${this.state.company} deleted`));
+                  .then(alert(`Company with Id ${this.state.company} deleted`))
+                  .then(this.getCompanies());
               }
             });
           }
@@ -120,7 +126,7 @@ class UpdateCompaniesCard extends Component {
   };
 
   handleAddCompany = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const url = `http://localhost:3002/companies/`;
     const config = {
       name: this.state.addCompany
@@ -132,11 +138,13 @@ class UpdateCompaniesCard extends Component {
     axios
       .post(url, config)
       .then(res => this.setState({ data: res.data }))
-      .then(alert(`Company ${this.state.addCompany} added`));
+      .then(alert(`Company ${this.state.addCompany} added`))
+      .then(document.getElementById("companyInput").value="")
+      .then(this.getCompanies());
   };
 
   handleAddEmailExtension = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const url = `http://localhost:3002/email_extensions/`;
     const config = {
       email_extension: this.state.addEmailExtension,
@@ -148,7 +156,8 @@ class UpdateCompaniesCard extends Component {
     axios
       .post(url, config)
       .then(res => this.setState({ data: res.data }))
-      .then(alert(`Email extension ${this.state.addEmailExtension} added`));
+      .then(alert(`Email extension ${this.state.addEmailExtension} added`))
+      .then(document.getElementById("emailInput").value="");
   };
 
   onChange = event => {
@@ -239,6 +248,7 @@ class UpdateCompaniesCard extends Component {
                 <Input
                   onChange={this.onChange}
                   name="addCompany"
+                  id="companyInput"
                   style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" ,margin: "10% auto 0 auto", width: "50%" }}
                   placeholder="Your company name here"
                 />
@@ -275,6 +285,7 @@ class UpdateCompaniesCard extends Component {
                 <Input
                   onChange={this.onChange}
                   name="addEmailExtension"
+                  id="emailInput"
                   placeholder="Exemple: @gmail.com"
                   style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" ,margin: "10% auto 0 auto", width: "50%" }}
                 />

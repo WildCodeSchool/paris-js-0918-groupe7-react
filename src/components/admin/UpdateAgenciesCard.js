@@ -57,14 +57,8 @@ class UpdateAgenciesCard extends Component {
         }
       }).then(res => {
         // Si pas d'agences, récupération des données de la compagnie
-        if (res.data === []) {
-          axios({
-            method: "GET",
-            url: `http://localhost:3002/companies/uapq/${this.state.company}`,
-            headers: {
-              authorization: `Bearer ${this.state.token}`
-            }
-          }).then(res => this.setState({ data: res.data }));
+        if (res.data.length===0) {
+          alert("No agencies for this company ! You can add one, if you want. ")
         } else {
           // Stockage des agences dans un state
           this.setState({ agencies: res.data });
@@ -115,7 +109,7 @@ class UpdateAgenciesCard extends Component {
             is_active: 0
           }
         })
-          .then(res => this.setState({ deleteStatus: res.status }))
+          .then(res => this.setState({ deleteStatus: res.status, agency: null }))
           .then(alert(`Agency with Id ${this.state.agency} deleted`));
       }
     });
@@ -135,7 +129,8 @@ class UpdateAgenciesCard extends Component {
     axios
       .post(url, config)
       .then(res => this.setState({ data: res.data }))
-      .then(alert(`Agency ${this.state.addAgency} added`));
+      .then(alert(`Agency ${this.state.addAgency} added`))
+      .then(document.getElementById("agencyInput").value="")
   };
 
   onChange = event => {
@@ -241,6 +236,7 @@ class UpdateAgenciesCard extends Component {
                   onChange={this.onChange}
                   name="addAgency"
                   style={{ width: "200px" }}
+                  id="agencyInput"
                   placeholder="Your agency name here"
                   />
 
