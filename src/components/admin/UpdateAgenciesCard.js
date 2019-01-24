@@ -140,7 +140,7 @@ class UpdateAgenciesCard extends Component {
   };
 
   render() {
-    if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
+    if (this.state.adminHomePage) return <Redirect to="/admin/" />;
 
     const { classes } = this.props;
 

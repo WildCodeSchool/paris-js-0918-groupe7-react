@@ -167,7 +167,7 @@ class UpdateCompaniesCard extends Component {
   };
 
   render() {
-    if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
+    if (this.state.adminHomePage) return <Redirect to="/admin" />;
 
     const { classes } = this.props;
     console.log("the patriots", this.state);
