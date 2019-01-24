@@ -270,7 +270,7 @@ class Survey extends Component {
 
 
           <Grid item xs={12} sm={9} md={8} className="background-right">
-          <ScrollableAnchor id={'goToTop'}><div style={{visibility:"hidden"}}></div></ScrollableAnchor>
+          <ScrollableAnchor id={'goToTop'}><div style={{visibility:"hidden"}}> ©Enguerand </div></ScrollableAnchor>
             {this.state.questionsReponses.map((elem, index) => (
               <div key={index}>
                 <div className="question">{elem.question}</div>
