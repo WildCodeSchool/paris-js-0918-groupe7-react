@@ -133,7 +133,7 @@ class UpdateUsersRoleCard extends Component {
               onChange={this.handleChangeRole}
               label="Please select a new role"
               margin="normal"
-            style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)", width: "20%" }}
+            style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)", width: "30%" }}
 
             >
               {this.state.roles.map((role, index) => (

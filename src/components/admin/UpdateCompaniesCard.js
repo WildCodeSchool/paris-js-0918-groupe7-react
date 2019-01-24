@@ -223,12 +223,13 @@ class UpdateCompaniesCard extends Component {
                   color: "white",
                   fontFamily: "Raleway",
                   borderRadius: "15px",
-                  margin:"5% 2% 10% 0"
+                  margin:"2% 2% 10% 0"
                 }}
               >
                 <Typography
                   gutterBottom
                   style={{
+                    alignContent: "center",
                     textAlign: "center",
                     alignItems:"center",
                     color: "white",
@@ -261,7 +262,7 @@ class UpdateCompaniesCard extends Component {
                   color: "white",
                   fontFamily: "Raleway",
                   borderRadius: "15px",
-                  margin:"0 2% 10% 0"
+                  margin:"5% 2% 10% 0"
                 }}
               >
                 <Typography
