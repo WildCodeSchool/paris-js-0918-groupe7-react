@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import IntroImage from "../../images/intro_image.png";
-import LoginCard from "./LoginCard";
 
 import Hidden from '@material-ui/core/Hidden';
+import ForgotCard from "./ForgotCard";
 
-class Login extends Component {
+class ForgotPage extends Component {
   render() {
     return (
       <div>
@@ -20,13 +20,11 @@ class Login extends Component {
           <Grid item xs={12} md={6}  style={{
               marginTop:"5%"
             }}>
-            <LoginCard />
+            <ForgotCard />
           </Grid>
 
           <Hidden only={['xs', 'sm']}>
             <Grid item md={6}
-              className="grid2"
-              id="postit"
               style={{
                 backgroundImage: `url(${IntroImage})`,
                 backgroundSize: "100% 100%",
@@ -41,4 +39,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default ForgotPage;

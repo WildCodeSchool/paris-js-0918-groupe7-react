@@ -10,7 +10,7 @@ class ValidationPage extends Component {
   render() {
     console.table(this.props.answers_users)
     return (
-      <div className="ValidationContainer">
+      <div>
         <Grid
           container
           className="gridthanks"
