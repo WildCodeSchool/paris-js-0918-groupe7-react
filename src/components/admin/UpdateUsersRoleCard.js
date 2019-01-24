@@ -11,6 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import "./DownloadCard.css";
 import Grid from "@material-ui/core/Grid";
+import { Typography } from "@material-ui/core";
 
 import arrow from "../../images/left-arrow.png"
 
