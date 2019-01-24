@@ -47,7 +47,6 @@ class UpdateCompaniesCard extends Component {
 
   handleChangeCompany = prop => event => {
     this.setState({ [prop]: event.target.value }, () => {
-      console.log("testId", event.target.value);
       // Recherche d'agences
       axios({
         method: "GET",
@@ -170,8 +169,6 @@ class UpdateCompaniesCard extends Component {
     if (this.state.adminHomePage) return <Redirect to="/admin" />;
 
     const { classes } = this.props;
-    console.log("the patriots", this.state);
-
     if (this.state.companies === null) return <p>loading</p>;
     return (
       <div>
@@ -197,6 +194,10 @@ class UpdateCompaniesCard extends Component {
 
               <Grid style={{ padding:"0 0 0 15%"}}>
             <form>
+            <p style={{
+                color:"red",
+                textAlign:"inherit",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>* Don't forget to refresh your page after your changes</p>
                 <TextField 
                   className={classes.poleContainer}
                   select
@@ -223,7 +224,7 @@ class UpdateCompaniesCard extends Component {
                   color: "white",
                   fontFamily: "Raleway",
                   borderRadius: "15px",
-                  margin:"2% 2% 10% 0"
+                  margin:"4% 2% 10% 0"
                 }}
               >
                 <Typography
@@ -244,7 +245,7 @@ class UpdateCompaniesCard extends Component {
 
             </form>
 
-
+          
               <form onSubmit={this.handleAddCompany}>
                 <Input
                   onChange={this.onChange}
@@ -280,8 +281,9 @@ class UpdateCompaniesCard extends Component {
                 </Typography>
               </Button>
 
+              <p style={{
+                textAlign:"inherit", color:"red", fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>** Select a company before adding an email extension</p>
               </form>
-
               <form onSubmit={this.handleAddEmailExtension}>
                 <Input
                   onChange={this.onChange}
@@ -320,17 +322,6 @@ class UpdateCompaniesCard extends Component {
               </form>
               </Grid>
 
-
-              <p style={{
-                textAlign: "center",
-                alignItems:"center",
-                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>* Select a company before adding an email extension</p>
-
-            
-              <h3 style={{
-                textAlign: "center",
-                alignItems:"center",
-                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>** Don't forget to refresh your page after your changes</h3>
         </Card>
       </div>
     );

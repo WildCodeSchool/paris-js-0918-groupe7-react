@@ -59,7 +59,6 @@ class Forgot extends Component {
   };
 
   render() {
-    console.log(this.state);
     if (this.state.back) {
       return <Redirect to="/login" />;
     }

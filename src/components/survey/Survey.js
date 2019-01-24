@@ -195,7 +195,10 @@ class Survey extends Component {
   };
 
   render() {
-    configureAnchors({offset: -200, scrollDuration: 600})
+    // pour présentation sur retro projecteur
+    configureAnchors({offset: -150, scrollDuration: 600})
+    // pour version pc
+    // configureAnchors({offset: -200, scrollDuration: 600})
     
     if (!this.state.isLoading) return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>
 

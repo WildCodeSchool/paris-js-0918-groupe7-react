@@ -54,9 +54,7 @@ class SimpleTable extends Component {
     };
 
     componentWillUpdate = () => {
-        console.log("refresh1", this.props.refresh)
         if(this.props.refresh === true) {
-            console.log("SUCCESS")
             this.setState({
                 selected: [],
                 numSelected: 0,
@@ -106,7 +104,6 @@ class SimpleTable extends Component {
     };
 
     render() {
-        console.log(this.state.rows)
         if (this.state.rows.length === 0)
             return <h3>LOAAAAAADING....</h3>
         const { classes } = this.props;

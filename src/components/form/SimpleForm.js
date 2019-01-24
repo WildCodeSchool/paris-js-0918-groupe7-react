@@ -141,9 +141,6 @@ class SimpleForm extends Component {
   };
 
   render() {
-    console.log("agencies", this.state.agencies)
-    console.log("comp", this.state.companies)
-    console.log("poles", this.state.poles)
     if (
       this.state.companies === null ||
       this.state.poles === null

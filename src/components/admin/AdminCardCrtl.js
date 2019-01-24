@@ -29,7 +29,6 @@ class AdminCardCrtl extends Component {
         })
     }
     render() {
-        console.log(this.state.redirect)
         if (this.state.redirect === 'download')
             return <Redirect to="/admin/DownloadData" />
         if (this.state.redirect === 'updateCompanies')

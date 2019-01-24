@@ -46,8 +46,6 @@ class ResetPassword extends Component {
   };
 
   render() {
-    console.log(this.props.match.params.reset_token);
-    console.log(this.state.password, this.state.password2);
     if (this.state.redirected) {
       return <Redirect to="/login" />;
     }

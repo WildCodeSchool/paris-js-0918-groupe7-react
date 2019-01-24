@@ -21,11 +21,9 @@ class ActivationAccount extends Component {
     axios
       .post(Url)
       .then(res => {
-        console.log("res", res);
         this.setState({ status: res.status });
       })
       .catch(err => {
-        console.log(err.response);
         this.setState({ status: err.response.status });
       });
   };
@@ -36,7 +34,6 @@ class ActivationAccount extends Component {
   };
 
   render() {
-    console.log("status", this.state.status);
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }

@@ -75,7 +75,6 @@ class LoginCard extends Component {
         })
       })
       .catch(err => alert("Wrong Email or Password"));
-      console.log("states", this.state)
   };
 
   render() {
@@ -85,7 +84,6 @@ class LoginCard extends Component {
     if (this.state.back) {
       return <Redirect to="/" />;
     }
-    console.log("test", this.state.role)
     if (!this.state.isLoading) {
       if (this.state.role === "client") {
         return <Redirect to="/user" />

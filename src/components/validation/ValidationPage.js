@@ -8,7 +8,6 @@ import Hidden from '@material-ui/core/Hidden';
 
 class ValidationPage extends Component {
   render() {
-    console.table(this.props.answers_users)
     return (
       <div>
         <Grid
