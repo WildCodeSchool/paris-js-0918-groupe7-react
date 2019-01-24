@@ -7,6 +7,9 @@ import Input from "@material-ui/core/Input";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
+import Grid from "@material-ui/core/Grid";
+
+
 class ResetPassword extends Component {
   state = { password: "", password2: "", redirected: false };
 
@@ -49,19 +52,26 @@ class ResetPassword extends Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div>
+        <Grid
+          container
+          style={{
+            backgroundColor: "rgb(125, 146, 177)",
+            position: "absolute",
+            minHeight: "100%"
+          }}
+        >
         <Card
           className="card"
           style={{
-            width: "70%",
+            width: "50%",
             height: "60%",
             alignContent: "center",
             alignItems: "center",
             marginLeft: "auto",
             marginRight: "auto",
-            marginTop: "auto",
-            marginBottom: "auto",
-            paddingLeft: "10%",
+            marginTop: "10%",
+            paddingBottom:"2%",
+            paddingRight:"1%",
             borderRadius: "5%"
           }}
         >
@@ -70,16 +80,16 @@ class ResetPassword extends Component {
               gutterBottom
               style={{
                 fontFamily: "Raleway, sans-serif",
-                fontSize: "28px",
-                marginTop: "5%",
-                marginLeft: "1%",
-                letterSpacing: "0.4rem"
+                fontSize: "calc(1vw + 1vh + 1vmin)",
+                margin: "5% 0 0 8%",
+                textAlign: "start",
+                fontWeight: "bold",
               }}
             >
               Reset Password
             </Typography>
             <form onSubmit={this.handleSubmit}>
-              <div className="form-data">
+              <div>
                 <Input
                   type="password"
                   id="password"
@@ -87,26 +97,26 @@ class ResetPassword extends Component {
                   required
                   placeholder="New password"
                   minLength="8"
-                  style={{ marginTop: "5%", width: "80%" }}
+                  style={{ margin: "10% 0 0 17%", width: "50%",fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)" }}
                   onChange={this.onChange}
                   value={this.state.password}
                 />
               </div>
 
-              <div className="form-data">
+              <div >
                 <Input
                   type="password"
                   id="password"
                   name="password2"
                   required
-                  placeholder="Confirm new password"
+                  placeholder="Confirm"
                   minLength="8"
-                  style={{ marginTop: "5%", width: "80%" }}
+                  style={{ margin: "5% 0 5% 17%", width: "50%",fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)" }}
                   onChange={this.onChange}
                   value={this.state.password2}
                 />
               </div>
-              <div className="form-data">
+              <div style={{float:"right"}}>
                 <Button
                   className="BtnSend"
                   type="submit"
@@ -114,24 +124,19 @@ class ResetPassword extends Component {
                   style={{
                     backgroundColor: "rgb(186, 28, 58)",
                     color: "white",
-                    marginLeft: "auto",
-                    marginRight: "20px",
-                    marginTop: "10%",
-                    marginBottom: "5%",
-                    display: "block",
-                    fontSize: "1.3em",
                     fontFamily: "Raleway",
-                    borderRadius: "15px"
+                    borderRadius: "15px",
                   }}
                 >
                   <Typography
                     gutterBottom
                     style={{
                       textAlign: "center",
+                      alignItems: "center",
                       color: "white",
-                      fontSize: "20px",
-                      lineHeight: "14px",
-                      padding: "15px 35px"
+                      fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                      padding: "8px 30px",
+                      fontFamily: "Raleway",
                     }}
                   >
                     Send
@@ -141,7 +146,7 @@ class ResetPassword extends Component {
             </form>
           </CardContent>
         </Card>
-      </div>
+        </Grid>
     );
   }
 }
