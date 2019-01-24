@@ -171,11 +171,11 @@ class UpdateUsersRoleCard extends Component {
               </Button>
             </CardContent>
 
-            <h3 style={{
+            {/* <h3 style={{
                 textAlign: "center",
                 alignItems:"center",
                 fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",
-                margin: "5% 0"}}>* Don't forget to refresh your page after your changes</h3>
+                margin: "5% 0"}}>* Don't forget to refresh your page after your changes</h3> */}
         </Grid>
         </Card>
       </div>
