@@ -111,9 +111,9 @@ class LoginCard extends Component {
         <CardContent className="cardContent">
 
           <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
-          onClick={this.BackFunction}>
-          <img className="arrow" src={arrow} alt="back arrow"/>
-            Back
+            onClick={this.BackFunction}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
+              Back
           </Button>
 
           <Typography

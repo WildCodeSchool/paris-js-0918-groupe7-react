@@ -11,6 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import './DownloadCard.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import arrow from "../../images/left-arrow.png"
 
 import { CSVLink } from "react-csv";
 
@@ -134,63 +135,32 @@ class DownloadCard extends Component {
         <Card
           className="card"
           style={{
-            textAlign: "left",
-            justifyContent: "center",
-            verticalAlign: "middle",
-            color: "black",
-            margin: "5%",
-            fontFamily: "Raleway",
-            fontSize: "1em",
-            backgroundColor: "white",
-            borderRadius: "10%",
-            padding: "10%"
+            width: "70%",
+            maxHeight: "70%",
+            alignContent: "center",
+            alignItems: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "5%",
+            marginBottom: "auto",
+            borderRadius: "10px"
           }}
         >
           <CardContent className="cardContent">
-            <Button
-              onClick={this.handleClick}
-              variant="contained"
-              className="but"
-              size="large"
-              style={{
-                backgroundColor: "rgb(38, 56, 87)",
-                color: "white",
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                marginTop: "5%",
-                fontSize: "1.3em",
-                fontFamily: "Raleway"
-              }}
-            >
+          <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
+            onClick={this.handleClick}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
               Back
-            </Button>
-            <Typography
-              className="thank"
-              style={{
-                textAlign: "center",
-                justifyContent: "center",
-                verticalAlign: "middle",
-                color: "white",
-                margin: "5% auto",
-                fontFamily: "Raleway",
-                fontSize: "2em"
-              }}
-              gutterBottom
-            >
-              {" "}
-              Download Company Data
-            </Typography>
+          </Button>
             <CardContent>
               <TextField
                 className={classes.poleContainer}
                 select
                 value={this.state.company}
                 onChange={this.handleChangeCompany("company")}
-                label="Companies"
-                helperText="Please select a company"
+                label="Please select a company"
                 margin="normal"
-                variant="outlined"
+                style={{fontSize: "calc(0.4vw + 0.4vh + 0.4vmin)" ,margin: "10% auto 0 auto", width: "70%", marginLeft: "13%", }}
               >
                 {this.state.companies.map(option => (
                   <MenuItem key={option.id} value={option.id}>
@@ -205,10 +175,10 @@ class DownloadCard extends Component {
                 select
                 value={this.state.agency}
                 onChange={this.handleChangeAgency("agency")}
-                label="Agencies"
-                helperText="Please select an agency"
+                label="Please select an agency"
                 margin="normal"
-                variant="outlined"
+                style={{fontSize: "calc(0.4vw + 0.4vh + 0.4vmin)" ,margin: "0 auto 0 auto", width: "70%", marginLeft: "13%", }}
+
               >
                 {this.state.agencies.map(option => (
                   <MenuItem key={option.id} value={option.id}>
@@ -217,10 +187,39 @@ class DownloadCard extends Component {
                 ))}
               </TextField>
             </CardContent>
-            <CardContent><h5 className={this.state.totalEmployees === 0 ? 'HiddenCount' : 'VisibleCount'} >Actually, there are {this.state.employees} out of {this.state.totalEmployees} employees who are completing ( or have completed  ) your survey. </h5></CardContent>{" "}
-            <CSVLink data={this.state.results}>Download</CSVLink>
+              <h5 className={this.state.totalEmployees === 0 ? 'HiddenCount' : 'VisibleCount'}>
+              Actually, there are {this.state.employees} out of {this.state.totalEmployees} employees who are completing ( or have completed  ) your survey. 
+              </h5>
+              <div style={{ textAlign: "center", alignItems:"center", marginTop: "7%"}}>
+            <Button style={{
+                  backgroundColor: "rgb(45,52,90)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                }}>
+                <CSVLink style={{ textDecoration:"none" }} data={this.state.results}>
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
+                    fontFamily: "Raleway",
+                    textDecoration:"none"
+                  }}
+                  >
+                  Download
+                </Typography>
+              </CSVLink>
+            </Button>
+            </div>
           </CardContent>
-          <h3>* Don't forget to refresh your page after your changes</h3>
+          <h3 style={{
+            textAlign: "center",
+            alignItems:"center",
+            fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}> * Don't forget to refresh your page after your changes</h3>
         </Card>
       </div>
     );

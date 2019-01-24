@@ -4,6 +4,7 @@ import { Typography } from '@material-ui/core';
 import ImgIntro from '../../images/intro_image.png';
 import AdminCardCrtl from './AdminCardCrtl';
 
+import Hidden from '@material-ui/core/Hidden';
 
 class AdminHomePage extends Component {
     render(){
@@ -15,28 +16,30 @@ class AdminHomePage extends Component {
                     minHeight: '100%'
                 }}>
                 
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} md={6}>
 
-                        <Typography style={{
-                        textAlign: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        margin: '5%',
-                        fontFamily: 'Raleway',
-                        fontSize: '2em',
-                        }} gutterBottom> Welcome Admin
+                        <Typography               style={{
+                textAlign: "center",
+                justifyContent: "center",
+                verticalAlign: "middle",
+                color: "white",
+                margin: "5% auto",
+                padding: "0% 5%",
+                fontFamily: "Raleway",
+                fontSize: "calc(1vw + 1vh + 1vmin)",
+              }} gutterBottom> Welcome Admin
                         </Typography>
-                        <AdminCardCrtl />                       
+                        <AdminCardCrtl />
                     </Grid>
-                    
+                    <Hidden only={['xs', 'sm']}>
                     <Grid style={{
                         backgroundImage: `url(${ImgIntro})`,
-                        backgroundSize: 'auto',
+                        backgroundSize: '100% 100%',
                         backgroundRepeat: 'no-repeat',
                         
-                    }} item xs={12} sm={6}>
-                          
+                    }} item xs={12} md={6}>
                     </Grid>
+                </Hidden>
                 </Grid>
             </div>
         )

@@ -3,9 +3,9 @@ import React, { Component } from "react";
 // IMPORT COMPONENTS
 import Header from "./components/header/Header";
 import FormPage from "./components/form/FormPage";
-import Login from "./components/login/Login";
+import Login from "./components/login/LoginPage";
 import { Switch, Route } from "react-router-dom";
-import ForgotPassword from "./components/forgot/Forgot.js";
+import ForgotPassword from "./components/forgot/ForgotPage.js";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 
 import AdminHomePage from "./components/admin/AdminHomePage";

@@ -11,7 +11,10 @@ import CardContent from "@material-ui/core/CardContent";
 import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
 
-import "./UpdateCompanies.css";
+import arrow from "../../images/left-arrow.png"
+
+
+// import "./UpdateCompanies.css";
 
 const styles = theme => ({
   companyContainer: {
@@ -152,65 +155,34 @@ class UpdateAgenciesCard extends Component {
         <Card
           className="card"
           style={{
-            textAlign: "left",
-            justifyContent: "center",
-            verticalAlign: "middle",
-            color: "black",
-            margin: "5%",
-            fontFamily: "Raleway",
-            fontSize: "1em",
-            backgroundColor: "white",
-            borderRadius: "10%",
-            padding: "10%"
+            width: "80%",
+            maxHeight: "70%",
+            alignContent: "center",
+            alignItems: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "5%",
+            marginBottom: "auto",
+            borderRadius: "10px",
           }}
         >
           <CardContent className="cardContent">
-            <Button
-              onClick={this.handleClick}
-              variant="contained"
-              className="but"
-              size="large"
-              style={{
-                backgroundColor: "rgb(38, 56, 87)",
-                color: "white",
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                marginTop: "5%",
-                fontSize: "1.3em",
-                fontFamily: "Raleway"
-              }}
-            >
-              Back
-            </Button>
 
-            <Typography
-              className="thank"
-              style={{
-                textAlign: "center",
-                justifyContent: "center",
-                verticalAlign: "middle",
-                color: "white",
-                margin: "5% auto",
-                fontFamily: "Raleway",
-                fontSize: "2em"
-              }}
-              gutterBottom
-            >
-              {" "}
-              Update Agencies
-            </Typography>
-            <form>
-              <Grid>
+          <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%"}}
+            onClick={this.handleClick}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
+              Back
+          </Button>
+
+              <Grid style={{ padding:"0 0 0 15%"}}>
                 <TextField
                   className={classes.poleContainer}
                   select
                   value={this.state.company}
                   onChange={this.handleChangeCompany("company")}
-                  label="Companies"
-                  helperText="Please select a company"
+                  label="Please select a company"
                   margin="normal"
-                  variant="outlined"
+                  style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" ,margin: "", width: "50%", }}
                 >
                   {this.state.companies.map(option => (
                     <MenuItem key={option.id} value={option.id}>
@@ -223,10 +195,10 @@ class UpdateAgenciesCard extends Component {
                   select
                   value={this.state.agency}
                   onChange={this.handleChangeAgency("agency")}
-                  label="Agencies"
-                  helperText="Please select an agency"
+                  label="Please select an agency"
                   margin="normal"
-                  variant="outlined"
+                  style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" ,margin: "5% 2% 0 auto", width: "50%" }}
+
                 >
                   {this.state.agencies.map(option => (
                     <MenuItem key={option.id} value={option.id}>
@@ -234,15 +206,34 @@ class UpdateAgenciesCard extends Component {
                     </MenuItem>
                   ))}
                 </TextField>
+
                 <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleDelete}
-                  style={{ border: "solid" }}
+                className="BtnSend"
+                onClick={this.handleDelete}
+                style={{
+                  backgroundColor: "rgb(186, 28, 58)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"5% 2% 10% 0"
+                }}
                 >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 20px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
                   Delete Agency
-                </Button>
-              </Grid>
-            </form>
+                </Typography>
+              </Button>
+
+
 
             <CardContent>
               <form onSubmit={this.handleAddAgency}>
@@ -251,24 +242,46 @@ class UpdateAgenciesCard extends Component {
                   name="addAgency"
                   style={{ width: "200px" }}
                   placeholder="Your agency name here"
-                />
+                  />
+
                 <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleAddAgency}
-                  style={{
-                    border: "solid"
-                  }}
+                className="BtnSend"
+                onClick={this.handleAddAgency}
+                style={{
+                  backgroundColor: "rgb(45,52,90)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"5% 2% 10% 0"
+                }}
                 >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 41px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
                   Add Agency
-                </Button>
+                </Typography>
+              </Button>
+
               </form>
             </CardContent>
+            </Grid>
 
-            <CardContent>
-              <p>* Select a company and a agency before deleting this agency</p>
-            </CardContent>
-            <CardContent><h3>** Don't forget to refresh your page after your changes</h3></CardContent>
-          </CardContent>
+              <p style={{
+                textAlign: "center",
+                alignItems:"center",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>* Select a company and a agency before deleting this agency</p>
+              <h3 style={{
+                textAlign: "center",
+                alignItems:"center",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>** Don't forget to refresh your page after your changes</h3></CardContent>
         </Card>
       </div>
     );
