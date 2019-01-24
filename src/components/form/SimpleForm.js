@@ -8,6 +8,7 @@ import axios from 'axios';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 
@@ -140,14 +141,11 @@ class SimpleForm extends Component {
   };
 
   render() {
-    console.log("agencies", this.state.agencies)
-    console.log("comp", this.state.companies)
-    console.log("poles", this.state.poles)
     if (
       this.state.companies === null ||
       this.state.poles === null
     )
-      return "loading.....";
+      return <CircularProgress disableShrink style={{ alignItems:"center" }}/>; ;
 
     if (this.state.redirect) {
       return <Redirect to="/login" />;
@@ -176,8 +174,9 @@ class SimpleForm extends Component {
           <h1
             style={{
               fontFamily: "Raleway",
+              fontSize: "calc(0.7vw + 0.7vh + 0.7vmin)"
             }}>Create your account</h1>
-          <label className="title-input">Gender</label>
+          {/* <label className="title-input">Gender</label> */}
           <div>
             <label>
               <Field
@@ -189,7 +188,7 @@ class SimpleForm extends Component {
                 style={{
                   marginTop: "3%",
                 }}
-                required
+                validate={[required]}
               />{" "}
               Male
             </label>
@@ -200,7 +199,7 @@ class SimpleForm extends Component {
                 type="radio"
                 value="female"
                 className="genderRadio"
-                required
+                validate={[required]}
               />{" "}
               Female
             </label>
@@ -276,7 +275,6 @@ class SimpleForm extends Component {
               name="agency"
               component="select"
               className="widthInput"
-              validate={[required]}
             >
               <option />
               {this.state.agencies.map((e, i) => (
@@ -314,7 +312,7 @@ class SimpleForm extends Component {
               name="business_focus"
               component="select"
               className="widthInput"
-              required
+              validate={[required]}
             >
               <option />
               {business_focus.map((e, i) => (
@@ -351,22 +349,22 @@ class SimpleForm extends Component {
             style={{
               backgroundColor: "rgb(45,52,90)",
               color: "white",
-              margin: "5%",
-              fontSize: "1.3em",
+              fontFamily: "Raleway",
               borderRadius: "15px",
-              display: "inline"
+              margin:"5% 2% 10% 0"
             }}
           >
             <Typography
               gutterBottom
               style={{
+                textAlign: "center",
+                alignItems:"center",
                 color: "white",
-                fontSize: "20px",
-                lineHeight: "14px",
-                padding: "15px 25px",
+                fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                padding: "8px 30px",
+                fontFamily: "Raleway",
               }}
             >
-              {" "}
               Sign Up
             </Typography>
           </Button>
@@ -376,7 +374,7 @@ class SimpleForm extends Component {
           gutterBottom
           style={{
             fontFamily: "Raleway, sans-serif",
-            fontSize: "18px",
+            fontSize: "calc(0.4vw + 0.4vh + 0.5vmin)",
           }}
         >
           Already have an account ?
@@ -389,23 +387,22 @@ class SimpleForm extends Component {
           style={{
             backgroundColor: "rgb(186, 28, 58)",
             color: "white",
-            margin: "5%",
-            display: "inline",
-            fontSize: "1.3em",
+            fontFamily: "Raleway",
             borderRadius: "15px",
+            margin:"2% 2% 10% 0"
           }}
         >
           <Typography
             gutterBottom
             style={{
               textAlign: "center",
+              alignItems:"center",
               color: "white",
-              fontSize: "20px",
-              lineHeight: "14px",
-              padding: "15px 35px"
+              fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+              padding: "8px 30px",
+              fontFamily: "Raleway",
             }}
           >
-            {" "}
             Login
           </Typography>
         </Button>

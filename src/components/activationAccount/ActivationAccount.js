@@ -21,11 +21,9 @@ class ActivationAccount extends Component {
     axios
       .post(Url)
       .then(res => {
-        console.log("res", res);
         this.setState({ status: res.status });
       })
       .catch(err => {
-        console.log(err.response);
         this.setState({ status: err.response.status });
       });
   };
@@ -36,7 +34,6 @@ class ActivationAccount extends Component {
   };
 
   render() {
-    console.log("status", this.state.status);
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }
@@ -57,7 +54,6 @@ class ActivationAccount extends Component {
       <div>
         <Grid
           container
-          className="gridthanks"
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
@@ -67,15 +63,15 @@ class ActivationAccount extends Component {
           <Card
             className="card"
             style={{
-              width: "70%",
+              width: "50%",
               height: "60%",
               alignContent: "center",
               alignItems: "center",
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: "auto",
-              marginBottom: "auto",
-              paddingLeft: "10%",
+              marginTop: "10%",
+              paddingBottom:"2%",
+              paddingRight:"1%",
               borderRadius: "5%"
             }}
           >
@@ -84,10 +80,9 @@ class ActivationAccount extends Component {
                 gutterBottom
                 style={{
                   fontFamily: "Raleway, sans-serif",
-                  fontSize: "28px",
                   marginTop: "5%",
                   marginLeft: "1%",
-                  letterSpacing: "0.4rem"
+                  fontSize: "calc(1vw + 1vh + 0.8vmin)"
                 }}
               >
                 Activation of your account
@@ -98,7 +93,7 @@ class ActivationAccount extends Component {
                 login.
               </p>
 
-              <div className="form-data">
+              <div style={{float:"right"}}>
                 <Button
                   onClick={this.handleClick}
                   className="BtnSend"
@@ -107,24 +102,19 @@ class ActivationAccount extends Component {
                   style={{
                     backgroundColor: "rgb(186, 28, 58)",
                     color: "white",
-                    marginLeft: "auto",
-                    marginRight: "20px",
-                    marginTop: "10%",
-                    marginBottom: "5%",
-                    display: "block",
-                    fontSize: "1.3em",
                     fontFamily: "Raleway",
-                    borderRadius: "15px"
+                    borderRadius: "15px",
                   }}
                 >
                   <Typography
                     gutterBottom
                     style={{
                       textAlign: "center",
+                      alignItems: "center",
                       color: "white",
-                      fontSize: "20px",
-                      lineHeight: "14px",
-                      padding: "15px 35px"
+                      fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                      padding: "8px 30px",
+                      fontFamily: "Raleway",
                     }}
                   >
                     Login

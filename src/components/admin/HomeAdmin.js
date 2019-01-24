@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
-import AdminHomePage from './AdminHomePage'
+import AdminHomePage from './AdminHomePage';
+
+import './HomeAdmin.css';
+
+// import Ciruclar Loading from Material-ui
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 // Helpers
@@ -20,7 +25,7 @@ class HomeAdmin extends Component {
 
     render() {
         if(this.state.isLoading)
-        return <h1>LOADING.........</h1>
+        return <div className="circular"><CircularProgress disableShrink size="120px"/></div>
 
         if(!this.state.role.includes("admin"))
             return <h1>ACCESS DENIED!!!!!!!!!!!</h1>

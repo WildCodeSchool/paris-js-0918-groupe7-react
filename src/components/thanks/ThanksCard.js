@@ -51,7 +51,7 @@ class ThanksCard extends Component {
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: "20%",
+          marginTop: "10%",
           marginBottom: "auto"
         }}
       >
@@ -61,7 +61,7 @@ class ThanksCard extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "1.5em",
+              fontSize: "calc(0.7vw + 0.7vh + 0.7vmin)",
               marginTop: "5%"
             }}
           >
@@ -73,14 +73,39 @@ class ThanksCard extends Component {
             style={{
               textAlign: "center",
               fontFamily: "Raleway, sans-serif",
-              fontSize: "1.5em"
+              fontSize: "calc(0.45vw + 0.45vh + 0.45vmin)",
+              marginTop: "5%"
             }}
           >
             Thank you for your time and your participation !
           </Typography>
 
           <div className="button">
-            <Button
+          <Button className="button-start-survey"
+              onClick={this.handleClick}
+              style={{
+                backgroundColor: "rgb(186, 28, 58)",
+                color: "white",
+                fontFamily: "Raleway",
+                borderRadius: "15px",
+                margin:"0 0 5% 0"
+              }}
+            >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
+                  SIGN OUT
+                </Typography>
+              </Button>
+            {/* <Button
               variant="contained"
               className="but"
               size="large"
@@ -97,7 +122,7 @@ class ThanksCard extends Component {
               onClick={this.handleClick}
             >
               Sign Out
-            </Button>
+            </Button> */}
           </div>
         </CardContent>
       </Card>

@@ -67,11 +67,12 @@ class LoginCard extends Component {
         localStorage.setItem("token", res.headers["x-access-token"]);
       })
       .then(async () => {
-          const role = await checkRole();
+        const role = await checkRole();
 
-          this.setState({
-            role: role,
-            isLoading: false})
+        this.setState({
+          role: role,
+          isLoading: false
+        })
       })
       .catch(err => alert("Wrong Email or Password"));
   };
@@ -83,12 +84,11 @@ class LoginCard extends Component {
     if (this.state.back) {
       return <Redirect to="/" />;
     }
-    console.log("test", this.state.role)
-    if(!this.state.isLoading) {
-      if(this.state.role === "client") {
-        return <Redirect to="/user"/>
-      } else if(this.state.role === "admin" || this.state.role === "super_admin" )
-        return <Redirect to="/admin"/>
+    if (!this.state.isLoading) {
+      if (this.state.role === "client") {
+        return <Redirect to="/user" />
+      } else if (this.state.role === "admin" || this.state.role === "super_admin")
+        return <Redirect to="/admin" />
     }
 
     return (
@@ -108,10 +108,10 @@ class LoginCard extends Component {
       >
         <CardContent className="cardContent">
 
-          <Button style={{ fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)" ,padding: "2%" ,marginRight: "50px"}}
-          onClick={this.BackFunction}>
-          <img className="arrow" src={arrow} alt="back arrow"/>
-            Back
+          <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
+            onClick={this.BackFunction}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
+              Back
           </Button>
 
           <Typography
@@ -120,8 +120,8 @@ class LoginCard extends Component {
               fontFamily: "Raleway, sans-serif",
               fontSize: "calc(1vw + 1vh + 1vmin)",
               marginTop: "5%",
-              textAlign:"start",
-              fontWeight:"bold",
+              textAlign: "start",
+              fontWeight: "bold",
               paddingLeft: "13%"
             }}
           >
@@ -135,7 +135,7 @@ class LoginCard extends Component {
                 name="email"
                 required
                 placeholder="Email"
-                style={{fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)" ,margin: "10% auto 0 auto", width: "70%", marginLeft: "13%", }}
+                style={{ fontSize: "calc(0.4vw + 0.4vh + 0.4vmin)", margin: "10% auto 0 auto", width: "70%", marginLeft: "13%", }}
                 onChange={this.onChange}
                 value={this.state.email}
               />
@@ -149,7 +149,7 @@ class LoginCard extends Component {
                 required
                 placeholder="Password"
                 minLength="8"
-                style={{fontSize: "calc(0.5vw + 0.5vh + 0.5vmin)", margin: "5% auto 0 auto", width: "70%", marginLeft: "13%", }}
+                style={{ fontSize: "calc(0.4vw + 0.4vh + 0.4vmin)", margin: "5% auto 0 auto", width: "70%", marginLeft: "13%", }}
                 onChange={this.onChange}
                 value={this.state.password}
               />
@@ -175,7 +175,7 @@ class LoginCard extends Component {
               </Typography>
             </Button> */}
             <div className="link-forgot-password">
-              <a onClick={this.handleClick}>
+              <a href="/forgot_password" onClick={this.handleClick}>
                 Forgot password ?
               </a>
             </div>
@@ -191,15 +191,17 @@ class LoginCard extends Component {
                   color: "white",
                   fontFamily: "Raleway",
                   borderRadius: "15px",
+                  margin: "5% 2% 10% 0"
                 }}
               >
                 <Typography
                   gutterBottom
                   style={{
                     textAlign: "center",
+                    alignItems: "center",
                     color: "white",
-                    fontSize: "calc(0.6vw + 0.6vh + 1vmin)",
-                    padding: "15px 35px",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
                     fontFamily: "Raleway",
                   }}
                 >

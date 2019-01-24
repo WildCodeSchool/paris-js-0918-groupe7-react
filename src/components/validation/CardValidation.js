@@ -6,6 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import "./CardValidation.css";
 
+
+import arrow from "../../images/left-arrow.png"
+
 const styles = {
   pos: {
     marginBottom: 0
@@ -35,11 +38,11 @@ class CardValidation extends Component {
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: "20%"
+          marginTop: "10%"
         }}
       >
         <CardContent className="cardContent">
-          <Button
+          {/* <Button
             onClick={this.props.validPage}
             style={{
               border: "solid"
@@ -47,13 +50,21 @@ class CardValidation extends Component {
           >
             {" "}
             Back{" "}
+          </Button> */}
+
+          <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
+            onClick={this.props.validPage}>
+          <img className="arrow" src={arrow} alt="back arrow"/>
+            Back
           </Button>
+
           <Typography
             gutterBottom
             style={{
               textAlign: "center",
-              fontFamily: "Raleway",
-              fontSize: "1.5em"
+              fontFamily: "Raleway, sans-serif",
+              fontSize: "calc(0.7vw + 0.7vh + 0.7vmin)",
+              marginTop: "5%"
             }}
           >
             Congratulations, you’ve finished !
@@ -62,30 +73,38 @@ class CardValidation extends Component {
             gutterBottom
             style={{
               textAlign: "center",
-              fontFamily: "Raleway",
-              fontSize: "1.5em"
+              fontFamily: "Raleway, sans-serif",
+              fontSize: "calc(0.45vw + 0.45vh + 0.45vmin)",
+              marginTop: "5%"
             }}
           >
             Please note that no changes will be possible after the validation
           </Typography>
 
           <div className="button">
-            <Button
-              onClick={this.handleClick}
-              variant="contained"
-              color="primary"
-              className="but"
-              style={{
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                marginTop: "5%",
-                fontFamily: "Raleway",
-                fontSize: "1.5em"
-              }}
+          <Button onClick={this.handleClick}
+                style={{
+                  backgroundColor: "rgb(186, 28, 58)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"0 0 5% 0"
+                }}
             >
-              DONE
-            </Button>
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
+                  VALIDATE
+                </Typography>
+              </Button>
           </div>
         </CardContent>
       </Card>

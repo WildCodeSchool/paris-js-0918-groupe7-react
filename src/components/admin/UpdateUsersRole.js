@@ -1,25 +1,24 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
-import ThanksImg from "../../images/thanks_img.jpg";
-import ThanksCard from "./ThanksCard";
+import UpdateUsersRoleCard from "./UpdateUsersRoleCard";
 
-import Hidden from '@material-ui/core/Hidden';
-
-class ThanksPage extends Component {
+class UpdateUsersRole extends Component {
   render() {
     return (
       <div>
         <Grid
           container
+          className="gridUpdateUsersRole"
           style={{
             backgroundColor: "rgb(125, 146, 177)",
             position: "absolute",
             minHeight: "100%"
           }}
         >
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12}>
             <Typography
+              className="UpdateUsersRole"
               style={{
                 textAlign: "center",
                 justifyContent: "center",
@@ -33,26 +32,14 @@ class ThanksPage extends Component {
               gutterBottom
             >
               {" "}
-              Thank you for asking to Agile Maturity Assessment !
+              Update Users Role
             </Typography>
-
-            <ThanksCard  />
+            <UpdateUsersRoleCard />                       
           </Grid>
-
-        <Hidden only={['xs', 'sm']}>
-          <Grid item md={6}
-            style={{
-              backgroundImage: `url(${ThanksImg})`,
-              backgroundSize: "100% 100%",
-              backgroundRepeat: "no-repeat"
-            }}
-          >
-          </Grid>
-        </Hidden>
         </Grid>
       </div>
     );
   }
 }
 
-export default ThanksPage;
+export default UpdateUsersRole;

@@ -39,9 +39,9 @@ render(){
           alignContent: "center",
           alignItems: "center",
           margin:'auto',
-          padding: '7%',
+          padding: '7% 7% 7% 7%',
           borderRadius:'10%',
-          marginBottom: '10%'
+          marginBottom: '20%',
         }}
       >
         <CardContent className="cardContent">
@@ -57,8 +57,8 @@ render(){
             style={{
 
               fontFamily: "Raleway",
-              fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)",
-              marginBottom: "20px",
+              fontSize: "calc(0.45vw + 0.45vh + 0.45vmin)",
+              marginBottom: "7%",
               textAlign: "justify"
             }}
             >
@@ -71,11 +71,10 @@ render(){
 
               <Typography
                 style={{
-                  textAlign: "center",
                   fontFamily: "Raleway",
-                  fontSize: "calc(0.6vw + 0.6vh + 0.6vmin)",
+                  fontSize: "calc(0.45vw + 0.45vh + 0.45vmin)",
                   marginBottom: "20px",
-                  marginTop: "20px",
+                  marginTop: "7%",
                   textAlign: "justify"
                 }}
               >
@@ -92,10 +91,27 @@ render(){
           <div className="button">
             <Button className="button-start-survey"
               onClick={this.handleClick}
-              variant="contained"
-              size="large"
+              style={{
+                backgroundColor: "rgb(45, 52, 90)",
+                color: "white",
+                fontFamily: "Raleway",
+                borderRadius: "15px",
+                margin:"5% 2% 3% 0"
+              }}
             >
-              Start
+              <Typography
+                gutterBottom
+                style={{
+                  textAlign: "center",
+                  alignItems:"center",
+                  color: "white",
+                  fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                  padding: "8px 30px",
+                  fontFamily: "Raleway",
+                }}
+                >
+                START
+              </Typography>
             </Button>
           </div>
         </CardContent>

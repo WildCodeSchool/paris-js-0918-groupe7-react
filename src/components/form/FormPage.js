@@ -33,11 +33,9 @@ class FormPage extends Component {
       poleId: values.department
     };
 
-    // console.log(config);
     axios
       .post(url, config)
       .then(res => {
-        console.log(res);
         if (res.status === 200) {
           alert(
             `An email has been send to ${
@@ -50,13 +48,11 @@ class FormPage extends Component {
         }
       })
       .catch(err => {
-        console.log(err.response);
         this.setState({ status: err.response.status });
       });
   };
 
   render() {
-    console.log("status", this.state.status);
     if (this.state.redirect) {
       return <Redirect to="/login" />;
     }
@@ -84,8 +80,7 @@ class FormPage extends Component {
                   color: "white",
                   margin: "5%",
                   fontFamily: "Raleway",
-                  fontSize: "2em",
-
+                  fontSize: "calc(1vw + 1vh + 1vmin)"
                 }}
                 gutterBottom
               >

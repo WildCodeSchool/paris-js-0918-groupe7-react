@@ -1,16 +1,20 @@
 .arrow{
-    max-width: 1.5vw;
+    max-width: 1.3vw;
     padding-right: 15px;
 }
 
 .link-forgot-password{
     text-align: right;
-    margin: 15% 15% 0 0;
-    font-size: calc(0.6vw + 0.6vh + 0.6vmin);
+    margin: 3% 17% 0 0;
+    font-size: calc(0.3vw + 0.3vh + 0.3vmin);
 }
-
 
 .form-data{
     text-align: right;
     margin: 5% 15% 0 0;
+}
+
+a{
+    text-decoration: underline;
+    cursor: pointer;
 }

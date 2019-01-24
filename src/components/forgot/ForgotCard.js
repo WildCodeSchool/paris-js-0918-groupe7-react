@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import axios from "axios";
-import './Forgot.css';
+import './ForgotCard.css';
 import { Redirect } from "react-router-dom";
+
+import arrow from "../../images/left-arrow.png"
 
 const styles = theme => ({
   pos: {
@@ -58,109 +59,91 @@ class Forgot extends Component {
   };
 
   render() {
-    console.log(this.state);
     if (this.state.back) {
       return <Redirect to="/login" />;
     }
     return (
       <div>
-        <Grid
-          container
-          className="gridthanks"
-          style={{
-            backgroundColor: "rgb(125, 146, 177)",
-            position: "absolute",
-            minHeight: "100%"
-          }}
-        >
           <Card
             className="card"
             style={{
               width: "70%",
-              height: "60%",
+              maxHeight: "70%",
               alignContent: "center",
               alignItems: "center",
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: "auto",
+              marginTop: "5%",
               marginBottom: "auto",
-              paddingLeft: "10%",
               borderRadius: "10px"
             }}
           >
-            <CardContent className="cardContent">
-              <Button
-                style={{
-                  border: "solid",
-                  marginTop: "2%"
-                }}
-                onClick={this.BackFunction}
-              >
-                {" "}
-                Back{" "}
-              </Button>
+        <CardContent className="cardContent">
+
+            <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,marginRight: "50px"}}
+          onClick={this.BackFunction}>
+          <img className="arrow" src={arrow} alt="back arrow"/>
+            Back
+          </Button>
 
               <Typography
                 gutterBottom
                 style={{
                   fontFamily: "Raleway, sans-serif",
-                  fontSize: "28px",
+                  fontSize: "calc(0.7vw + 0.7vh + 0.7vmin)",
                   marginTop: "5%",
-                  letterSpacing: "0.4rem"
+                  textAlign:"start",
+                  fontWeight:"bold",
+                  paddingLeft: "13%"
                 }}
               >
-                Forgot your password ? 
+                Forgot your password ?
               </Typography>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-data">
+                <div className="form-data" style={{ margin: "5% 15% 0 0"}}>
                   <Input
                     type="text"
                     id="email"
                     name="email"
                     required
                     placeholder="Email"
-                    style={{ marginTop: "5%", width: "80%" }}
+                    style={{fontSize: "calc(0.4vw + 0.4vh + 0.4vmin)" ,    margin: "5% 15% 0 0", width: "70%", marginLeft: "13%", textAlign: "left" }}
                     onChange={this.onChange}
                     value={this.state.email}
                   />
                 </div>
 
                 <div className="form-data">
-                  <Button
-                    className="BtnSend"
-                    type="submit"
-                    value="Login"
-                    style={{
-                      backgroundColor: "rgb(186, 28, 58)",
-                      color: "white",
-                      marginLeft: "auto",
-                      marginRight: "20px",
-                      marginTop: "10%",
-                      marginBottom: "5%",
-                      display: "block",
-                      fontSize: "1.3em",
-                      fontFamily: "Raleway",
-                      borderRadius: "15px"
-                    }}
-                  >
-                    <Typography
-                      gutterBottom
-                      style={{
-                        textAlign: "center",
-                        color: "white",
-                        fontSize: "20px",
-                        lineHeight: "14px",
-                        padding: "15px 35px"
-                      }}
-                    >
-                      Send
-                    </Typography>
-                  </Button>
+                <Button
+                className="BtnSend"
+                type="submit"
+                value="Login"
+                style={{
+                  backgroundColor: "rgb(186, 28, 58)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"5% 2% 10% 0"
+                }}
+              >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 30px",
+                    fontFamily: "Raleway",
+                  }}
+                >
+                  Send
+                </Typography>
+              </Button>
                 </div>
               </form>
             </CardContent>
           </Card>
-        </Grid>
       </div>
     );
   }
