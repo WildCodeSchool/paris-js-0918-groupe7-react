@@ -196,9 +196,9 @@ class Survey extends Component {
 
   render() {
     configureAnchors({offset: -230, scrollDuration: 600})
+    
+    if (!this.state.isLoading) return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>
 
-    console.table(this.state.user_answers)
-    if (!this.state.isLoading) return <CircularProgress disableShrink style={{ alignItems: "center", height: "300%", alignContent: "center", margin: "auto" }} />;
     if (this.state.thanksPage)
       return (
         <div>

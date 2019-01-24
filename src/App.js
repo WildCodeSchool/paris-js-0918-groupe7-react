@@ -8,7 +8,6 @@ import { Switch, Route } from "react-router-dom";
 import ForgotPassword from "./components/forgot/ForgotPage.js";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 
-import AdminHomePage from "./components/admin/AdminHomePage";
 import Download from "./components/admin/Download";
 import UpdateCompanies from "./components/admin/UpdateCompanies";
 import UpdateAgencies from "./components/admin/UpdateAgencies";
@@ -43,7 +42,6 @@ class App extends Component {
 
           {/* Admin routes */}
           <Route exact path="/admin" component={HomeAdmin} />
-          <Route exact path="/admin/Home" component={AdminHomePage} />
           <Route exact path="/admin/DownloadData" component={Download} />
           <Route exact path="/admin/UpdateCompanies" component={UpdateCompanies} />
           <Route exact path="/admin/UpdateAgencies" component={UpdateAgencies} />

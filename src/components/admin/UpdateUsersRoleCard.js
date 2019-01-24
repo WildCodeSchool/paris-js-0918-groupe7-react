@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import "./DownloadCard.css";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
@@ -28,11 +29,12 @@ class UpdateUsersRoleCard extends Component {
     role: "",
     selectedUsers: [],
     token: localStorage.getItem("token"),
-    adminHomePage: false
+    adminHomePage: false,
+    refresh: false
   };
 
-  componentDidMount = () => {
-    const company = "Exton"
+  getExtonUsers = () => {
+    const company="Exton"
 
     axios({
       method: "GET",
@@ -43,12 +45,20 @@ class UpdateUsersRoleCard extends Component {
     }).then(res => this.setState({ users: res.data }));
   };
 
+  componentDidMount = () => {
+   this.getExtonUsers();
+  };
+
   handleChangeRole = event => {
     this.setState({ role: event.target.value })
   };
 
   selectingUsers = (array) => {
     this.setState({ selectedUsers: array })
+  };
+
+  disableRefresh = () => {
+    this.setState({refresh: false})
   };
 
   handleBack = e => {
@@ -58,32 +68,38 @@ class UpdateUsersRoleCard extends Component {
   };
 
   handleValidate = () => {
+    let promises = [];
+
     this.state.selectedUsers.map(selectedUser => {
-      return (
-        axios({
-          method: "PUT",
-          url: `http://localhost:3002/users/${selectedUser}`,
-          headers: {
-            authorization: `Bearer ${this.state.token}`
-          },
-          data: {
-            role: this.state.role
-          }
-        })
-          .then(res => res.status)
-      )
-    });
-    alert(`The role has been set to ${this.state.role}`);
+      const promise = axios({
+        method: "PUT",
+        url: `http://localhost:3002/users/${selectedUser}`,
+        headers: {
+          authorization: `Bearer ${this.state.token}`
+        },
+        data: {
+          role: this.state.role
+        }
+      })
+      .then(res => res); 
+
+      promises.push(promise)
+    })
+
+    Promise.all(promises)
+    .then( (res) => {
+      this.getExtonUsers();
+    })
+    .then(() => this.setState({refresh: true, role: ""}))
   };
 
   render() {
-    // console.log(this.state.users.length === 0)
-    if (this.state.users.length === 0)
-      return <h3>LOADING...</h3>
+    if(this.state.users.length === 0)
+      return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>;
     const { classes } = this.props;
     if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
 
-    if (this.state.companies === null) return <p>loading</p>;
+    if (this.state.companies === null) return <div className='circular'> <CircularProgress disableShrink size="40px"/> </div>;
     return (
       <div>
         <Card
@@ -108,7 +124,7 @@ class UpdateUsersRoleCard extends Component {
           </Button>
 
           <Grid style={{ padding:"0 5%"}}>
-            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers}/>
+            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers} refresh={this.state.refresh} disableRefresh={this.disableRefresh}/>
             <TextField
               className={classes.poleContainer}
               select
@@ -155,11 +171,11 @@ class UpdateUsersRoleCard extends Component {
               </Button>
             </CardContent>
 
-            <h3 style={{
+            {/* <h3 style={{
                 textAlign: "center",
                 alignItems:"center",
                 fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",
-                margin: "5% 0"}}>* Don't forget to refresh your page after your changes</h3>
+                margin: "5% 0"}}>* Don't forget to refresh your page after your changes</h3> */}
         </Grid>
         </Card>
       </div>

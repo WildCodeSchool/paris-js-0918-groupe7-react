@@ -89,3 +89,8 @@ Button.HiddenBack{
     align-items:center;
     justify-content: center;
 }
+
+.circular {
+    margin-left: 50%;
+    margin-top: 5%;
+}

@@ -53,6 +53,22 @@ class SimpleTable extends Component {
         id = 0;
     };
 
+    componentWillUpdate = () => {
+        console.log("refresh1", this.props.refresh)
+        if(this.props.refresh === true) {
+            console.log("SUCCESS")
+            this.setState({
+                selected: [],
+                numSelected: 0,
+            }, 
+            () => {
+                id=0;
+                this.createTable()
+                this.props.disableRefresh()
+            });
+        }
+    }
+
     handleClick = (event, id) => {
         const { selected } = this.state;
         const selectedIndex = selected.indexOf(id);
