@@ -11,7 +11,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
 
-import "./UpdateCompanies.css";
+import arrow from "../../images/left-arrow.png"
+
 
 const styles = theme => ({
   companyContainer: {
@@ -90,7 +91,7 @@ class UpdateCompaniesCard extends Component {
               method: "PUT",
               url: `http://localhost:3002/users/companyId/${
                 this.state.company
-              }`,
+                }`,
               headers: {
                 authorization: `Bearer ${this.state.token}`
               },
@@ -104,7 +105,7 @@ class UpdateCompaniesCard extends Component {
                   method: "DELETE",
                   url: `http://localhost:3002/email_extensions/companyId/${
                     this.state.company
-                  }`,
+                    }`,
                   headers: {
                     authorization: `Bearer ${this.state.token}`
                   }
@@ -125,9 +126,9 @@ class UpdateCompaniesCard extends Component {
     const config = {
       name: this.state.addCompany
     };
-    const headers = {
-      authorization: `Bearer ${this.state.token}`
-    };
+    // const headers = {
+    //   authorization: `Bearer ${this.state.token}`
+    // };
 
     axios
       .post(url, config)
@@ -142,9 +143,9 @@ class UpdateCompaniesCard extends Component {
       email_extension: this.state.addEmailExtension,
       companyId: this.state.company
     };
-    const headers = {
-      authorization: `Bearer ${this.state.token}`
-    };
+    // const headers = {
+    //   authorization: `Bearer ${this.state.token}`
+    // };
     axios
       .post(url, config)
       .then(res => this.setState({ data: res.data }))
@@ -169,68 +170,33 @@ class UpdateCompaniesCard extends Component {
         <Card
           className="card"
           style={{
-            textAlign: "left",
-            justifyContent: "center",
-            verticalAlign: "middle",
-            color: "black",
-            margin: "5%",
-            fontFamily: "Raleway",
-            fontSize: "1em",
-            backgroundColor: "white",
-            borderRadius: "10%",
-            padding: "10%"
+            width: "80%",
+            maxHeight: "70%",
+            alignContent: "center",
+            alignItems: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "5%",
+            marginBottom: "auto",
+            borderRadius: "10px",
           }}
         >
-          <CardContent className="cardContent">
-            <Button
-              onClick={this.handleClick}
-              variant="contained"
-              className="but"
-              size="large"
-              style={{
-                backgroundColor: "rgb(38, 56, 87)",
-                color: "white",
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                marginTop: "5%",
-                fontSize: "1.3em",
-                fontFamily: "Raleway"
-              }}
-            >
+          <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%" ,margin: "3% 0 0 3%"}}
+            onClick={this.handleClick}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
               Back
-            </Button>
+          </Button>
 
-            <Typography
-              className="thank"
-              style={{
-                textAlign: "center",
-                justifyContent: "center",
-                verticalAlign: "middle",
-                color: "white",
-                margin: "5% auto",
-                fontFamily: "Raleway",
-                fontSize: "2em"
-              }}
-              gutterBottom
-            >
-              {" "}
-              Update Companies
-            </Typography>
+              <Grid style={{ padding:"0 0 0 15%"}}>
             <form>
-              <Grid>
-                <TextField
+                <TextField 
                   className={classes.poleContainer}
                   select
                   value={this.state.company}
                   onChange={this.handleChangeCompany("company")}
-                  label="Companies"
-                  helperText="Please select a company"
+                  label="Please select a company"
                   margin="normal"
-                  variant="outlined"
-                  style={{
-                    marginTop: "1%"
-                  }}
+                  style={{ fontSize: "calc(0.35vw + 0.35vh + 0.35vmin)", width: "50%"}}
                 >
                   {this.state.companies.map(option => (
                     <MenuItem key={option.id} value={option.id}>
@@ -238,63 +204,122 @@ class UpdateCompaniesCard extends Component {
                     </MenuItem>
                   ))}
                 </TextField>
+
+
                 <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleDelete}
-                  style={{ border: "solid" }}
+                className="BtnSend"
+                value="Login"
+                onClick={this.handleDelete}
+                style={{
+                  backgroundColor: "rgb(186, 28, 58)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"5% 2% 10% 0"
+                }}
+              >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 32px",
+                    fontFamily: "Raleway",
+                  }}
                 >
                   Delete Company
-                </Button>
-              </Grid>
+                </Typography>
+              </Button>
+
             </form>
 
-            <CardContent>
+
               <form onSubmit={this.handleAddCompany}>
                 <Input
                   onChange={this.onChange}
                   name="addCompany"
-                  style={{ width: "200px" }}
+                  style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" ,margin: "10% auto 0 auto", width: "50%" }}
                   placeholder="Your company name here"
                 />
+
                 <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleAddCompany}
+                className="BtnSend"
+                onClick={this.handleAddCompany}
+                style={{
+                  backgroundColor: "rgb(45,52,90)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"0 2% 10% 0"
+                }}
+              >
+                <Typography
+                  gutterBottom
                   style={{
-                    border: "solid"
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 41px",
+                    fontFamily: "Raleway",
                   }}
                 >
                   Add Company
-                </Button>
-              </form>
-            </CardContent>
+                </Typography>
+              </Button>
 
-            <CardContent>
+              </form>
+
               <form onSubmit={this.handleAddEmailExtension}>
                 <Input
                   onChange={this.onChange}
                   name="addEmailExtension"
                   placeholder="Exemple: @gmail.com"
-                  style={{ width: "200px" }}
+                  style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" ,margin: "10% auto 0 auto", width: "50%" }}
                 />
 
                 <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleAddEmailExtension}
+                className="BtnSend"
+                onClick={this.handleAddEmailExtension}
+                style={{
+                  backgroundColor: "rgb(45,52,90)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"5% 2% 10% 0"
+                }}
+              >
+                <Typography
+                  gutterBottom
                   style={{
-                    border: "solid"
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 20px",
+                    fontFamily: "Raleway",
                   }}
                 >
-                  Add Email Company
-                </Button>
+                  Add email extension
+                </Typography>
+              </Button>
+
               </form>
-            </CardContent>
-            <CardContent>
-              <p>* Select a company before adding an email extension</p>
-            </CardContent>
-            <CardContent>
-              <h3>** Don't forget to refresh your page after your changes</h3>
-            </CardContent>
-          </CardContent>
+              </Grid>
+
+
+              <p style={{
+                textAlign: "center",
+                alignItems:"center",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>* Select a company before adding an email extension</p>
+
+            
+              <h3 style={{
+                textAlign: "center",
+                alignItems:"center",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>** Don't forget to refresh your page after your changes</h3>
         </Card>
       </div>
     );

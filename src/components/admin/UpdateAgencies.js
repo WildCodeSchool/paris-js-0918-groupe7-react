@@ -26,8 +26,9 @@ class UpdateAgencies extends Component {
                 verticalAlign: "middle",
                 color: "white",
                 margin: "5% auto",
+                padding: "0% 5%",
                 fontFamily: "Raleway",
-                fontSize: "2em"
+                fontSize: "calc(1vw + 1vh + 1vmin)",
               }}
               gutterBottom
             >
@@ -39,7 +40,7 @@ class UpdateAgencies extends Component {
           <Grid
             style={{
               backgroundImage: `url(${ImgIntro})`,
-              backgroundSize: "auto",
+              backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat"
             }}
             item xs={12} sm={6}

@@ -4,11 +4,17 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Redirect } from 'react-router-dom';
 import Grid from "@material-ui/core/Grid"
+import { Typography } from "@material-ui/core";
+
+import './AdminCardCtrl.css'
+
 
 class AdminCardCrtl extends Component {
     state = {
-        redirect: ''
+        redirect: '',
+
     }
+
 
     handleClick = (e) => {
         this.setState({
@@ -22,6 +28,9 @@ class AdminCardCrtl extends Component {
         })
     }
     render() {
+        
+        const { value } = this.state;
+
         console.log(this.state.redirect)
         if (this.state.redirect === 'download')
             return <Redirect to="/admin/DownloadData" />
@@ -35,51 +44,48 @@ class AdminCardCrtl extends Component {
             return <Redirect to="/login" />
         return (
 
-            <Card className='card' style={{
-                textAlign: "left",
+            <Card style={{
+                width:"90%",
+                textAlign: "center",
                 justifyContent: "center",
-                verticalAlign: "middle",
+                verticalAlign: "center",
                 color: "black",
-                marginBottom: "13%",
-                marginLeft: "20%",
-                marginRight: "20%",
-                marginTop: "5%",
+                padding: "5% 0 6% 0",
+                margin:"10% auto 0 auto",
                 fontFamily: "Raleway",
                 fontSize: "1em",
                 backgroundColor: "white",
                 borderRadius: "10px",
-                padding: "3%"
             }}>
-
-                <CardContent className='cardContent'>
-
-                    <div className='button'>
-                        <Grid container>
-                            <Grid md={12}>
+                        <Grid container >
+                            <Grid style={{textAlign:"center"}}>
                                 <Button
-
                                     onClick={this.handleClick}
                                     variant="contained"
-                                    className='but'
                                     size='large'
                                     value='download'
                                     style={{
                                         backgroundColor: 'rgb(38, 56, 87)',
-                                        color: 'white',
-                                        marginLeft: 'auto',
-                                        marginRight: 'auto',
-                                        display: 'block',
-                                        marginBottom: '5%',
-                                        width: "50%",
-                                        fontSize: '1.3em',
-                                        fontFamily: 'Raleway',
-                                        alignItems: 'center'
-                                    }}
-                                >
-                                    Download Data
-                    </Button>
-                            </Grid>
-                            <Grid md={12}>
+                                        color: "white",
+                                        fontFamily: "Raleway",
+                                        borderRadius: "15px",
+                                        margin:"5% 2% 0 0",
+                                        width: "250px"
+                                      }}
+                                      >
+                                      <Typography
+                                        gutterBottom
+                                        style={{
+                                          textAlign: "center",
+                                          alignItems:"center",
+                                          color: "white",
+                                          fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                                          fontFamily: "Raleway",
+                                        }}
+                                        >
+                                        Download data
+                                      </Typography>
+                                    </Button>
                                 <Button
                                     onClick={this.handleClick}
                                     variant="contained"
@@ -88,58 +94,80 @@ class AdminCardCrtl extends Component {
                                     value='updateCompanies'
                                     style={{
                                         backgroundColor: 'rgb(38, 56, 87)',
-                                        color: 'white',
-                                        marginLeft: 'auto',
-                                        marginRight: 'auto',
-                                        display: 'block',
-                                        marginBottom: '5%',
-                                        width: "50%",
-                                        fontSize: '1.3em',
-                                        fontFamily: 'Raleway'
-                                    }}
-                                >
-                                    Update Companies
-                    </Button>
-                    <Button
-                        onClick={this.handleClick} 
-                        variant="contained"  
-                        className='but'
-                        size='large'
-                        value='updateAgencies'
-                        style={{
-                        backgroundColor: 'rgb(38, 56, 87)',
-                        color: 'white',
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        display: 'block',
-                        marginTop: '5%',
-                        fontSize: '1.3em',
-                        fontFamily: 'Raleway'
-                        }}
-                    >
-                    Update Agencies
-                    </Button>
-                    <Button
-                        onClick={this.handleClick} 
-                        variant="contained"  
-                        className='but'
-                        size='large'
-                        value='updateUsersRole'
-                        style={{
-                        backgroundColor: 'rgb(38, 56, 87)',
-                        color: 'white',
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        display: 'block',
-                        marginTop: '5%',
-                        fontSize: '1.3em',
-                        fontFamily: 'Raleway'
-                        }}
-                    >
-                    Update Users Role
-                    </Button>
-                            </Grid>
-                            <Grid md={12}>
+                                        color: "white",
+                                        fontFamily: "Raleway",
+                                        borderRadius: "15px",
+                                        margin:"5% 2% 0 0",
+                                        width: "250px"
+
+                                      }}
+                                      >
+                                      <Typography
+                                        gutterBottom
+                                        style={{
+                                          textAlign: "center",
+                                          alignItems:"center",
+                                          color: "white",
+                                          fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                                          fontFamily: "Raleway",
+                                        }}
+                                        >Update companies                                      </Typography>
+                                    </Button>
+                                <Button
+                                    onClick={this.handleClick} 
+                                    variant="contained"  
+                                    className='but'
+                                    size='large'
+                                    value='updateAgencies'
+                                    style={{
+                                        backgroundColor: 'rgb(38, 56, 87)',
+                                        color: "white",
+                                        fontFamily: "Raleway",
+                                        borderRadius: "15px",
+                                        margin:"5% 2% 0 0",
+                                        width: "250px"
+
+                                      }}
+                                      >
+                                      <Typography
+                                        gutterBottom
+                                        style={{
+                                          textAlign: "center",
+                                          alignItems:"center",
+                                          color: "white",
+                                          fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                                          fontFamily: "Raleway",
+                                        }}
+                                        >Update agencies                                      </Typography>
+                                    </Button>
+                                <Button
+                                    onClick={this.handleClick}
+                                    variant="contained"
+                                    className='but'
+                                    size='large'
+                                    value='updateUsersRole'
+                                    style={{
+                                        backgroundColor: 'rgb(38, 56, 87)',
+                                        color: "white",
+                                        fontFamily: "Raleway",
+                                        borderRadius: "15px",
+                                        margin:"5% 2% 0 0",
+                                        width: "250px"
+
+                                      }}
+                                      >
+                                      <Typography
+                                        gutterBottom
+                                        style={{
+                                          textAlign: "center",
+                                          alignItems:"center",
+                                          color: "white",
+                                          fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                                          fontFamily: "Raleway",
+                                        }}
+                                        >Update user role                                      </Typography>
+                                    </Button>
+                                <div>
                                 <Button
                                     variant="contained"
                                     className="but"
@@ -148,23 +176,27 @@ class AdminCardCrtl extends Component {
                                     style={{
                                         backgroundColor: "rgb(186, 28, 58)",
                                         color: "white",
-                                        marginLeft: "auto",
-                                        marginRight: "auto",
-                                        display: "block",
-                                        marginBottom: "5%",
-                                        width: "30%",
-                                        fontSize: "1.3em",
-                                        fontFamily: "Raleway"
-                                    }}
-                                    onClick={this.handleLogOut}
-                                >
-                                    Log Out
-                               </Button>
+                                        fontFamily: "Raleway",
+                                        borderRadius: "15px",
+                                        margin:"5% 2% 0 0",
+                                        width: "250px"
+
+                                      }}
+                                      >
+                                      <Typography
+                                        gutterBottom
+                                        style={{
+                                          textAlign: "center",
+                                          alignItems:"center",
+                                          color: "white",
+                                          fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                                          fontFamily: "Raleway",
+                                        }}
+                                        >Log out                                      </Typography>
+                                    </Button>
+                                    </div>
                             </Grid>
                         </Grid>
-                    </div>
-
-                </CardContent>
 
             </Card>
         );

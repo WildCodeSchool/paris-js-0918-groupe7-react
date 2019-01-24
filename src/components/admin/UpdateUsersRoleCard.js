@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Typography } from "@material-ui/core";
 import axios from "axios";
 import SimpleTable from './SimpleTable';
 import TextField from "@material-ui/core/TextField";
@@ -11,6 +10,10 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import "./DownloadCard.css";
+import Grid from "@material-ui/core/Grid";
+
+import arrow from "../../images/left-arrow.png"
+
 
 const styles = theme => ({
   companyContainer: {
@@ -22,14 +25,14 @@ class UpdateUsersRoleCard extends Component {
   state = {
     users: [],
     roles: ["client", "admin", "super_admin"],
-    role:"",
+    role: "",
     selectedUsers: [],
     token: localStorage.getItem("token"),
     adminHomePage: false
   };
 
   componentDidMount = () => {
-    const company="Exton"
+    const company = "Exton"
 
     axios({
       method: "GET",
@@ -37,15 +40,15 @@ class UpdateUsersRoleCard extends Component {
       headers: {
         authorization: `Bearer ${this.state.token}`
       }
-    }).then( res => this.setState({ users: res.data }));
+    }).then(res => this.setState({ users: res.data }));
   };
 
   handleChangeRole = event => {
-    this.setState({role: event.target.value})
+    this.setState({ role: event.target.value })
   };
 
   selectingUsers = (array) => {
-    this.setState({selectedUsers: array})
+    this.setState({ selectedUsers: array })
   };
 
   handleBack = e => {
@@ -56,17 +59,19 @@ class UpdateUsersRoleCard extends Component {
 
   handleValidate = () => {
     this.state.selectedUsers.map(selectedUser => {
-      axios({
-        method: "PUT",
-        url: `http://localhost:3002/users/${selectedUser}`,
-        headers: {
-          authorization: `Bearer ${this.state.token}`
-        },
-        data: {
-          role: this.state.role
-        }
-      })
-      .then(res => res.status)  
+      return (
+        axios({
+          method: "PUT",
+          url: `http://localhost:3002/users/${selectedUser}`,
+          headers: {
+            authorization: `Bearer ${this.state.token}`
+          },
+          data: {
+            role: this.state.role
+          }
+        })
+          .then(res => res.status)
+      )
     });
     alert(`The role has been set to ${this.state.role}`);
   };
@@ -84,48 +89,35 @@ class UpdateUsersRoleCard extends Component {
         <Card
           className="card"
           style={{
-            textAlign: "left",
-            justifyContent: "center",
-            verticalAlign: "middle",
-            color: "black",
-            fontFamily: "Raleway",
-            fontSize: "1em",
-            backgroundColor: "white",
-            borderRadius: "10%",
-            padding: "10%",
-            margin: "5%",
-            width: "70%"
+            width: "80%",
+            maxHeight: "70%",
+            alignContent: "center",
+            alignItems: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "5%",
+            marginBottom: "auto",
+            borderRadius: "10px",
           }}
         >
-          <CardContent className="cardContent">
-            <Button
-              onClick={this.handleBack}
-              variant="contained"
-              className="but"
-              size="large"
-              style={{
-                backgroundColor: "rgb(38, 56, 87)",
-                color: "white",
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                marginTop: "5%",
-                fontSize: "1.3em",
-                fontFamily: "Raleway"
-              }}
-            >
+
+            <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%"}}
+            onClick={this.handleBack}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
               Back
-            </Button>
+          </Button>
+
+          <Grid style={{ padding:"0 5%"}}>
             <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers}/>
             <TextField
               className={classes.poleContainer}
               select
               value={this.state.role}
               onChange={this.handleChangeRole}
-              label="Role"
-              helperText="Please select a new role"
+              label="Please select a new role"
               margin="normal"
-              variant="outlined"
+            style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)", width: "20%" }}
+
             >
               {this.state.roles.map((role, index) => (
                 <MenuItem key={index} value={role}>
@@ -133,17 +125,42 @@ class UpdateUsersRoleCard extends Component {
                 </MenuItem>
               ))}
             </TextField>
-            <CardContent>
+
+            <CardContent style={{ float: "right" }}>
               <Button
-                  className="ButtonSubmit"
-                  onClick={this.handleValidate}
-                  style={{ border: "solid" }}
+                className="BtnSend"
+                type="submit"
+                onClick={this.handleValidate}
+                style={{
+                  backgroundColor: "rgb(186, 28, 58)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"5% 2% 0 0",
+                }}
                 >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 20px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
                   Validate
+                </Typography>
               </Button>
             </CardContent>
-            <CardContent><h3>* Don't forget to refresh your page after your changes</h3></CardContent>
-          </CardContent>
+
+            <h3 style={{
+                textAlign: "center",
+                alignItems:"center",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",
+                margin: "5% 0"}}>* Don't forget to refresh your page after your changes</h3>
+        </Grid>
         </Card>
       </div>
     );

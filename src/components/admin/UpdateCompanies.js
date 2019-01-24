@@ -4,6 +4,9 @@ import { Typography } from "@material-ui/core";
 import ImgIntro from "../../images/intro_image.png";
 import UpdateCompaniesCard from "./UpdateCompaniesCard";
 
+import Hidden from '@material-ui/core/Hidden';
+
+
 class UpdateCompanies extends Component {
   render() {
     return (
@@ -17,7 +20,7 @@ class UpdateCompanies extends Component {
             minHeight: "100%"
           }}
         >
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <Typography
               className="UpdateCompanies"
               style={{
@@ -26,24 +29,27 @@ class UpdateCompanies extends Component {
                 verticalAlign: "middle",
                 color: "white",
                 margin: "5% auto",
+                padding: "0% 5%",
                 fontFamily: "Raleway",
-                fontSize: "2em"
+                fontSize: "calc(1vw + 1vh + 1vmin)",
               }}
               gutterBottom
             >
               {" "}
               Update Companies
             </Typography>
-            <UpdateCompaniesCard />                       
+            <UpdateCompaniesCard />
           </Grid>
+          <Hidden only={['xs', 'sm']}>
           <Grid
             style={{
               backgroundImage: `url(${ImgIntro})`,
-              backgroundSize: "auto",
+              backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat"
             }}
-            item xs={12} sm={6}
+            item xs={12} md={6}
           />
+        </Hidden>
         </Grid>
       </div>
     );
