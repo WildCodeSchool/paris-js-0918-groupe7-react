@@ -197,6 +197,7 @@ class UpdateCompaniesCard extends Component {
             <p style={{
                 color:"red",
                 textAlign:"inherit",
+                textDecoration:"underline",
                 fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>* Don't forget to refresh your page after your changes</p>
                 <TextField 
                   className={classes.poleContainer}

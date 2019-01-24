@@ -170,6 +170,13 @@ class UpdateAgenciesCard extends Component {
           </Button>
 
               <Grid style={{ padding:"0 0 0 15%"}}>
+          <p style={{
+                color:"red",
+                textAlign:"inherit",
+                textDecoration:"underline",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>* Don't forget to refresh your page after your changes</p>
+                <p style={{
+                textAlign:"inherit", paddingTop:"5%", color:"red", fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>** Select a company and a agency before deleting this agency</p>
                 <TextField
                   className={classes.poleContainer}
                   select
@@ -270,14 +277,9 @@ class UpdateAgenciesCard extends Component {
             </CardContent>
             </Grid>
 
-              <p style={{
-                textAlign: "center",
-                alignItems:"center",
-                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>* Select a company and a agency before deleting this agency</p>
-              <h3 style={{
-                textAlign: "center",
-                alignItems:"center",
-                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",}}>** Don't forget to refresh your page after your changes</h3></CardContent>
+            
+
+            </CardContent>
         </Card>
       </div>
     );

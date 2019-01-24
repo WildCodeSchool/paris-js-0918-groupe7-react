@@ -11,7 +11,6 @@ import { Grid } from '@material-ui/core';
 import logo_Exton_consulting from '../../images/Logo_Exton_consulting.png';
 import logo_Exton_AAA from '../../images/logo_Exton_AAA_2.png';
 
-
 // Déclaration de la fonction stateless HEADER
 const Header = (props) => {
         return(
