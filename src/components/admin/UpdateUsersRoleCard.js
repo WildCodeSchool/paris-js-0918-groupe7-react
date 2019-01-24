@@ -85,7 +85,7 @@ class UpdateUsersRoleCard extends Component {
     .then( (res) => {
       this.getExtonUsers();
     })
-    .then(() => this.setState({refresh: true}))
+    .then(() => this.setState({refresh: true, role: ""}))
 
   };
 
