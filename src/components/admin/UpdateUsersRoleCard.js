@@ -81,9 +81,10 @@ class UpdateUsersRoleCard extends Component {
           role: this.state.role
         }
       })
-      .then(res => res); 
+      .then(res => res);
 
       promises.push(promise)
+      return 0
     })
 
     Promise.all(promises)
@@ -97,7 +98,7 @@ class UpdateUsersRoleCard extends Component {
     if(this.state.users.length === 0)
       return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>;
     const { classes } = this.props;
-    if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
+    if (this.state.adminHomePage) return <Redirect to="/admin" />;
 
     if (this.state.companies === null) return <div className='circular'> <CircularProgress disableShrink size="40px"/> </div>;
     return (
@@ -132,7 +133,7 @@ class UpdateUsersRoleCard extends Component {
               onChange={this.handleChangeRole}
               label="Please select a new role"
               margin="normal"
-            style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)", width: "20%" }}
+            style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)", width: "30%" }}
 
             >
               {this.state.roles.map((role, index) => (

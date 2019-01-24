@@ -131,7 +131,7 @@ class DownloadCard extends Component {
 
   render() {
     const { classes } = this.props;
-    if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
+    if (this.state.adminHomePage) return <Redirect to="/admin/" />;
 
     if (this.state.companies === null) return <CircularProgress disableShrink style={{ alignItems: "center" }} />;;
     return (

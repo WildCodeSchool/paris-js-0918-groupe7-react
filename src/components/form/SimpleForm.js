@@ -278,7 +278,6 @@ class SimpleForm extends Component {
               name="agency"
               component="select"
               className="widthInput"
-              validate={[required]}
             >
               <option />
               {this.state.agencies.map((e, i) => (

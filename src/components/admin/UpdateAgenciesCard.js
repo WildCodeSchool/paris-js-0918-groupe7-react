@@ -140,7 +140,7 @@ class UpdateAgenciesCard extends Component {
   };
 
   render() {
-    if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
+    if (this.state.adminHomePage) return <Redirect to="/admin/" />;
 
     const { classes } = this.props;
 
@@ -177,7 +177,7 @@ class UpdateAgenciesCard extends Component {
                   onChange={this.handleChangeCompany("company")}
                   label="Please select a company"
                   margin="normal"
-                  style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" ,margin: "", width: "50%", }}
+                  style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)" , width: "50%", }}
                 >
                   {this.state.companies.map(option => (
                     <MenuItem key={option.id} value={option.id}>

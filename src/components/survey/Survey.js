@@ -195,7 +195,7 @@ class Survey extends Component {
   };
 
   render() {
-    configureAnchors({offset: -230, scrollDuration: 600})
+    configureAnchors({offset: -200, scrollDuration: 600})
     
     if (!this.state.isLoading) return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>
 

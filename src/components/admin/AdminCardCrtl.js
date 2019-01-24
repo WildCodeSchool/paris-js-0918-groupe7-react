@@ -74,6 +74,7 @@ class AdminCardCrtl extends Component {
                                       <Typography
                                         gutterBottom
                                         style={{
+                                          margin:"0",
                                           textAlign: "center",
                                           alignItems:"center",
                                           color: "white",
@@ -103,7 +104,8 @@ class AdminCardCrtl extends Component {
                                       <Typography
                                         gutterBottom
                                         style={{
-                                          textAlign: "center",
+                                            margin:"0",
+                                            textAlign: "center",
                                           alignItems:"center",
                                           color: "white",
                                           fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
@@ -130,6 +132,7 @@ class AdminCardCrtl extends Component {
                                       <Typography
                                         gutterBottom
                                         style={{
+                                            margin:"0",
                                           textAlign: "center",
                                           alignItems:"center",
                                           color: "white",
@@ -157,6 +160,7 @@ class AdminCardCrtl extends Component {
                                       <Typography
                                         gutterBottom
                                         style={{
+                                            margin:"0",
                                           textAlign: "center",
                                           alignItems:"center",
                                           color: "white",
@@ -185,6 +189,7 @@ class AdminCardCrtl extends Component {
                                       <Typography
                                         gutterBottom
                                         style={{
+                                            margin:"0",
                                           textAlign: "center",
                                           alignItems:"center",
                                           color: "white",
