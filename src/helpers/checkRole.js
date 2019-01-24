@@ -10,10 +10,8 @@ const checkRole = async () => {
         authorization: `Bearer ${token}`
         }
     }).then(res => res.data.role);
-
-    let hasRole= role === "client" || role === "admin" || role === "super_admin"
     
-    return hasRole ? role : "visitor";
+    return role;
 }
 
 export default checkRole;

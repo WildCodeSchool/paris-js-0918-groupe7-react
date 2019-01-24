@@ -280,7 +280,7 @@ class Survey extends Component {
                 Back
             </Button>
 
-              <Button className={this.state.questionsReponses.length === this.state.user_answers.length ? "continue-button" : "hidden-button"} onClick={this.handleContinue}>CONTINUE</Button>
+              <Button className={this.state.questionsReponses.length === this.state.user_answers.length || this.state.isPosted[this.state.length] === 1 ? "continue-button" : "hidden-button"} onClick={this.handleContinue}>CONTINUE</Button>
             </div>
           </Grid>
         </Grid>

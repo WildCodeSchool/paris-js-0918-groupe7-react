@@ -75,6 +75,7 @@ class LoginCard extends Component {
         })
       })
       .catch(err => alert("Wrong Email or Password"));
+      console.log("states", this.state)
   };
 
   render() {
