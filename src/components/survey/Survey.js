@@ -16,6 +16,11 @@ import ThanksPage from "../thanks/ThanksPage";
 
 import arrow from "../../images/left-arrow.png"
 
+import ScrollableAnchor from 'react-scrollable-anchor'
+import { configureAnchors } from 'react-scrollable-anchor'
+
+
+
 class Survey extends Component {
 
   state = {
@@ -190,8 +195,10 @@ class Survey extends Component {
   };
 
   render() {
-
+    configureAnchors({offset: -230, scrollDuration: 600})
+    
     if (!this.state.isLoading) return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>
+
     if (this.state.thanksPage)
       return (
         <div>
@@ -235,6 +242,7 @@ class Survey extends Component {
 
           <Hidden only={['xs']}>
             <Grid item sm={3} md={4} className="background-left">
+          <div className="test">
               <div>
                 <h1 className="title-survey">AGILE MATURITY ASSESSMENT</h1>
               </div>
@@ -256,10 +264,13 @@ class Survey extends Component {
                   </h3>
                 ))}
               </div>
+            </div>
             </Grid>
           </Hidden>
 
+
           <Grid item xs={12} sm={9} md={8} className="background-right">
+          <ScrollableAnchor id={'goToTop'}><div style={{visibility:"hidden"}}></div></ScrollableAnchor>
             {this.state.questionsReponses.map((elem, index) => (
               <div key={index}>
                 <div className="question">{elem.question}</div>
@@ -270,7 +281,7 @@ class Survey extends Component {
                   userAnswers={this.state.user_answers}
                   id={elem.id}
                   user_id={this.state.data.id}
-                />
+                  />
               </div>
             ))}
             <div className="container-survey-button">
@@ -280,7 +291,10 @@ class Survey extends Component {
                 Back
             </Button>
 
-              <Button className={this.state.questionsReponses.length === this.state.user_answers.length || this.state.isPosted[this.state.length] === 1 ? "continue-button" : "hidden-button"} onClick={this.handleContinue}>CONTINUE</Button>
+            <a href='#goToTop' style={{ textDecoration: "none" }} >
+            <Button className={this.state.questionsReponses.length === this.state.user_answers.length || this.state.isPosted[this.state.length] === 1 ? "continue-button" : "hidden-button"} onClick={this.handleContinue}>CONTINUE</Button>
+            </a>
+
             </div>
           </Grid>
         </Grid>

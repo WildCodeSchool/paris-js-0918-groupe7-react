@@ -51,7 +51,7 @@ class ThanksCard extends Component {
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: "20%",
+          marginTop: "10%",
           marginBottom: "auto"
         }}
       >
