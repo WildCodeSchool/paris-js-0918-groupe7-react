@@ -5,6 +5,9 @@ import AdminCardCrtl from './AdminCardCrtl';
 
 import Hidden from '@material-ui/core/Hidden';
 
+import ImgIntro from "../../images/intro_image.png";
+
+
 class AdminHomePage extends Component {
     render() {
         return (
