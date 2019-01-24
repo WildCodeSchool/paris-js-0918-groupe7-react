@@ -38,7 +38,7 @@ class CardValidation extends Component {
           alignItems: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: "20%"
+          marginTop: "10%"
         }}
       >
         <CardContent className="cardContent">

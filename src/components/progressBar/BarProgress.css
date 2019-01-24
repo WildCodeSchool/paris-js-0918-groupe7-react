@@ -17,6 +17,11 @@ text {
   /* box-shadow: inset 1em 0  1em rgb(0, 0, 0, 0.5); */
   height: 15vh;
   padding-bottom: 5%;
-  }
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  z-index: 1;
+}
 
 
