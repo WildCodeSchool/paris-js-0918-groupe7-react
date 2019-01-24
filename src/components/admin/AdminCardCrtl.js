@@ -11,8 +11,10 @@ import './AdminCardCtrl.css'
 
 class AdminCardCrtl extends Component {
     state = {
-        redirect: ''
+        redirect: '',
+
     }
+
 
     handleClick = (e) => {
         this.setState({
@@ -26,6 +28,9 @@ class AdminCardCrtl extends Component {
         })
     }
     render() {
+        
+        const { value } = this.state;
+
         console.log(this.state.redirect)
         if (this.state.redirect === 'download')
             return <Redirect to="/admin/DownloadData" />
@@ -52,8 +57,6 @@ class AdminCardCrtl extends Component {
                 backgroundColor: "white",
                 borderRadius: "10px",
             }}>
-
-
                         <Grid container >
                             <Grid style={{textAlign:"center"}}>
                                 <Button

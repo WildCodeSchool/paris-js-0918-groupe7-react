@@ -91,7 +91,7 @@ class UpdateCompaniesCard extends Component {
               method: "PUT",
               url: `http://localhost:3002/users/companyId/${
                 this.state.company
-              }`,
+                }`,
               headers: {
                 authorization: `Bearer ${this.state.token}`
               },
@@ -105,7 +105,7 @@ class UpdateCompaniesCard extends Component {
                   method: "DELETE",
                   url: `http://localhost:3002/email_extensions/companyId/${
                     this.state.company
-                  }`,
+                    }`,
                   headers: {
                     authorization: `Bearer ${this.state.token}`
                   }
@@ -126,9 +126,9 @@ class UpdateCompaniesCard extends Component {
     const config = {
       name: this.state.addCompany
     };
-    const headers = {
-      authorization: `Bearer ${this.state.token}`
-    };
+    // const headers = {
+    //   authorization: `Bearer ${this.state.token}`
+    // };
 
     axios
       .post(url, config)
@@ -143,9 +143,9 @@ class UpdateCompaniesCard extends Component {
       email_extension: this.state.addEmailExtension,
       companyId: this.state.company
     };
-    const headers = {
-      authorization: `Bearer ${this.state.token}`
-    };
+    // const headers = {
+    //   authorization: `Bearer ${this.state.token}`
+    // };
     axios
       .post(url, config)
       .then(res => this.setState({ data: res.data }))

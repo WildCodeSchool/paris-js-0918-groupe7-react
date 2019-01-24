@@ -32,7 +32,7 @@ class DownloadCard extends Component {
     token: localStorage.getItem("token"),
     adminHomePage: false,
     employees: 0,
-    totalEmployees:0
+    totalEmployees: 0
   };
 
   componentDidMount = () => {
@@ -64,7 +64,7 @@ class DownloadCard extends Component {
               authorization: `Bearer ${this.state.token}`
             }
           }).then(res =>
-            this.setState({ data: res.data }, () => { this.formatData() } )
+            this.setState({ data: res.data }, () => { this.formatData() })
           );
         } else {
           // Stockage des agences dans un state
@@ -85,7 +85,7 @@ class DownloadCard extends Component {
         authorization: `Bearer ${this.state.token}`
       }
     }).then(res =>
-      this.setState({ data: res.data }, () => { this.formatData() } )
+      this.setState({ data: res.data }, () => { this.formatData() })
     );
   };
 
@@ -96,8 +96,9 @@ class DownloadCard extends Component {
   };
 
   formatData = () => {
-        let results = [];
+    let results = [];
     this.state.data[0].users.map((user, index) => {
+
       const axes = ["Agile Capabilities", "Agile Adoption"];
       let userData = {
         user: index + 1,
@@ -111,16 +112,19 @@ class DownloadCard extends Component {
         let axeWeight = 0;
 
         user.users_answers_possibilities_questions.filter(quest_ans => {
-          if(user.users_answers_possibilities_questions !== []) {
+          if (user.users_answers_possibilities_questions !== []) {
             if (quest_ans.question.agile_orientation.includes(axe)) {
               axeWeight += quest_ans.answers_possibility.weight
             }
-            this.setState({employees: this.state.employees +1})
+            this.setState({ employees: this.state.employees + 1 })
           }
+          return 0;
         });
-        userData[axe]=axeWeight;
+        userData[axe] = axeWeight;
+        return 0;
       });
       results.push(userData);
+      return 0;
     });
     this.setState({ results: results, totalEmployees: this.state.data[0].users.length });
   };
@@ -129,7 +133,7 @@ class DownloadCard extends Component {
     const { classes } = this.props;
     if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
 
-    if (this.state.companies === null) return <CircularProgress disableShrink style={{ alignItems:"center"}}/>;;
+    if (this.state.companies === null) return <CircularProgress disableShrink style={{ alignItems: "center" }} />;;
     return (
       <div>
         <Card
