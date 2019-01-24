@@ -9,6 +9,10 @@ import { Redirect } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import "./DownloadCard.css";
+import Grid from "@material-ui/core/Grid";
+
+import arrow from "../../images/left-arrow.png"
+
 
 const styles = theme => ({
   companyContainer: {
@@ -84,48 +88,35 @@ class UpdateUsersRoleCard extends Component {
         <Card
           className="card"
           style={{
-            textAlign: "left",
-            justifyContent: "center",
-            verticalAlign: "middle",
-            color: "black",
-            fontFamily: "Raleway",
-            fontSize: "1em",
-            backgroundColor: "white",
-            borderRadius: "10%",
-            padding: "10%",
-            margin: "5%",
-            width: "70%"
+            width: "80%",
+            maxHeight: "70%",
+            alignContent: "center",
+            alignItems: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: "5%",
+            marginBottom: "auto",
+            borderRadius: "10px",
           }}
         >
-          <CardContent className="cardContent">
-            <Button
-              onClick={this.handleBack}
-              variant="contained"
-              className="but"
-              size="large"
-              style={{
-                backgroundColor: "rgb(38, 56, 87)",
-                color: "white",
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "block",
-                marginTop: "5%",
-                fontSize: "1.3em",
-                fontFamily: "Raleway"
-              }}
-            >
+
+            <Button style={{ fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)", padding: "2%"}}
+            onClick={this.handleBack}>
+            <img className="arrow" src={arrow} alt="back arrow"/>
               Back
-            </Button>
-            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers} />
+          </Button>
+
+          <Grid style={{ padding:"0 5%"}}>
+            <SimpleTable users={this.state.users} selectingUsers={this.selectingUsers}/>
             <TextField
               className={classes.poleContainer}
               select
               value={this.state.role}
               onChange={this.handleChangeRole}
-              label="Role"
-              helperText="Please select a new role"
+              label="Please select a new role"
               margin="normal"
-              variant="outlined"
+            style={{fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)", width: "20%" }}
+
             >
               {this.state.roles.map((role, index) => (
                 <MenuItem key={index} value={role}>
@@ -133,17 +124,42 @@ class UpdateUsersRoleCard extends Component {
                 </MenuItem>
               ))}
             </TextField>
-            <CardContent>
+
+            <CardContent style={{ float: "right" }}>
               <Button
-                className="ButtonSubmit"
+                className="BtnSend"
+                type="submit"
                 onClick={this.handleValidate}
-                style={{ border: "solid" }}
-              >
-                Validate
+                style={{
+                  backgroundColor: "rgb(186, 28, 58)",
+                  color: "white",
+                  fontFamily: "Raleway",
+                  borderRadius: "15px",
+                  margin:"5% 2% 0 0",
+                }}
+                >
+                <Typography
+                  gutterBottom
+                  style={{
+                    textAlign: "center",
+                    alignItems:"center",
+                    color: "white",
+                    fontSize: "calc(0.4vw + 0.4vh + 0.6vmin)",
+                    padding: "8px 20px",
+                    fontFamily: "Raleway",
+                  }}
+                  >
+                  Validate
+                </Typography>
               </Button>
             </CardContent>
-            <CardContent><h3>* Don't forget to refresh your page after your changes</h3></CardContent>
-          </CardContent>
+
+            <h3 style={{
+                textAlign: "center",
+                alignItems:"center",
+                fontSize: "calc(0.55vw + 0.55vh + 0.55vmin)",
+                margin: "5% 0"}}>* Don't forget to refresh your page after your changes</h3>
+        </Grid>
         </Card>
       </div>
     );
