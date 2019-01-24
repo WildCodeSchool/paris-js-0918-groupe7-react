@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import "./DownloadCard.css";
 
 const styles = theme => ({
@@ -73,11 +74,11 @@ class UpdateUsersRoleCard extends Component {
   render() {
     // console.log(this.state.users.length === 0)
     if(this.state.users.length === 0)
-      return <h3>LOADING...</h3>
+      return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>;
     const { classes } = this.props;
     if (this.state.adminHomePage) return <Redirect to="/admin/Home" />;
 
-    if (this.state.companies === null) return <p>loading</p>;
+    if (this.state.companies === null) return <div className='circular'> <CircularProgress disableShrink size="40px"/> </div>;
     return (
       <div>
         <Card

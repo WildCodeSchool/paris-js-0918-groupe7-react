@@ -187,7 +187,7 @@ class Survey extends Component {
 
   render() {
 
-    if (!this.state.isLoading) return <CircularProgress disableShrink style={{ alignItems:"center", height: "300%", alignContent: "center", margin: "auto" }}/>;
+    if (!this.state.isLoading) return <div className='circular'> <CircularProgress disableShrink size="120px"/> </div>
     if (this.state.thanksPage)
       return (
         <div>
